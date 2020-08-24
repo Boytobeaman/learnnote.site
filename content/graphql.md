@@ -1,5 +1,5 @@
 ---
-title: "graphql 教程，graphql 基础入门，graphql 前端案例"
+title: "graphql 教程"
 metaTitle: "graphql 教程，graphql 基础入门，graphql 前端案例"
 metaDescription: "GraphQL是什么,为什么要使用GraphQL？GraphQL语言致力于提供一种直观的弹性语法系统，用以描述客户端程序设计时的数据需求以及数据交互行为。"
 ---
