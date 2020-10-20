@@ -61,6 +61,8 @@ query {
   }
 }
 //Fetch users (with limit 1), and their todos (ordered by descending creation time, and limited to 5)
+
+
 ```
 
 #### Passing arguments to your queries dynamically
@@ -77,6 +79,34 @@ In addition to the query above, we send a variables object:
    "limit": 10
 }
 
+
+// 排序 asc(正序排列) 和 desc(倒序排列) 
+query cus_teacher($sort: String) { 
+        teachers(sort: $sort){
+          id
+          name
+          age
+        }
+      }
+
+{
+  "sort": "name:desc"
+}
+
+//多个过滤条件 start 和 sort
+query cus_teacher($start: Int,$sort: String) { 
+        teachers(start: $start,sort: $sort){
+          id
+          name
+          age
+        }
+      }
+
+
+{
+  "start": 1,
+  "sort": "id:asc"
+}
 
 // 前端运用实例
 export async function fetchAPI(query:string, { variables } = {}) {

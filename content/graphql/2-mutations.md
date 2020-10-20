@@ -32,6 +32,34 @@ mutation {
 }
 ```
 
+
+#### strapi login 案例
+```
+export async function graphqlLogin(data: any) {
+  return graphqlRequest(
+    `mutation($input: UsersPermissionsLoginInput!) {
+      login(input: $input  ){
+        jwt
+        user{
+          id
+          username
+          email
+          blocked
+          role{
+            name
+          }
+        }
+      }
+    }`,
+      {
+        variables: {
+          input: data,
+        },
+      },
+    );
+}
+``` 
+
 #### strapi teacher example,创建一个Teacher, 成功了返回老师的ID
 ```
 mutation createTeacher($input: createTeacherInput!) { 
@@ -47,6 +75,50 @@ mutation createTeacher($input: createTeacherInput!) {
     "data": {
       "name": "Steve Jobs",
       "age": "52"
+    }
+  }
+}
+```
+
+
+#### strapi 删除 teacher 案例
+```
+mutation deTeacher($input: deleteTeacherInput!) { 
+        deleteTeacher(input: $input) {
+          teacher {
+              id
+          } 
+        }
+      }
+
+
+{
+  "input": {
+    "where": {
+      "id": "5"
+    }
+  }
+}
+```
+
+#### strapi 更新 teacher 案例
+```
+mutation upTeacher($input: updateTeacherInput!) { 
+        updateTeacher(input: $input) {
+          teacher {
+              id
+          } 
+        }
+      }
+
+{
+  "input": {
+    "where": {
+      "id": "4"
+    },
+    "data": {
+      "name": "update 4",
+      "age": "20"
     }
   }
 }
