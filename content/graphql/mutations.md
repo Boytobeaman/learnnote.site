@@ -6,6 +6,32 @@ metaDescription: "GraphQL Mutations是一种可能导致后端状态“突变”
 
 ### Mutations
 
+
+#### 常见案例
+```
+mutation {
+  insert_todos(objects: [{title: "new todo"}]) {
+    returning {
+      id
+    }
+  }
+}
+
+
+//增加成功后 返回字段由 returning 指定
+mutation {
+  insert_todos(objects: [{title: "new todo"}]) {
+    returning {
+      id
+      title
+      is_completed
+      is_public
+      created_at
+    }
+  }
+}
+```
+
 #### strapi teacher example,创建一个Teacher, 成功了返回老师的ID
 ```
 mutation createTeacher($input: createTeacherInput!) { 
