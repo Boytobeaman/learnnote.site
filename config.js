@@ -41,8 +41,6 @@ const config = {
       '/introduction', // add trailing slash if enabled above
       '/codeblock',
       '/graphql',
-      '/graphql/queries',
-      '/graphql/mutations',
     ],
     collapsedNav: [
       '/codeblock', // add trailing slash if enabled above
