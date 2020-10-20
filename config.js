@@ -40,7 +40,9 @@ const config = {
     forcedNavOrder: [
       '/introduction', // add trailing slash if enabled above
       '/codeblock',
-      '/wuxiang'
+      '/graphql',
+      '/graphql/queries',
+      '/graphql/mutations',
     ],
     collapsedNav: [
       '/codeblock', // add trailing slash if enabled above
