@@ -1,7 +1,7 @@
 const config = {
   gatsby: {
     pathPrefix: '/',
-    siteUrl: 'https://hasura.io',
+    siteUrl: 'https://www.learnnote.site',
     gaTrackingId: null,
     trailingSlash: false,
   },
@@ -10,7 +10,7 @@ const config = {
     logoLink: 'https://hasura.io/learn/',
     title:
       "<a href='https://hasura.io/learn/'><img class='img-responsive' src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/learn-logo.svg' alt='Learn logo' /></a>",
-    githubUrl: 'https://github.com/hasura/gatsby-gitbook-boilerplate',
+    githubUrl: 'https://github.com/Boytobeaman/learnnote.site',
     helpUrl: '',
     tweetText: '',
     social: `<li>
@@ -55,7 +55,7 @@ const config = {
     title: 'Gatsby Gitbook Boilerplate | Hasura',
     description: 'Documentation built with mdx. Powering hasura.io/learn ',
     ogImage: null,
-    docsLocation: 'https://github.com/hasura/gatsby-gitbook-boilerplate/tree/master/content',
+    docsLocation: 'https://github.com/Boytobeaman/learnnote.site/tree/master/content',
     favicon: 'https://graphql-engine-cdn.hasura.io/img/hasura_icon_black.svg',
   },
   pwa: {
