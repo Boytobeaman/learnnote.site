@@ -1,0 +1,118 @@
+---
+title: "Java 变量"
+metaTitle: "Java 变量"
+metaDescription: "Java 变量"
+---
+
+### Java 变量
+
+变量是用于存储数据值的容器。
+
+在Java中，有不同类型的变量，例如：
+1. String-存储文本，例如“ Hello”。字符串值用双引号引起来
+1. int -存储整数（整数），不带小数，例如123或-123
+1. float -存储浮点数，带小数，例如19.99或-19.99
+1. char-存储单个字符，例如'a'或'B'。字符值用单引号引起来
+1. boolean -存储具有两种状态的值：true或false
+
+
+
+### 声明（创建）变量
+要创建变量，必须指定类型并为其分配值：
+语法
+```
+type variable = value;
+```
+其中type是Java的类型之一（例如int或String），而 variable是变量的名称（例如x或 name）。的等号用于将值分配给变量。
+
+
+创建一个名称为 name, type 为 String 的变量，并将其赋值为John
+```
+String name = "John";
+System.out.println(name);
+```
+
+
+创建一个名称为 myNum, type 为 int 的变量，并将其赋值为 15
+```
+int myNum = 15;
+System.out.println(myNum);
+```
+
+也可以先声明变量，然后赋值
+```
+int myNum;
+myNum = 15;
+System.out.println(myNum);
+```
+请注意，如果将新值分配给现有变量，它将覆盖以前的值：
+
+将myNumfrom的值更改15为20：
+```
+int myNum = 15;
+myNum = 20;  // myNum is now 20
+System.out.println(myNum);
+```
+
+### 最终变量
+但是，如果您不希望其他人（或您自己）覆盖现有值（可以将变量声明为“ final”或“ constant”，这意味着不可更改和只读），
+则可以添加关键字：final
+```
+final int myNum = 15;
+myNum = 20;  // will generate an error: cannot assign a value to a final variable
+```
+
+### 其他种类变量
+```
+int myNum = 5;
+float myFloatNum = 5.99f;
+char myLetter = 'D';
+boolean myBool = true;
+String myText = "Hello";
+```
+
+
+### 显示变量
+通常用println()方法来显示变量。
+要将文本和变量连接起来，请使用+字符：
+```
+String name = "John";
+System.out.println("Hello " + name);
+```
+
+您还可以使用+字符将变量添加到另一个变量：
+```
+String firstName = "John ";
+String lastName = "Doe";
+String fullName = firstName + lastName;
+System.out.println(fullName);
+```
+
+对于数字值，该+字符用作数学运算符（请注意，int此处我们使用（整数）变量）：
+```
+int x = 5;
+int y = 6;
+System.out.println(x + y); // Print the value of x + y
+```
+
+### 声明许多变量
+要声明多个相同类型的变量，请使用逗号分隔的列表
+```
+int x = 5, y = 6, z = 50;
+System.out.println(x + y + z);
+```
+
+### Java标识符
+所有Java变量必须 用唯一的名称标识。
+
+这些唯一的名称称为标识符。
+
+标识符可以是短名称（如x和y），也可以是更具描述性的名称（年龄，总和，总体积）。
+
+构造变量名称（唯一标识符）的一般规则是：
+1. 名称可以包含字母，数字，下划线和美元符号
+1. 名称必须以字母开头
+1. 名称应以小写字母开头，并且不能包含空格
+1. 名称也可以以$和_开头（但在本教程中我们将不使用它）
+1. 名称区分大小写（“ myVar”和“ myvar”是不同的变量）
+1. 保留字（例如Java关键字，例如int或 boolean）不能用作名称
