@@ -467,3 +467,51 @@ componentWillUnmount{
   clearTimeout(timer)
 }
 ```
+
+
+#### react 中，如果某个state 为一个对象，更新这个对象的某个属性值，视图不会更新，为什么
+update nested state properties in React
+
+```
+let thirdIOTAuthData = yield select(state => state.IOTDataModel.thirdIOTAuthData)
+
+//更新 thirdIOTAuthData 的 channel （haike）属性
+thirdIOTAuthData[channel] = data
+//更新state
+yield put({ "type": "setThirdIOTAuthData", data: thirdIOTAuthData});
+
+结果视图上用到channel （haike）属性 的地方并没有更新
+
+
+用这个 Object.assign 生成一个新的对象就可以了
+yield put({ "type": "setThirdIOTAuthData", data: Object.assign({},thirdIOTAuthData) });
+```
+
+原因是 react 判断状态变化是浅比较
+浅比较就是只比较第一级，对于基本数据类型，只比较值；
+对于引用数据类型值，直接比较地址是否相同，不管里面内容变不变，只要地址一样，我们就认为没变。
+```
+state{
+  thirdIOTAuthData:{
+    haike:{
+      aaa:"aaa"
+    }
+  }
+}
+
+变为
+state{
+  thirdIOTAuthData:{
+    haike: false
+  }
+}
+
+分析：
+thirdIOTAuthData 为对象（引用数据类型值），会比较 地址是否相同，不管里面内容变不变，只要地址一样，我们就认为没变
+
+因此给新的 thirdIOTAuthData 赋值 是可以 Object.assign 来产生一个新的对象
+
+
+
+
+```
