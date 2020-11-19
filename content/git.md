@@ -22,7 +22,7 @@ git reflog | 用来记录你的每一次命令
 git checkout -- file | 丢弃工作区的修改，让这个文件回到最近一次git commit或git add后的状态。git checkout -- file命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令。
 git clone git@github.com:michaelliao/gitskills.git | 将远程的michaelliao/gitskills 项目克隆到本地的gitskills
 git clone https://github.com/angular/quickstart.git angular2 | 将远程的quickstart 目录克隆到 本地目录下的angular2目录
-git clone -b <branch> <remote_repo> | git clone -b my-branch git@github.com:user/myproject.git 克隆指定分支
+git clone -b {branch} {remote_repo} | git clone -b my-branch git@github.com:user/myproject.git 克隆指定分支
 git rm | git rm命令把一个文件删除，并把它从git的仓库管理系统中移除。但是注意最后要执行git commit才真正提交到git仓库
 
 
