@@ -8,3 +8,8 @@ metaDescription: "vscode 常用快捷键"
 ⇧⌘L Select all occurrences of current selection
 
 
+
+####复制当前行 duplicate current line
+Windows: Shift + Alt + Up/Down.
+Mac: Shift + Option + Up/Down.
+
