@@ -10,3 +10,12 @@ MAC
 CTRL + COMMAND + J
 
 
+
+
+全选
+mac:
+ctrl+command+g
+
+windows: alt+f3
+
+
