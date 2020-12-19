@@ -19,3 +19,7 @@ ctrl+command+g
 windows: alt+f3
 
 
+mac
+向下多光标
+shift+ctrl+down（下箭头）
+
