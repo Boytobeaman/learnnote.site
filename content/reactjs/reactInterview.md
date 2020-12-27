@@ -468,6 +468,7 @@ componentWillUnmount{
 }
 ```
 
+### react hooks 遇到的坑
 
 #### react 中，如果某个state 为一个对象，更新这个对象的某个属性值，视图不会更新，为什么
 update nested state properties in React
@@ -512,6 +513,120 @@ thirdIOTAuthData 为对象（引用数据类型值），会比较 地址是否�
 因此给新的 thirdIOTAuthData 赋值 是可以 Object.assign 来产生一个新的对象
 
 
+```
 
 
+#### React Hook stale-closure 过期闭包的问题
+
+```
+import React, { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+    setTimeout(function delay() {
+      console.log(`count a === ${count}`);
+      setCount(count + 1);
+    }, 2000);
+  }
+
+  return (
+    <div className="App">
+      <p>You clicked {count} times</p>
+      <button onClick={handleClick}>Increase</button>
+    </div>
+  );
+}
+```
+点击一次 handleClick 后，最终的 count 为 1，不为2
+
+为什么？
+
+过程一：
+因为点击 handleClick 后，这时 handleClick 函数里 count 为初始值0
+
+过程二：
+hooks 函数是异步的，所以 第一个 setCount(count + 1) 并不会立即改变 count的值，便会执行到 setTimeout.
+
+过程三：
+然后setTimeout 还没有到时间（这里设置的是2s）的时候 count 会已经变为 1，
+但是两秒后执行到 里面的 setCount(count + 1) 时，当时的闭包作用域下 count 为0，
+因此 执行的结果是 setCount(0 + 1)，最后count 依然是1
+
+
+
+如何解决，让闭包里面的 hooks 函数拿到最新值，而不是闭包里面的值？
+
+方法 一：传一个回调函数，回调函数的参数会是 previous state
+```
+setCount(count => {
+  return count + 1
+});
+```
+
+
+
+
+### hooks setState 异步问题
+#### 并列的 setState 会合并，以最后一个为准
+```
+setCount(count + 1);
+setCount(count + 8);
+
+//最后会执行 setCount(count + 8);
+```
+
+
+#### setState 后面有 回调函数设值的方式，它会等待前面一个 setState 的结果生效后执行
+```
+const [count, setCount] = useState(0);
+...
+
+setCount(count + 1);
+setCount((count) => {
+  console.log(`kkk ${count}`);
+  return count + 8;
+});
+// 最后 count 为 9
+```
+
+#### 多个回调函数的方式调用，后面一个会依次等待前面一个值生效后调用
+```
+setCount((count) => {
+  return count + 1;
+});
+
+setCount((count) => {
+  return count + 2;
+});
+
+setCount((count) => {
+  return count + 3;
+});
+
+//count 结果为 1 + 2 + 3 = 6
+
+```
+
+
+#### 多个回调函数的方式调用，后面如果有一个直接设值的方式，那么这些setState 都会合并，只有最后一个有效
+```
+setCount((count) => {
+  return count + 1;
+});
+
+setCount((count) => {
+  return count + 2;
+});
+
+setCount((count) => {
+  return count + 3;
+});
+
+setCount(count + 8);
+
+// 最终 count = 0 + 8 = 8
 ```

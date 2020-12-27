@@ -43,3 +43,20 @@ useEffect(() => {
   };
 }, [props.friend.id]); // Only re-subscribe if props.friend.id changes
 ```
+
+
+### useMemo
+```
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+
+
+
+优化前：
+{computeExpensiveValue(a, b)}
+
+优化后：
+{memoizedValue}
+
+只有当依赖变更后（例子中的a,b）才会重现计算，触发computeExpensiveValue
+
+```
