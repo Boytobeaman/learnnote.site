@@ -145,3 +145,38 @@ export async function getStoreList() {
     { variables: { "where": condition} })
 }
 ```
+
+
+### 给某个字段加别名 alias
+```
+// 根据 不同的条件查询出不同的 keyword_ranks 数组，
+//分别将对应的字段命名为keyword_ranks_creative，keyword_ranks_p4p
+query keywords($where: JSON, $aliplatform_num: Int!) {
+  keywords(where:$where, limit: 1000) {
+    id
+    name
+    keyword_ranks_creative:keyword_ranks(where:{type:"creative"},sort:"time:desc",limit: $aliplatform_num){
+      id
+      rank
+      type
+      time
+      description
+      aliplatform{
+        id
+        name
+      }
+    }
+    keyword_ranks_p4p:keyword_ranks(where:{type:"p4p"},sort:"time:desc",limit: $aliplatform_num){
+      id
+      rank
+      type
+      description
+      aliplatform{
+        id
+        name
+      }
+    }
+    sem_search_volumn
+  }
+}
+```
