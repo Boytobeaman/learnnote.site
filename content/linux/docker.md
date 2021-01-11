@@ -136,6 +136,8 @@ docker tag friendlyhello anthonylxc/get-started:part1
 3.Publish the image
 docker push username/repository:tag
 
+//If you don't specify a tag, Docker will use a tag called latest
+
 ex:
 docker push anthonylxc/get-started:part1
 
@@ -146,6 +148,16 @@ docker run -p 4000:80 username/repository:tag
 ex:
 docker run -p 4000:80 anthonylxc/get-started:part1
 ```
+#### Create a volume 
+```
+docker volume create
+
+eg:
+docker volume create todo-db
+
+```
+
+
 
 列出image
 ```
