@@ -236,3 +236,49 @@ server {
 }
 
 ```
+
+
+### 利用nginx 做负载均衡 load balancer
+
+参考 https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#overview
+```
+upstream my_http_servers {
+    server 127.0.0.1:444;      # httpServer1 listens to port 444
+    server 127.0.0.1:445;      # httpServer2 listens to port 445
+    server 127.0.0.1:446;      # httpServer3 listens to port 446
+    server 127.0.0.1:447;      # httpServer4 listens to port 447
+}
+server {
+    listen 80;
+    server_name your-domain.com www.your-domain.com;
+    location / {
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   Host      $http_host;
+        proxy_pass         http://my_http_servers;
+    }
+}
+
+// my_http_servers 为自定义的名称
+// proxy_pass   http://my_http_servers; 注意 my_http_servers 前要有 http://
+// server 可以为本地ip，也可以为 其他ip 如: server 54.218.*8.*4:28000;
+```
+
+### Choosing a Load-Balancing Method
+```
+//Round Robin
+
+upstream backend {
+   # no load balancing method is specified for Round Robin
+   server backend1.example.com;
+   server backend2.example.com;
+}
+
+//Least Connections – A request is sent to the server with the least number of active connections, again with server weights taken into consideration
+
+upstream backend {
+    least_conn;
+    server backend1.example.com;
+    server backend2.example.com;
+}
+
+```

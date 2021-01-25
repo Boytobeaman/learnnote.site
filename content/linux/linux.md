@@ -662,3 +662,29 @@ wget https://wordpress.org/latest.zip
 
 wget https://wordpress.org/latest.zip -P cable.90m.top
 ```
+
+
+### 如何开放 Linux 端口，以便公网访问
+
+#### 云平台服务器要参考云平台的端口开放流程
+
+
+#### iptable 的配置
+```
+//查看 iptables 运行状态
+service iptables status
+
+
+// 查看具体端口配置
+iptables -nL --line-number
+
+
+
+//将端口 8001添加到安全组
+iptables -A INPUT -ptcp --dport 8001 -j ACCEPT
+
+
+//保存 iptables 配置
+service iptables save
+
+```
