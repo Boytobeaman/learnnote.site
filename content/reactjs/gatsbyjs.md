@@ -147,7 +147,7 @@ const SiteNavigation = () => (
 
 
 #### 封装 gatsby Link，导出ExactNavLink、PartialNavLink
-```
+```javascript
 import React from "react";
 import { Link } from "gatsby";
 
@@ -197,7 +197,7 @@ export const PartialNavLink = props => (
 ```
 
 ### 使用案例
-```
+```javascript
 import { ExactNavLink, PartialNavLink } from "../yjLink";
 
 
