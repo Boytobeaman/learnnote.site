@@ -222,7 +222,7 @@ var result = patt.exec(str);
 
 
 ### 分组 Using groups ()
-```
+```javascript
 let personList = `First_Name: John, Last_Name: Doe
 First_Name: Jane, Last_Name: Smith`;
 
@@ -235,7 +235,7 @@ console.log(`Hello ${match[1]} ${match[2]}`);
 
 ### Using named groups 命名的分组 (?<groupName>表达式)
 
-```
+```javascript
 let personList = `First_Name: John, Last_Name: Doe
 First_Name: Jane, Last_Name: Smith`;
 
