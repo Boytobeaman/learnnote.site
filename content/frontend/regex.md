@@ -245,13 +245,13 @@ let regexpNames = /First_Name: (?<firstname>\w+), Last_Name: (?<lastname>\w+)/mg
 let match = regexpNames.exec(personList);
 
 // match
-0: "First_Name: John, Last_Name: Doe"
-1: "John"
-2: "Doe"
-groups:
-firstname: "John"
-lastname: "Doe"
-index: 0
-input: "First_Name: John, Last_Name: Doe"
-length: 3
+// 0: "First_Name: John, Last_Name: Doe"
+// 1: "John"
+// 2: "Doe"
+// groups:
+// firstname: "John"
+// lastname: "Doe"
+// index: 0
+// input: "First_Name: John, Last_Name: Doe"
+// length: 3
 ```
