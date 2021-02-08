@@ -1,0 +1,255 @@
+---
+title: "regex, 正则表达式常用方法"
+metaTitle: "regex 正则表达式常用方法"
+metaDescription: "regex 正则表达式常用方法，正则表达式 group"
+---
+
+
+### RegExp Object
+A regular expression is an object that describes a pattern of characters.
+
+### Syntax
+/pattern/modifiers;
+
+#### example:
+```
+var patt = /w3schools/i
+```
+
+
+### Modifiers
+Modifiers are used to perform case-insensitive and global searches:
+Expression | Description
+------------ | -------------
+g | Perform a global match (find all matches rather than stopping after the first match)
+i | Perform case-insensitive matching
+m | Perform multiline matching
+
+### Brackets
+Brackets are used to find a range of characters:
+Expression | Description
+------------ | -------------
+[abc] | Find any character between the brackets
+[^abc] | Find any character NOT between the brackets
+[0-9] | Find any character between the brackets (any digit)
+[^0-9] | Find any character NOT between the brackets (any non-digit)
+(x|y) | Find any of the alternatives specified
+
+
+### Metacharacters
+Metacharacters are characters with a special meaning:
+Metacharacter | Description
+------------ | -------------
+. | Find a single character, except newline or line terminator
+\w | Find a word character
+\W | Find a non-word character
+\d | Find a digit
+\D | Find a non-digit character
+\s | Find a whitespace character
+\S | Find a non-whitespace character
+\b | Find a match at the beginning/end of a word, beginning like this: \bHI, end like this: HI\b
+\B | Find a match, but not at the beginning/end of a word
+\0 | Find a NULL character
+\n | Find a new line character
+\f | Find a form feed character
+\r | Find a carriage return character
+\t | Find a tab character
+\v | Find a vertical tab character
+\xxx | Find the character specified by an octal number xxx
+\xdd | Find the character specified by a hexadecimal number dd
+\udddd | Find the Unicode character specified by a hexadecimal number dddd
+
+### Quantifiers
+Quantifier | Description
+------------ | -------------
+n+ | Matches any string that contains at least one n
+n* | Matches any string that contains zero or more occurrences of n
+n? | Matches any string that contains zero or one occurrences of n
+n{X} | Matches any string that contains a sequence of X n's
+n{X,Y} | Matches any string that contains a sequence of X to Y n's
+n{X,} | Matches any string that contains a sequence of at least X n's  
+n$ | Matches any string with n at the end of it
+^n | Matches any string with n at the beginning of it
+?=n | Matches any string that is followed by a specific string n
+?!n  | Matches any string that is not followed by a specific string n
+
+
+### 实现数字千分位分割 正则方法
+```
+let reg = /(\d)(?=(\d{3})+(?!\d))/g
+
+let cc = '123456789'
+
+dd = cc.replace(reg, '$1,')
+
+console.log(dd)
+```
+
+### 实现数字千分位分割 js方法
+
+```
+function formatNum(num) {
+  let numArr = num.toString().split('.');
+  let numPrex = numArr[0]
+  numPrex = numPrex.split("").reverse()
+  let newPrex = [];
+
+  for (var i = 0; i < numPrex.length; i++) {
+    if (i%3 === 0 && i !== 0) {
+      newPrex.push(",")
+    }
+    newPrex.push(numPrex[i])
+  }
+
+  newPrex = newPrex.reverse().join("");
+
+  let newStr = '';
+  if(numArr[1]){
+    newStr = [newPrex, numArr[1]].join(".");
+  }else{
+    newStr = newPrex
+  }
+  return newStr
+}
+```
+
+
+### 不能全是空格
+```
+可以包含空格，但不能全是空格
+/^(?=.*\S).+$/
+```
+
+### 不能包含空格
+```
+a string consisting only of non-whitespaces
+/^\S*$/
+```
+
+
+
+### match
+match() method searches a string for a match against a regular expression, and returns the matches, as an Array object.
+
+```
+var str = "The rain in SPAIN stays mainly in the plain";
+var res = str.match(/ain/gi);
+
+//["ain", "AIN", "ain", "ain"]
+```
+
+
+
+### JS正则表达式的贪婪模式与非贪婪模式
+
+```
+var a = 'how !dare you! I have !an! apple'
+var b = /!.+!/
+
+想要结果
+['!dare you!','!an!']
+
+
+但却得到
+['!dare you! I have !an!']
+
+
+
+
+```
+#### 正则表达式的匹配方式-贪婪模式(贪婪模式也是正则表达式的默认匹配方式)
+
+首先寻找的是一个感叹号!
+![regexp](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/regexp-a.jpg)
+
+
+匹配到！后，他会继续向后匹配感叹号，但是后面的是字母d，不是感叹号，于是/!.+!/正则就会开始匹配.，而.这个符号可以匹配除换行符外的全部字符，于是它就一直匹配到了最后，直到文本结束：
+![regexp](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/regexp-b.jpg)
+
+.号匹配完毕后，开始匹配后面的!，于是正则/!.+!/开始往回匹配感叹号!，一直匹配到an后面的!，发现符合规则了，于是匹配出来的就是这一串字符串!dare you! I have !an!
+![regexp](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/regexp-c.jpg)
+
+
+#### 非贪婪模式的匹配方式
+```
+var b = /!.+?!/g
+
+其中，g表示采用全局匹配的模式进行匹配，而?则会使该正则式使用非贪婪模式进行匹配，该正则就会以最小的.的重复数进行匹配。
+
+```
+
+非贪婪模式的匹配方式:
+
+与贪婪模式一样先匹配!，然后进行.的匹配，但是与贪婪模式不同的是，它每匹配一次.，就会往后匹配一次!，于是就出现了如下图的结果：
+
+![regexp](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/regexp-d.jpg)
+
+
+然后匹配成功了后面的!后，因为g是全局匹配，所以该正则又会从头开始匹配第一个!，到了!an!后，匹配成功第一个!和两个.，以及后面的!，于是!an!也被匹配上了，然后该正则又剩下的字符串开始从新匹配，而后面因为不能匹配出第一个!，于是就没有匹配出来：
+![regexp](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/regexp-e.jpg)
+
+总结:
+正则中的?可以使正则式采用非贪婪模式进行匹配；
+
+
+
+### 除掉特殊字符
+```
+//去掉回车换行        
+str = str.replace(/[\r\n]/g,"");
+
+
+//去掉空格
+str = str.replace(/\ +/g,"");
+```
+
+
+### JavaScript exec() Method
+The exec() method tests for a match in a string.
+
+This method returns the matched text if it finds a match, otherwise it returns null.
+
+```
+// The string:
+var str = "Hello world!";
+
+// Look for "Hello"
+var patt = /Hello/g;
+var result = patt.exec(str);
+
+//["Hello", index: 0, input: "Hello world!", groups: undefined]
+```
+
+
+### 分组 Using groups ()
+```
+let personList = `First_Name: John, Last_Name: Doe
+First_Name: Jane, Last_Name: Smith`;
+
+let regexpNames =  /First_Name: (\w+), Last_Name: (\w+)/mg;
+let match = regexpNames.exec(personList);
+
+console.log(`Hello ${match[1]} ${match[2]}`);
+// Hello John Doe
+```
+
+### Using named groups 命名的分组 (?<groupName>表达式)
+
+```
+let personList = `First_Name: John, Last_Name: Doe
+First_Name: Jane, Last_Name: Smith`;
+
+let regexpNames = /First_Name: (?<firstname>\w+), Last_Name: (?<lastname>\w+)/mg;
+let match = regexpNames.exec(personList);
+
+// match
+0: "First_Name: John, Last_Name: Doe"
+1: "John"
+2: "Doe"
+groups:
+firstname: "John"
+lastname: "Doe"
+index: 0
+input: "First_Name: John, Last_Name: Doe"
+length: 3
+```

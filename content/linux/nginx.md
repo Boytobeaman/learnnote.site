@@ -84,6 +84,7 @@ brew install nginx
 /usr/local/etc/nginx
 
 // 查看nginx配置有木有生效
+//Locate the nginx.conf file my nginx is actually using
 nginx -t
 
 // 查看nginx所有的配置
