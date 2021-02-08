@@ -233,9 +233,11 @@ console.log(`Hello ${match[1]} ${match[2]}`);
 // Hello John Doe
 ```
 
-### Using named groups 命名的分组 (?<groupName>表达式)
+### Using named groups 命名的分组 
 
 ```javascript
+//(?<groupName>表达式)
+
 let personList = `First_Name: John, Last_Name: Doe
 First_Name: Jane, Last_Name: Smith`;
 
