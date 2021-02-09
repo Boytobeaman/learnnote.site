@@ -204,3 +204,54 @@ str = str.replace(/\ +/g,"");
 ```
 
 
+### JavaScript exec() Method
+The exec() method tests for a match in a string.   
+
+This method returns the matched text if it finds a match, otherwise it returns null.
+
+```
+// The string:
+var str = "Hello world!";
+
+// Look for "Hello"
+var patt = /Hello/g;
+var result = patt.exec(str);
+
+//["Hello", index: 0, input: "Hello world!", groups: undefined]
+```
+
+
+### 分组 Using groups ()
+```javascript
+let personList = `First_Name: John, Last_Name: Doe
+First_Name: Jane, Last_Name: Smith`;
+
+let regexpNames =  /First_Name: (\w+), Last_Name: (\w+)/mg;
+let match = regexpNames.exec(personList);
+
+console.log(`Hello ${match[1]} ${match[2]}`);
+// Hello John Doe
+```
+
+### Using named groups 命名的分组 
+
+```javascript
+//(?<groupName>表达式)
+
+let personList = `First_Name: John, Last_Name: Doe
+First_Name: Jane, Last_Name: Smith`;
+
+let regexpNames = /First_Name: (?<firstname>\w+), Last_Name: (?<lastname>\w+)/mg;
+let match = regexpNames.exec(personList);
+
+// match
+// 0: "First_Name: John, Last_Name: Doe"
+// 1: "John"
+// 2: "Doe"
+// groups:
+// firstname: "John"
+// lastname: "Doe"
+// index: 0
+// input: "First_Name: John, Last_Name: Doe"
+// length: 3
+```
