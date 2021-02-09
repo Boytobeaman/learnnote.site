@@ -66,8 +66,10 @@ It's very easy to make some words **bold** and other words *italic*
 It's very easy to make some words **bold** and other words *italic* 
 
 #### Line Breaks 换行
-To create a line break (<br>), end a line with two or more spaces, and then type return.
+
 ```
+To create a line break (<br>), end a line with two or more spaces, and then type return.
+
 This is the first line.  
 And this is the second line.
 ```
