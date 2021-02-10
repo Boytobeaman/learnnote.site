@@ -84,7 +84,7 @@ date -R
 tzselect
 ```
 
-### 解压和压缩
+## 解压和压缩
 ```
 //把根目录下的bbs.tar.zip解压到/zzz/bbs下，前提要保证存在/zzz/bbs这个目录
 //这个和cp命令有点不同，cp命令如果这个目录不存在，就会自动创建这个目录！
@@ -97,6 +97,36 @@ tar -zcvf  zzz.tar.gz  ./zzz
 
 //将/home/leon/Staging 目录打包，命名为august_project.tar.gz
 tar -zcvf august_project.tar.gz /home/leon/Staging
+
+```
+### zip 和 unzip
+```
+以下命令均在/home目录下操作
+cd /home #进入/home目录
+
+1、把/home目录下面的mydata目录压缩为mydata.zip
+zip -r mydata.zip mydata #压缩mydata目录
+
+2、把/home目录下面的mydata.zip解压到mydatabak目录里面
+unzip mydata.zip -d mydatabak
+
+3、把/home目录下面的abc文件夹和123.txt压缩成为abc123.zip
+zip -r abc123.zip abc 123.txt
+
+4、把/home目录下面的wwwroot.zip直接解压到/home目录里面
+unzip wwwroot.zip
+
+5、把/home目录下面的abc12.zip、abc23.zip、abc34.zip同时解压到/home目录里面
+unzip abc\*.zip
+
+6、查看把/home目录下面的wwwroot.zip里面的内容
+unzip -v wwwroot.zip
+
+7、验证/home目录下面的wwwroot.zip是否完整
+unzip -t wwwroot.zip
+
+8、把/home目录下面wwwroot.zip里面的所有文件解压到第一级目录
+unzip -j wwwroot.zip
 
 ```
 
@@ -700,4 +730,62 @@ localhost 是一个域名，在过去它指向 127.0.0.1 这个IP地址。在操
 本机IP，确切地说，“本机地址”并不是一个规范的名词。通常情况下，指的是“本机物理网卡所绑定的网络协议地址”。比如IPv4 或者IPv6地址
 
 在服务器中，0.0.0.0指的是本机上的所有IPV4地址，，如果我绑定的端口指定了0.0.0.0，那么通过内网地址或外网地址都可以访问我的应用。但是如果我只绑定了内网地址，那么通过外网地址就不能访问
+```
+
+## scp 本地与远程直接copy 文件
+```
+scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+[-l limit] [-o ssh_option] [-P port] [-S program]
+[[user@]host1:]file1 [...] [[user@]host2:]file2
+```
+Linux scp 命令用于 Linux 之间复制文件和目录。  
+scp 是 secure copy 的缩写, scp 是 linux 系统下基于 ssh 登陆进行安全的远程文件拷贝命令。  
+scp 是加密的，rcp 是不加密的，scp 是 rcp 的加强版。  
+
+### 将本地文件复制到远程服务器
+```
+scp local_file remote_username@remote_ip:remote_folder
+
+example:
+将本地 /Users/luxingchao 下的 a.txt 复制到远程 47.240.**.15 服务器的 /root/dest_folder 目录下
+scp /Users/luxingchao/a.txt root@47.240.**.15:/root/dest_folder
+
+```
+#### 复制本地目录到远程服务器
+复制目录命令格式： 
+```
+scp -r local_folder remote_username@remote_ip:remote_folder 
+
+example:
+将本地 test_folder 复制到远程 /root/dest_folder 目录下
+scp -r /Users/luxingchao/test_folder root@47.240.**.15:/root/dest_folder
+```
+
+#### 将本地 test_folder文件夹下的所有文件 复制到远程 /root/dest_folder_b 目录下
+```
+scp -r /Users/luxingchao/test_folder/* root@47.240.**.15:/root/dest_folder_b
+```
+
+#### -i 从指定文件中读取传输时使用的密钥文件
+```
+scp -i /Users/luxingchao/aws/ls-su-us-west-2.pem /Users/luxingchao/a.txt centos@54.218.**.214:/tmp
+
+注意： 必须上传到服务器的 /tmp 这个路径下，因为只有这个路径有写入权限，可以上传之后移动你的文件到你需要的指定目录
+```
+
+### 从远程复制到本地
+```
+//复制文件
+//将远程的 /root/dest_folder/a.txt 移动到 本地/Users/luxingchao/test_folder 下
+scp root@47.240.**.15:/root/dest_folder/a.txt /Users/luxingchao/test_folder
+
+//复制目录
+//将远程的 /root/dest_folder (包含 dest_folder本身) 移动到 本地/Users/luxingchao/test_folder 下
+scp -r root@47.240.**.15:/root/dest_folder/ /Users/luxingchao/test_folder
+
+
+// -i 复制时从指定文件中读取传输时使用的密钥文件
+scp -i /Users/luxingchao/aws/ls-su-us-west-2.pem centos@54.218.*.214:/tmp/a.txt /Users/luxingchao/test_folder
+
+scp -i /Users/luxingchao/aws/ls-su-us-west-2.pem centos@54.218.*.214:/data/mongodata/ab.txt /Users/luxingchao/
 ```
