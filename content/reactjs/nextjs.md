@@ -50,3 +50,9 @@ console.log(ab)
 
 gatsby 和 react 支持直接import image
 ```
+
+### 改变运行端口 -p 端口
+更改package.json 的 scripts
+```
+"dev": "next dev -p 3200",
+```
