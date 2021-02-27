@@ -789,3 +789,27 @@ scp -i /Users/luxingchao/aws/ls-su-us-west-2.pem centos@54.218.*.214:/tmp/a.txt 
 
 scp -i /Users/luxingchao/aws/ls-su-us-west-2.pem centos@54.218.*.214:/data/mongodata/ab.txt /Users/luxingchao/
 ```
+
+
+### scp 配置代理
+scp 使用 Secure copy protocol  
+scp based on the Secure Shell protocol(SSH)  
+
+在家目录下的.ssh 目录下编辑 config 文件， 没有就新建  
+里面加上这个内容，表示代理 GitHub ssh 协议 的流量
+```
+Host github.com
+   HostName github.com
+   User git
+   # 走 HTTP 代理
+   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=7890
+   # 走 socks5 代理（如 Shadowsocks）
+   ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
+Host 54.218.*.214
+   HostName 54.218.*.214
+   User git
+   # 走 HTTP 代理
+   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=7890
+   # 走 socks5 代理（如 Shadowsocks）
+   ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
+```
