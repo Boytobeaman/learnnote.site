@@ -58,7 +58,7 @@ I/O 密集：文件操作、网络操作、数据库
 单线程并不是单进程
 ```
 
-### 
+### create a child process
 ```
 There are four different ways to create a child process in Node: 
 spawn(), fork(), exec(), and execFile().
@@ -81,8 +81,9 @@ child.on("exit", function(code, signal) {
 });
 
 ```
-#### child_process.exec(command[, options][, callback])
+#### child_process.exec()
 ```
+// child_process.exec(command[, options][, callback])
 // 利用child_process 备份mongodb
 const { exec } = require('child_process');
 
