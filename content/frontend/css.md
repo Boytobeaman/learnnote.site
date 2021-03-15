@@ -8,7 +8,7 @@ metaDescription: "css 常见问题，css 面试问题"
 ### CSS盒模型
 
 
-##### 
+#### 盒子模型
 ```
 盒子模型包括：content、padding、margin、border
 ```
@@ -397,5 +397,3 @@ max-width 不包含指定值
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 ```
-
-#### 
