@@ -154,10 +154,10 @@ div > p {
 ```
 
 ##### Adjacent Sibling Selector (+)
-```
-Sibling elements must have the same parent element, and "adjacent" means "immediately following".
+```html
+// Sibling elements must have the same parent element, and "adjacent" means "immediately following".
 
-The following example selects all <p> elements that are placed immediately after <div> elements:
+// The following example selects all <p> elements that are placed immediately after <div> elements:
 // 有（相同父元素的）在（其后面的）第一个兄弟元素
 div + p {
   background-color: yellow;
@@ -179,10 +179,10 @@ div + p {
 
 
 ##### General Sibling Selector (~)
-```
-The general sibling selector selects all elements that are siblings of a specified element.
+```html
+// The general sibling selector selects all elements that are siblings of a specified element.
 
-The following example selects all <p> elements that are siblings of <div> elements: 
+// The following example selects all <p> elements that are siblings of <div> elements: 
 
 
 div ~ p {
@@ -212,8 +212,8 @@ div ~ p {
 
 #### :first-child
 The :first-child pseudo-class matches a specified element that is the first child of another element.
-```
-In the following example, the selector matches any <p> element that is the first child of any element:
+```html
+// In the following example, the selector matches any <p> element that is the first child of any element:
 
 p:first-child {
   color: blue;
@@ -234,8 +234,8 @@ p:first-child {
     <p><b>Note:</b> For :first-child to work in IE8 and earlier, a DOCTYPE must be declared.</p>
 </body>
 ```
-```
-In the following example, the selector matches the first <i> element in all <p> elements:
+```html
+// In the following example, the selector matches the first <i> element in all <p> elements:
 
 p i:first-child {
   color: blue;
