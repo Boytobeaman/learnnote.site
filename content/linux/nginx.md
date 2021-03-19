@@ -153,6 +153,13 @@ location ~* /(media|images|cache|tmp|logs)/.*.(php|jsp|pl|py|asp|cgi|sh)$ {
 }
 ```
 
+### 如果有花括号（量词），需要用双引号或者单引号将表达式包起来
+Curly braces are used both in regex and for block control, you must enclose your regex with quotes (single or double)
+```
+location ~* "^/.{16,22}[^/]$" {
+   return 301 https://www.ausplastic.com;
+}
+```
 
 ### 部署react 项目，直接访问二级路由回报 404 错误, 需要加上配置
 ```
