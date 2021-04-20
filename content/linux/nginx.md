@@ -23,7 +23,7 @@ netstat -tlnup|grep nginx
 
 
 关闭nginx服务器
-pkill   -9   nginx 
+pkill -9 nginx 
 ```
 
 

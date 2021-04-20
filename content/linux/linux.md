@@ -171,6 +171,12 @@ node    58954 leon   22u  IPv6 9275377      0t0  TCP *:10020 (LISTEN)
 kill -9 58954
 ```
 
+### pkill命令
+根据进程名kill进程
+```
+pkill nginx
+```
+
 ### 查看所有端口情况
 ```
 lsof -i -P | grep -i 'listen'
