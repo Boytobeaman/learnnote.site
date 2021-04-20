@@ -223,31 +223,53 @@ window.ts.transpileModule(src, {});
 #### Utility Types
 TypeScript provides several utility types to facilitate common type transformations. These utilities are available globally.
 
-##### Partial<Type>
+##### Partial
+```
+Partial<Type>
 Constructs a type with all properties of Type set to optional. This utility will return a type that represents all subsets of a given type.
+```
 
-
-#### Required<Type>
+#### Required
+```
+Required<Type>
 Constructs a type consisting of all properties of Type set to required. The opposite of Partial.
 
-#### Readonly<Type>
+```
+#### Readonly
+```
+Readonly<Type>
 Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type cannot be reassigned.
-
-#### Record<Keys,Type>
+```
+#### Record
+```
+Record<Keys,Type>
 Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.
-
-#### Pick<Type, Keys>
+```
+#### Pick
+```
+Pick<Type, Keys>
 Constructs a type by picking the set of properties Keys (string literal or union of string literals) from Type.
+```
 
-
-#### Omit<Type, Keys>
+#### Omit
+```
+Omit<Type, Keys>
 Constructs a type by picking all properties from Type and then removing Keys (string literal or union of string literals).
-
-#### Exclude<Type, ExcludedUnion>
+```
+#### Exclude
+```
+Exclude<Type, ExcludedUnion>
 Constructs a type by excluding from Type all union members that are assignable to ExcludedUnion.
+```
 
-#### Extract<Type, Union>
+#### Extract
+```
+Extract<Type, Union>
 Constructs a type by extracting from Type all union members that are assignable to Union.
+```
 
-#### NonNullable<Type>
+#### NonNullable
+```
+NonNullable<Type>
 Constructs a type by excluding null and undefined from Type.
+```
