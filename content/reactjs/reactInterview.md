@@ -630,3 +630,34 @@ setCount(count + 8);
 
 // 最终 count = 0 + 8 = 8
 ```
+
+### react-router vs react-router-dom vs react-router-native
+```
+react-router hosts the core components for routing for React applications 
+react-router-dom provides browser specific components for routing web apps 
+react-router-native provides specific components for react-native or mobile apps created with React Native.
+```
+
+### HashRouter vs BrowserRouter
+react-router提供了三种方式来实现路由，并没有默认的路由，需要在声明路由的时候，显式指定所使用的路由。
+
+1. browserHistory (官方推荐的是browserHistory)
+1. hashHistory
+1. createMemoryHistory
+
+#### BrowserRouter
+```
+It uses history API, i.e. it's unavailable for legacy browsers (IE 9 and lower and contemporaries)
+Client-side React application is able to maintain clean routes like example.com/react/route but needs to be backed by web server. 
+
+ Usually this means that web server should be configured for single-page application, i.e. same index.html is served for /react/route path or any other route on server side. On client side, window.location.pathname is parsed by React router. React router renders a component that it was configured to render for /react/route.
+```
+
+#### HashRouter
+```
+It uses URL hash, it puts no limitations on supported browsers or web server. Server-side routing is independent from client-side routing.
+
+
+for examble: 
+example.com/#/react/route, #/react/route URL hash cannot be read from server side. On client side, window.location.hash is parsed by React router. React router renders a component that it was configured to render for /react/route, similarly to BrowserRouter.
+```

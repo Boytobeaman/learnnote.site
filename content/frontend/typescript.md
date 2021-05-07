@@ -10,6 +10,45 @@ metaDescription: "typescript 学习"
 TypeScript is an open-source programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript, and adds optional static typing to the language. TypeScript is designed for development of large applications and transcompiles to JavaScript.
 
 
+### 安装typescript
+首先要安装好 nodejs
+```
+npm install -g typescript
+
+tsc -v
+//Version 4.2.4
+//测试是否安装成功
+```
+
+### typescript 基本数据类型
+
+```
+boolean
+string
+number
+array
+tuple
+enum (枚举)
+null
+undefined
+object
+void
+never
+any
+```
+
+### typescript 高级类型
+```
+union （组合类型）
+Nullable （可空类型）
+Literal (预定义类型)
+
+
+let literal_type: 1 | 2 | 3;
+literal_type = 1;
+(只能在 1，2，3 中取值)
+```
+
 ### 编译 typescript 到JavaScript
 ```
 tsc typescript文件
@@ -66,6 +105,16 @@ function test(a: string, b?: string, c: string="jojo"){
   console.log(b)
   console.log(c)
 }
+```
+
+### 类型适配（类型断言） type assersions
+```
+let message: any;
+message = 'abc';
+message.endsWith("c")
+
+let dd  = (<string>message).endsWith("c")
+let ddd = (message as string).endsWith("c")
 ```
 
 ### Everyday Types
