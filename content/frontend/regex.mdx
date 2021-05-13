@@ -254,3 +254,66 @@ let match = regexpNames.exec(personList);
 // input: "First_Name: John, Last_Name: Doe"
 // length: 3
 ```
+
+
+### 特殊字符的转义
+
+
+#### Character Classes or Character Sets
+With a “character class”, also called “character set”, 
+you can tell the regex engine to match only one out of several characters. 
+Simply place the characters you want to match between square brackets. 
+If you want to match an a or an e, use [ae]. You could use this in gr[ae]y to match either gray or grey. 
+```
+//（一个字符集只匹配一个字符）
+A character class matches only a single character. 
+gr[ae]y does not match graay, graey or any such thing. 
+
+//(方括号里面的顺序不重要)
+The order of the characters inside a character class does not matter. The results are identical.
+
+//（可以用中划线 表示一个范围）
+You can use a hyphen inside a character class to specify a range of characters. 
+[0-9] matches a single digit between 0 and 9. 
+```
+
+
+
+#### Negated Character Classes
+Typing a caret after the opening square bracket negates the character class.
+The result is that the character class matches any character that is not in the character class
+
+It is important to remember that a negated character class still must match a character.  
+q[^u] does not mean: “a q not followed by a u”.   
+It means: “a q followed by a character that is not a u”.  
+It does not match the q in the string Iraq. It does match the q and the space after the q in Iraq is a country. 
+
+```
+To include an unescaped caret as a literal, place it anywhere except right after the opening bracket. 
+[x^] matches an x or a caret. 
+
+
+```
+
+### 反斜线 backslash
+```
+To include a backslash as a character without any special meaning inside a character class, you have to escape it with another backslash.
+[\\x] matches a backslash or an x
+```
+
+### 中划线
+```
+（字符集中如果有中划线，如果他们不能形成范围，那么这个中划线就被解释为 中划线（本身字符）或者 错误）
+Hyphens at other positions in character classes where they can’t form a range may be interpreted as literals or as errors
+
+The hyphen can be included right after the opening bracket, or right before the closing bracket, or right after the negating caret. 
+Both [-x] and [x-] match an x or a hyphen. [^-x] and [^x-] match any character that is not an x or a hyphen
+```
+
+#### Repeating Character Classes
+```
+If you repeat a character class by using the ?, * or + operators, 
+you’re repeating the entire character class. You’re not repeating just the character that it matched. 
+
+The regex [0-9]+ can match 837 as well as 22
+```
