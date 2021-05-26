@@ -246,3 +246,26 @@ In requests, (such as POST or PUT), the client tells the server what type of dat
 application/json
 application/x-www-form-urlencoded
 multipart/form-data
+
+
+
+
+### filename extensions of digital certificate files
+```
+.crt
+.cer
+
+```
+
+#### .der (Distinguished Encoding Rules)
+```
+digital certificates in binary format
+A DER file should not have any BEGIN/END statements and will show garbled binary content
+
+DER is often used with Java platforms.
+```
+
+#### .pem (Privacy Enhanced Mai)
+```
+A PEM file is a text file containing one or more items in Base64 ASCII encoding, each with plain-text headers and footers (e.g. -----BEGIN CERTIFICATE----- and -----END CERTIFICATE-----).
+```
