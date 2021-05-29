@@ -631,6 +631,71 @@ setCount(count + 8);
 // 最终 count = 0 + 8 = 8
 ```
 
+
+### setState 同步问题
+#### 通过js的事件绑定程序 addEventListener, setState是同步更新state
+```
+constructor() {
+  this.state = {
+    count: 10
+  }
+
+  this.handleClickOne = this.handleClickOne.bind(this)
+  this.handleClickTwo = this.handleClickTwo.bind(this)
+}
+
+render() {
+  return (
+    <button onClick={this.hanldeClickOne}>clickOne</button>
+    <button onClick={this.hanldeClickTwo}>clickTwo</button>
+    <button id="btn">clickTwo</button>
+  )
+}
+
+handleClickOne() {
+  this.setState({ count: this.state.count + 1})
+  console.log(this.state.count)
+}
+
+```
+
+#### 通过js的事件绑定程序 addEventListener,包括 htmlType=submit 原生事件触发的程序，setState是同步更新state
+```
+componentDidMount() {
+  document.getElementById('btn').addEventListener('click', () => {
+    this.setState({ count: this.state.count + 1})
+    console.log(this.state.count) 
+    // 11
+  })
+}
+```
+
+#### 使用setTimeout/setInterval 等 React 无法掌控的 APIs情况下，setState是同步更新state
+```
+handleClickTwo() {
+  setTimeout(() => {
+    this.setState({ count: this.state.count + 1})
+    console.log(this.state.count)
+    // 11
+  }, 10)  
+}
+```
+
+### Promise来封装setState, 实现同步更新state
+```
+setStateAsync(state) {
+	return new Promise((resolve) => {
+		this.setState(state, resolve)
+	});
+}
+
+async componentDidMount() {
+	await this.setStateAsync({count: 1});
+	console.log(this.state.count);//输出count=1
+}
+```
+
+
 ### react-router vs react-router-dom vs react-router-native
 ```
 react-router hosts the core components for routing for React applications 
