@@ -38,3 +38,23 @@ npm install <package...> -g
 
 yarn global add <package...>
 ```
+
+
+### package.json 
+```
+// If you plan to publish your package, the most important things in your package.json are the name and version fields as they will be required
+
+homepage
+The url to the project homepage.
+
+main
+The main field is a module ID that is the primary entry point to your program.
+
+{
+  "name": "test-rp",
+  "version": "1.0.0.1",
+  "homepage": "https://github.com/owner/project#readme",
+  "license" : "BSD-3-Clause",
+  "main": "foo.js",
+}
+```
