@@ -412,6 +412,55 @@ socket.addEventListener("error", function(event) {
 });
 ```
 
+
+### socket.io
+brief example
+```
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+
+//ssr 渲染前端页面
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+io.on('connection', (socket) => {
+
+  console.log('a user connected');
+  socket.broadcast.emit('joinin');
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+    socket.broadcast.emit('left');
+  });
+
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+    io.emit('chat message', msg);
+  });
+});
+
+const port=3450
+server.listen(port, () => {
+  console.log(`listening on *:${port}`);
+});
+```
+
+
+```
+socket.broadcast.emit();
+// 广播到其他client（除自己的所有client）
+
+io.emit('chat message', msg);
+// 广播到其他client（所有client）
+```
+
 ### http content type
 The Content-Type entity header is used to indicate the media type of the resource
 
