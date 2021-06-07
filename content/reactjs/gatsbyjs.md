@@ -248,3 +248,71 @@ src/cms/preview-templates/ 里面
 并修改其内容
 
 ```
+
+
+### move to new inquiry system
+```
+1. gatsby-config.js
+把 gatsby-source-strapi 的 apiURL 由https 变为 http
+
+2. package.json 中 把 gatsby-source-strapi 依赖升级为 ^0.0.12
+
+3. src/utils.js 中
+改变
+export const inquiry_handle_inquiry_url = '/inquiry/new';
+
+新增
+export const company_name = 'joinplastic';
+export const remote_ip_url = 'https://api.db-ip.com/v2/free/self';
+
+
+4. src/components/InquiryForm.js 中 和 src/pages/contact/index.js 中
+增加 
+  company_name,
+  remote_ip_url
+
+
+place 1（引入新变量）：
+import { 
+  cdn_img_thumbnail,
+  contact_email,
+  inquiry_handle_base_url,
+  inquiry_handle_app_name,
+  inquiry_handle_inquiry_url,
+  inquiry_handle_email_url,
+  inquiry_api_success_code,
+  company_name,
+  remote_ip_url
+} from '../utils'
+
+
+place 2 （state 中赋初始值）:
+this.state = {
+  isValidated: false,
+  product_model: '',
+  product_quantity: '',
+  p_img: cdn_img_thumbnail,
+  from_url: '',
+  sending: false,
+  showThanks: false,
+  to_email: contact_email,
+  company_name,
+  remote_ip: ''
+};
+
+
+place 3 （componentDidMount 中获取client ip 并赋值）
+
+  componentDidMount() {
+
+    //...
+    axios.get(remote_ip_url)
+      .then(res => {
+        if(res && res.data && res.data.ipAddress){
+          this.setState({
+            remote_ip: res.data.ipAddress
+          })
+        }
+      })
+  }
+```
