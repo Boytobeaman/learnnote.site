@@ -29,17 +29,30 @@ window.getComputedStyle(dom).width/height：DOM标准，不支持IE
 dom.getBoundingClientRect().width/height：计算元素的绝对位置（视窗左顶点为起点，含left/right/height/width）
 ```
 
-### BFC是什么，讲一下原理
+### BFC (Block formatting context)是什么，讲一下原理
 ```
 块级格式化上下文
+
+BFC是Web页面 CSS 视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响范围的一个区域。
+
 ```
+
+### 三种文档流
+
+#### 常规流(Normal flow)
+当position为static或relative，并且float为none时会触发常规流；
+
+#### 浮动(Floats)
+
+#### 绝对定位(Absolute positioning)
+
 ### BFC布局规则是？
 ```
 内部的Box会在垂直方向，一个接一个地放置。
 Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
-BFC的区域不会与float box重叠。
+BFC的区域不会与float box重叠 (Exclude external floats/清除外部浮动，比如两列布局，左侧一个float box，右侧一个BFC box)。
 BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
-计算BFC的高度时，浮动元素也参与计算
+计算BFC的高度时，浮动元素也参与计算 (Make float content and alongside content the same height)
 ```
 
 ### 哪些元素会生成BFC?
