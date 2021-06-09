@@ -64,6 +64,95 @@ overflow的值不为visible
 根元素
 ```
 
+### 如何水平居中
+
+#### 在css中使用text-align和display属性
+```
+
+比如 如果是 水平居中 块级元素下的行内元素，在块级元素上加 text-align: center;
+
+eg：居中 content
+<div className="bg-danger text-center">content</div>
+
+
+eg: 居中 className="bg-success"的div，需要把他设置为display:"inline-block" 或者 display:"inline"，否则它会占满整行
+注意： 设置成inline了就没法设置 它的宽高了
+<div className="bg-danger text-center">
+  <div className="bg-success" style={{display:"inline-block"}}>
+    content
+  </div>
+</div>
+
+```
+
+#### 在CSS中使用display和margin属性
+```
+<style>
+  .parent{
+    background: gray;
+  }
+  .child{
+    width: 200px;
+    height: 200px;
+    background: indigo;
+    display: table; //这里可以不用设置display属性,设置display属性时不能设置为inline属性值，否则居中同样会失效
+    margin: 0 auto;
+  }
+</style>
+
+
+<!-- 父级标签 -->
+<div class="parent">
+    <!-- 子级标签-->
+    <div class="child"></div>
+</div>
+
+```
+#### 在CSS中使用position和transform属性
+```
+<style>
+  .parent{
+      width: 500px;
+      height: 200px;
+      position: relative;
+      background: #000;
+  }
+  .child{
+      background: green;
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+</style>
+
+<!-- 父级标签 -->
+<div class="parent">
+    <!-- 子级标签 -->
+    <div class="child"></div>
+</div>
+```
+
+#### 使用 flex 布局
+```
+<div class="parent" style={{
+  width: "500px",
+  height: "200px",
+  display: "flex",
+  justifyContent: "center",
+  background: "grey",
+}}>
+    <div class="child" style={{
+      background: "green",
+      width: "200px",
+      height: "200px",
+    }}
+    ></div>
+</div>
+
+```
+
 ### 垂直居中
 ```
 html
