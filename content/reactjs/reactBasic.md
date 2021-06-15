@@ -118,7 +118,7 @@ history
 - componentWillUnmount
 
 
-![react component lifecicle](https://raw.githubusercontent.com/Boytobeaman/learnDocs/master/documents/images/1106982-20170811224737742-1564011484.jpg)
+![react component lifecicle](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/documents/images/1106982-20170811224737742-1564011484.jpg)
 
 #### redux
 
