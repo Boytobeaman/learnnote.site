@@ -855,6 +855,58 @@ test(25, "banana")
 
 let test2 = currying(sayHello,'xiaohong', 25)
 test2("apple")
+
+
+
+// 实现一个add方法，满足以下功能
+// add(1);//1
+// add(1)(2);//3
+// add(1,2);//3
+// add(1)(2)(3);//6
+// add(1,2)(3);//6
+// add(1,2,3);//6
+
+
+/**
+ * 
+ * @param {*要柯里化的函数} fn 
+ * @param {*调用柯里化方法所有柯里化参数总和} argNumber
+ */
+function curry(fn, argNumber) {
+	let length = argNumber
+
+	return function(...arg){
+		console.log(`arg.length == ${arg.length}`)
+		if(arg.length >= length){
+
+			//最终执行时，会将以前bind的参数 和 最后一次传入的arg一起 传入
+			return fn(...arg)
+		}
+
+		return curry(fn.bind(null, ...arg), length - arg.length)
+	}
+}
+
+
+
+function oldAdd(...arg){
+	return arg.reduce( (acc, currentValue) => {
+		return acc + currentValue
+	})
+}
+
+
+//对于 add(1)(2);//3
+let add = curry(oldAdd, 2);
+//一共两个参数
+
+对于
+// add(1)(2)(3);//6
+// add(1,2)(3);//6
+// add(1,2,3);//6
+let add = curry(oldAdd, 3);
+//一共三个参数
+
 ```
 ### 反柯里化
 ```
