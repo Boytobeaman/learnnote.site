@@ -658,6 +658,22 @@ find [目录] 条件(目录不指定默认是当前目录)
 
 
 
+
+eg:
+找的所在目录下所有 文件 类型的，大小为 2809856 bytes 的文件并删除
+
+find . -type 'f' -size 2809856c -delete
+
+-size -160k
+表示小于 160 kilobytes
+-size  +160k 
+表示 大于 160 kilobytes
+-size 160k 
+表示 等于 160 kilobytes
+
+如果文件单位是 bytes，则在数字后面加上c， 如文件大小 160 bytes
+-size 160c
+
 use case:
 
 //Find Files Using Name in Current Directory
