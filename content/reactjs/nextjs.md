@@ -82,7 +82,7 @@ npm install typescript -g
 yarn build
 
 然后
-pm2 start npm --name "component.90m.top" -- run start
+NODE_ENV=production pm2 start npm --name "component.90m.top" -- run start
 
 
 然后配置nginx 端口 
@@ -107,6 +107,12 @@ location / {
   proxy_send_timeout          300;
   proxy_read_timeout          300;
   send_timeout                300;
+
+  #配置 图片缓存, 嵌套规则
+  location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {
+    expires 30d;
+    access_log off;
+  }
 }
 
 location ^~ /.well-known/acme-challenge/ {
