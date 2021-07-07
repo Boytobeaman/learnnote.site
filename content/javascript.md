@@ -202,8 +202,9 @@ null : typeof instance === "object"
 
 注：Symbol 是 ES6 引入了一种新的原始数据类型，表示独一无二的值。
 ```
-### 当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，那么会去他的 __prototype__ 即它的构造函数的prototype 中寻找
+### prototype
 ```
+当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，那么会去他的 __prototype__ 即它的构造函数的prototype 中寻找
 // 构造函数
 function Foo(name, age) {
 	this.name = name
