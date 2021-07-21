@@ -82,7 +82,7 @@ npm install typescript -g
 yarn build
 
 然后
-NODE_ENV=production pm2 start npm --name "component.90m.top" -- run start
+NODE_ENV=production PORT=5010 pm2 start npm --name "component.90m.top" -- run start
 
 
 然后配置nginx 端口 
@@ -112,7 +112,12 @@ location / {
   location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {
     expires 30d;
     access_log off;
+    add_header    Cache-Control  max-age=86400;
   }
+  location ^~ /_next/image {
+    add_header    Cache-Control  s-maxage==86400;
+  }
+
 }
 
 location ^~ /.well-known/acme-challenge/ {

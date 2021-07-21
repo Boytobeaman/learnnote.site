@@ -84,3 +84,63 @@ The defer attribute is ignored if the <script> tag has no src.
 在加载多个JS脚本的时候，async是无顺序的加载，而defer是有顺序的加载。
 ```
 ![async defer in script](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/async-defer-in-script.png)
+
+
+#### http缓存
+![front end cache](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/front-end-cache.webp "front end cache")
+```
+缓存分为
+
+强缓存
+协商缓存
+```
+##### 强缓存
+```
+2个属性控制强缓存
+Expires
+和
+Cache-Control:max-age=<seconds>
+
+Expires是http 1.0定义的，使用的是相对时间，如果2边与服务器时间不统一就会出现问题，为了解决这个问题于是就出现了http 1.1定义的Cache-Control: max-age，这个属性使用的是相对时间，一般来说都是2个都加，然后取相对时间属性。
+
+Pragma和Cache-control共存时，Pragma的优先级是比Cache-Control高的。
+```
+
+##### 协商缓存
+```
+协商缓存是先向服务器询问下是否文件有更新，根据服务器的提示来决定是否使用缓存，由于比强缓存多了去服务器询问这一步所以势必没有强缓存快。
+
+协商缓存也有2对属性，分别是
+ETag和If-None-Match，Last-Modified和If-Modified-Since，
+
+每次请求的时候，浏览器会保存获取的ETag和Last-Modified，下次在调的时候会传If-None-Match和If-Modified-Since过去，值就是上次获取ETag和Last-Modified的值，然后根据返回的值是否有变化来决定是否取缓存的数据，Last-Modified是用时间来判断，ETag用标识符，之所以出现2个是因为Last-Modified只能精确到秒，如果1秒内有多次数据调用，它就无能为力了，所以出现了进阶的ETag，
+
+使用协商缓存的时候status显示的是304
+```
+
+```
+根据是否需要重新向服务器发起请求来分类，可分为(强制缓存，协商缓存), 强制缓存如果生效，不需要再和服务器发生交互，而协商缓存不管是否生效，都需要与服务端发生交互
+
+
+```
+![strong cache](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/strong-cache-vs-cache.webp "strong cache")
+
+
+![strong cache](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/first-http-request-cache.webp "strong cache")
+
+![strong cache](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/second-http-request-cache.webp "strong cache")
+
+```
+在chrome浏览器中返回的200状态会有两种情况：
+1、from memory cache
+(从内存中获取/一般缓存更新频率较高的js、图片、字体等资源)
+
+2、from disk cache
+(从磁盘中获取/一般缓存更新频率较低的js、css等资源)
+
+这两种情况是chrome自身的一种缓存策略，这也是为什么chrome浏览器响应的快的原因。其他浏览返回的是已缓存状态，没有标识是从哪获取的缓存。
+
+```
+
+
+### 前端压力测试
