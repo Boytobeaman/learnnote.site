@@ -102,8 +102,18 @@ Expires
 Cache-Control:max-age=<seconds>
 
 Expires是http 1.0定义的，使用的是相对时间，如果2边与服务器时间不统一就会出现问题，为了解决这个问题于是就出现了http 1.1定义的Cache-Control: max-age，这个属性使用的是相对时间，一般来说都是2个都加，然后取相对时间属性。
+Expires 的值对应一个 GMT (格林尼治时间)，比如 “Mon, 22 Mar 2017 11:12:01 GMT” 来告诉浏览器资源缓存过期时间，如果还没有超过该时间点则不发请求，直接返回 200 OK。(from cache)
 
-Pragma和Cache-control共存时，Pragma的优先级是比Cache-Control高的。
+Pragma和Cache-control共存时，Pragma的优先级是比Expires高的。
+
+
+Expires 两个致命的缺点：
+
+Expires 定义的缓存时间是相对于服务器上的时间而言的，而浏览器在判断的时候是基于客户端的系统时间的，如果用户修改了自己电脑的系统时间，那么这个缓存时间将没有任何意义。
+假如客户端上某个资源缓存时间过期了，但此时其实服务器并没有更新过该资源，那么这时候客户端要求服务器重新把东西再发送过来一遍，会浪费带宽和时间，这显然是不合理的，我们需要有一种正确的机制用来判断东西到底可以直接使用缓存。
+
+
+若报文中同时出现 Pragma、Expires 和 Cache-Control，那么会以 Cache-Control 为准
 ```
 
 ##### 协商缓存
@@ -116,6 +126,8 @@ ETag和If-None-Match，Last-Modified和If-Modified-Since，
 每次请求的时候，浏览器会保存获取的ETag和Last-Modified，下次在调的时候会传If-None-Match和If-Modified-Since过去，值就是上次获取ETag和Last-Modified的值，然后根据返回的值是否有变化来决定是否取缓存的数据，Last-Modified是用时间来判断，ETag用标识符，之所以出现2个是因为Last-Modified只能精确到秒，如果1秒内有多次数据调用，它就无能为力了，所以出现了进阶的ETag，
 
 使用协商缓存的时候status显示的是304
+
+如果 Last-Modified 和 ETag 同时被使用，则要求它们的验证都必须通过才会返回304，若其中某个验证没通过，则服务器会按常规返回资源实体及200状态码。
 ```
 
 ```
