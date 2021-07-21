@@ -290,3 +290,35 @@ upstream backend {
 }
 
 ```
+
+
+### 多个位置用到 反向代理的 地址,可以将其放到 upstream 里面
+```
+upstream my-backend {
+  localhost:9000;
+}
+server {
+  listen 80;
+  server_name my-awesome-php.site;
+  root /path/to/root;
+  # The protected location
+  location /protected {
+    auth_basic "Give me codes.";
+    auth_basic_user_file /path/to/.htpasswd;
+    location ~ \.php$ {
+      include fastcgi.conf;
+      fastcgi_pass my-backend;
+    }
+  }      
+
+  # Normal files (blank location is OK, just means serve from root)
+  location / {
+  }
+  # PHP for normal stuff
+  location ~ \.php$ {
+    include fastcgi.conf;
+    fastcgi_pass my-backend;
+  } 
+
+}
+```
