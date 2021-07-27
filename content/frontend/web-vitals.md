@@ -16,12 +16,14 @@ metaDescription: "网络性能重要指标, 衡量用户体检的重要网络性
 
 
 #### Largest Contentful Paint (LCP)
+LCP measures how long it takes for the largest content element (e.g. a hero image or heading text) on your page to become visible within your visitors' viewport.
 
 
 #### First Input Delay (FID)
 
 
 #### Cumulative Layout Shift (CLS)
+CLS indicates how much layout shift is experienced by visitors as your page loads.
 
 
 

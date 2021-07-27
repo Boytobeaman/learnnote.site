@@ -310,6 +310,33 @@ div ~ p {
 // 3 和 4 将会被选， 但是 1 不会被选, 只能选择 其（div）后的 兄弟元素（p元素）
 ```
 
+
+#### 属性选择器
+```
+
+[attribute]
+//Style all <a> elements with a target attribute
+a[target]
+
+
+[attribute=value]
+// Selects all elements with target="_blank"
+[target=_blank]
+
+[attribute~=value]
+// Selects all elements with a title attribute containing the word "flower"
+[title~=flower]	
+
+[attribute*=value]
+// Selects every <a> element whose href attribute value contains the substring "w3schools"
+a[href*="w3schools"]
+
+
+同时满足多个css属性规则，可以把规则并列
+如 下面a标签必须同时有data-ved，ping，href 属性
+#rso div[data-hveid] a[data-ved][ping][href]
+```
+
 #### CSS Pseudo-classes (伪类选择器)
 
 #### :first-child
