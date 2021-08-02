@@ -593,6 +593,9 @@ Object.prototype.toString.call(value) === '[object Array]'
 let a = ["1", "1", "2", "3", "3", "1"];
 let unique = a.filter((item, i, ar) => ar.indexOf(item) === i);
 console.log(unique);
+
+使用set
+let unique = [...new Set(a)]
 ```
 
 ### Object.defineProperty()
