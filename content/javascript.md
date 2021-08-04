@@ -1091,12 +1091,13 @@ function debounce (fn, time){
 #### 节流 throttle
 ```
 function throttle (fn, time){
-  let oldTime = 0;
-  return () => {
-    const nowTime = new Date()
-    if (nowTime - oldTime >= time) {
-      fn()
-      oldTime = nowTime
+  let lastTime = 0;
+  
+  return function(){
+    let nowTime = (new Date()).getTime()
+    if(nowTime - lastTime > time){
+      fn.call(this, ...arguments)
+      lastTime = nowTime
     }
   }
 }
