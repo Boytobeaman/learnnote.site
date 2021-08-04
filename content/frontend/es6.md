@@ -111,6 +111,18 @@ let { a: c } = { a: 1, b: 2 }      // c:1
 let { a: c = 4, d: e = 5 } = { a: 1, b: 2 }   // c:1 e:5
 let { length } = [1, 2]            // length:2
 
+
+
+//多层嵌套 取值
+let props={
+  person:{
+    name: "xiaoming",
+    // age: "18"
+  }
+}
+let { person: {name, age="100"} } = props;
+
+
 解构不成功，变量的值为 undefined
 解构可以指定默认值，如果被解构变量严格为 undefined 或为空，默认值才会生效；
 如果变量名和属性名不一致，可以赋给其它名字的变量 {a:c}，实际上对象解构赋值 {a} 是简写 {a:a}，
