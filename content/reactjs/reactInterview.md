@@ -5,7 +5,20 @@ metaTitle: "react 常见面试题, React 面试题"
 metaDescription: "react 常见面试题, React 面试题"
 ---
 
+### react 是什么？
+```
+react 是一个网页UI框架，通过组件化的方式解决视图层开发复用的问题，本质上是一个组件化框架
 
+它的核心设计思路有三点，声明式、组件化、通用性
+
+声明式的优势是直观(一看就明白什么意思)与组合（更好地和其他代码组合）
+组件化的优势在于视图的拆分和模块的复用，可以更容易做到高类聚，低耦合
+通用性在于一次学习，随处编写，react native等
+
+
+缺点：
+React 作为一个视图层的框架，它并没有提供完整的一揽子解决方案，在开发大型前端应用时，需要向社区寻找解决方案，为开发者的技术选型和学习适用上造成了一定的成本。
+```
 
 
 React 中 keys 的作用是什么？
@@ -23,6 +36,33 @@ render () {
       })}
     </ul>
   )
+}
+```
+#### 通常使用 id 来作为一个元素的key
+列表没有id时的解决方式
+
+1.创建元素时增加一个自增id属性
+```
+todoCounter = 1;
+function createNewTodo(text) {
+  return {
+    completed: false,
+    id: todoCounter++,
+    text
+  }
+}
+
+```
+2.使用shortid库来产生id
+```
+var shortid = require('shortid');
+
+function createNewTodo(text) {
+    return {
+      completed: false,
+      id: shortid.generate(),
+      text
+    }
 }
 ```
 
@@ -155,15 +195,21 @@ You should not call setState() in componentWillUnmount() because the component w
 用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异把 2 所记录的差异应用到步骤 1 所构建的真正的 DOM 树上，视图就更新了。
 ```
 
-### react diff 原理（常考，大厂必考）
+### 请阐述一下你对虚拟DOM和Dom-Diff的理解， react diff 原理（常考，大厂必考）
 ```
+1 用JS对象模拟DOM（虚拟DOM）
+2 把此虚拟DOM转成真实DOM并插入页面中（render）
+3 如果有事件发生修改了虚拟DOM，比较两棵虚拟DOM树的差异，得到差异对象（diff）
+4 把差异对象应用到真正的DOM树上（patch）
+
+
+
+react DIFF
 把树形结构按照层级分解，只比较同级元素。
 给列表结构的每个单元添加唯一的 key 属性，方便比较。
 React 只会匹配相同 class 的 component（这里面的 class 指的是组件的名字）
 合并操作，调用 component 的 setState 方法的时候, React 将其标记为 dirty.到每一个事件循环结束, React 检查所有标记 dirty 的 component 重新绘制.
 选择性子树渲染。开发人员可以重写 shouldComponentUpdate 提高 diff 的性能。
-
-
 
 ```
 

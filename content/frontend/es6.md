@@ -168,7 +168,11 @@ function fn() {
 
 fn.call({a:100})
 
-//箭头函数的this总是指向词法作用域，也就是外层调用者obj
+// 箭头函数没有自己的this, 箭头函数的this总是指向词法作用域，也就是外层调用者obj
+// 箭头函数 并且没有自己的this，arguments，super或new.target
+// 箭头函数 Not suitable for call, apply and bind methods
+// 箭头函数表达式更适用于那些本来需要匿名函数的地方，并且它不能用作构造函数
+
 //一般方法中，this代指全局对象 window
 //作为对象方法调用，this代指当前对象
 //作为构造函数调用，this 指代new 出的对象

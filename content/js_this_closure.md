@@ -19,6 +19,21 @@ obj.printName()
 var aa = obj.printName
 aa()
 //这时函数在全局 上下文中调用，this 指向 windows
+
+
+// 当对象的属性值为箭头函数时，这时箭头函数内部的this 不在绑定 这个对象（obj）的this，而是指向windows
+var name = "fist name"
+var obj ={
+	name: 'a',
+	printName: () => {
+		console.log(this.name)
+	}
+}
+
+obj.printName()
+//fist name
+
+可以看到，作为对象方法的箭头函数this指向全局window对象，而普通函数则指向调用它的对象
 ```
 
 ### 运行环境和调用方式会改变 this 的指向
