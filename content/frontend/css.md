@@ -40,8 +40,16 @@ BFC是Web页面 CSS 视觉渲染的一部分，用于决定块盒子的布局及
 ### 三种文档流
 
 #### 常规流(Normal flow)
-当position为static或relative，并且float为none时会触发常规流；
+当position为 static 或 relative，并且float为none时会触发常规流；
 
+
+
+### 脱离文档流
+文档一旦脱离文档流，在算其父元素的高度时，就不包括其自身了。  
+脱离文档流的方法：
+```
+float:left; 2. position: absolute; 3. position:fixed
+```
 #### 浮动(Floats)
 
 #### 绝对定位(Absolute positioning)
