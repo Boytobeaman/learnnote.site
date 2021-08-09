@@ -518,6 +518,25 @@ console.log({a:"a"} instanceof Object)
 //true
 ```
 
+### 手写一个 instanceof
+```
+function myInstanceof(left, right){
+  let prototype = Object.getPrototypeOf(left)
+  
+  while(true){
+    console.log(`triggered while`)
+    if(prototype === null) return false
+    if(prototype === right.prototype) return true
+    prototype = Object.getPrototypeOf(prototype)
+  }
+}
+
+
+let a = myInstanceof ({}, Object)
+// true
+```
+
+
 ### fetch与ajax（XMLHttpRequest）相比
 ```
 ES6中新增了一种HTTP数据请求的方式，就是fetch
