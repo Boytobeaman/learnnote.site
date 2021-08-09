@@ -494,3 +494,157 @@ const input = [
 })();
 
 ```
+
+
+### 手写promise
+```
+const STATE={
+  PENDING: "PENDING",
+  FULFILLED: "FULFILLED",
+  REJECTED: "REJECTED"
+}
+
+function isThenable(val){
+  return val instanceof MyPromise
+}
+
+class MyPromise{
+  constructor(callback){
+    this.state = STATE.PENDING;
+    this.value = undefined;
+    this.handlers = [];
+    try {
+      callback(this._resolve.bind(this), this._reject.bind(this))
+    }catch(err){
+      this._reject(err)
+    }
+  }
+
+  _resolve(value){
+    this.updateResult(value, STATE.FULFILLED)
+  }
+
+  _reject(err){
+    this.updateResult(err, STATE.REJECTED)
+  }
+
+  updateResult(value, state){
+    setTimeout(() => {
+
+      if(this.state !== STATE.PENDING){
+        return
+      }
+
+      // check is value is also a promise
+      if (isThenable(value)) {
+          return value.then(this._resolve, this._reject);
+      }
+
+      this.value = value;
+      this.state = state;
+      this.executeHandlers()
+
+    },0)
+  }
+
+  executeHandlers(){
+
+    if(this.state === STATE.PENDING){
+      return
+    }
+
+    this.handlers.forEach((handler) => {
+      if(this.state === STATE.FULFILLED){
+        return handler.onSuccess(this.value)
+      }
+      return handler.onFail(this.value)
+    })
+
+    // After processing all handlers, we reset it to empty.
+    this.handlers = [];
+  }
+  addHandlers(handler){
+    this.handlers.push(handler)
+    this.executeHandlers();
+  }
+
+  then(onSuccess, onFail){
+
+    return new Promise((res, rej) => {
+      this.addHandlers({
+        onSuccess: function(val){
+          if(!onSuccess){
+            return res(val)
+          }
+          try{
+            return res(onSuccess(val))
+          } catch(err){
+            return rej(val)
+          }
+        },
+        onFail: function(err){
+          if(!onFail){
+            return rej(err)
+          }
+          try{
+            return rej(onFail(err))
+          } catch(err){
+            return rej(err)
+          }
+        }
+      })
+    })
+  }
+
+  catch(onFail){
+    this.then(null, onFail)
+  }
+  finally(callback){
+    return new MyPromise((res, rej) => {
+      let val;
+      let wasRejected;
+      this.then((value) => {
+       wasRejected = false;
+       val = value;
+       return callback();
+      }, (err) => {
+       wasRejected = true;
+       val = err;
+       return callback();
+      }).then(() => {
+       // If the callback didn't have any error we resolve/reject the promise based on promise state
+       if(!wasRejected) {
+         return res(val);
+       } 
+       return rej(val);
+      })
+    })
+  }
+}
+
+function fetchData(success) {
+  return new Promise((resolve, reject) => {
+    console.log(`promise callback initialized`)
+    setTimeout(() => {
+        if (success) {
+            resolve("willem");
+        } else {
+            reject('my error info o');
+        }
+    }, 5000);
+  });
+}
+
+fetchData(true)
+  .then((value1) => {
+      console.log(value1, `then`)
+      return `value from first then`
+  })
+  .then((value2) => {
+      console.log(value2, `then2`)
+      return `value from second then`
+  })
+  .finally( (val)=> {
+    console.log(`final val === ${val}`)
+  })
+```
