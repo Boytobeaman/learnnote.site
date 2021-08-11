@@ -1,7 +1,7 @@
 ---
-title: "umi js, dva 教程"
-metaTitle: "umi js, dva 教程，umi 笔记，umi 面试问题"
-metaDescription: "umi js, dva 教程，umi 笔记，umi 面试问题"
+title: "gatsby js, dva 教程"
+metaTitle: "gatsby js, dva 教程，gatsby 笔记，gatsby 面试问题"
+metaDescription: "gatsby js, dva 教程，gatsby 笔记，gatsby 面试问题"
 ---
 
 
