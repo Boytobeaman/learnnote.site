@@ -606,6 +606,24 @@ hooks 函数是异步的，所以 第一个 setCount(count + 1) 并不会立即�
 
 如何解决，让闭包里面的 hooks 函数拿到最新值，而不是闭包里面的值？
 
+
+使用 ref 储存最新的值，使用时从ref 中取值
+```
+const [count, setCount] = useState(0);
+const countRef = useRef(0);
+
+//每次把最新的值存到 countRef 里面
+countRef.current = count;
+
+useEffect(() => {
+  setTimeout(() => {
+    // 过期闭包里面取值时，从ref （countRef ）中取
+    alert("You clicked on: " + countRef.current);
+  }, 3000);
+}, []);
+```
+
+
 方法 一：传一个回调函数，回调函数的参数会是 previous state
 ```
 setCount(count => {
