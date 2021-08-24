@@ -358,6 +358,34 @@ let src2 = {
 let c = Object.assign({}, src1, src2)
 console.log(c);
 // { name: { a: 1, b: 'b' }, age: '22' }
+
+
+
+// 使用 map 解决循环引用问题
+function deepClone(obj, map = new Map()){
+  if(typeof obj === "object"){
+    let res =  Array.isArray(obj) ? [] : {};
+    if(map.get(obj)){
+      return map.get(obj)
+    }
+    map.set(obj, res)
+    
+    for(let i in obj){
+      res[i] = deepClone(obj[i], map)
+    }
+    
+    return map.get(obj)
+  }else{
+    
+    return obj
+  }
+  
+}
+
+var A = {a:1,b:[1,2,3]};
+A.B = A;
+var B = deepClone(A);
+console.log(B)
 ```
 
 #### js 精度问题以及解决方案
