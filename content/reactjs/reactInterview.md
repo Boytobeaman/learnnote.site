@@ -776,6 +776,7 @@ react-router提供了三种方式来实现路由，并没有默认的路由，�
 
 #### BrowserRouter
 ```
+使用 h5 的 history接口中的 pushState() replaceState() 方法，这两个方法作用用户浏览器的记录栈，在当前已有的 back，forward，go 基础上，他们提供了对历史记录修改的功能
 It uses history API, i.e. it's unavailable for legacy browsers (IE 9 and lower and contemporaries)
 Client-side React application is able to maintain clean routes like example.com/react/route but needs to be backed by web server. 
 
@@ -784,6 +785,7 @@ Client-side React application is able to maintain clean routes like example.com/
 
 #### HashRouter
 ```
+hash 改变的时候，页面不会重新加载，只会发出 onhashchange 事件
 It uses URL hash, it puts no limitations on supported browsers or web server. Server-side routing is independent from client-side routing.
 
 
