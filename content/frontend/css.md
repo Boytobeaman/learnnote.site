@@ -48,7 +48,7 @@ BFC是Web页面 CSS 视觉渲染的一部分，用于决定块盒子的布局及
 文档一旦脱离文档流，在算其父元素的高度时，就不包括其自身了。  
 脱离文档流的方法：
 ```
-float:left; 2. position: absolute; 3. position:fixed
+1. 浮动 float:left; 2. position: absolute; 3. position:fixed
 ```
 #### 浮动(Floats)
 
@@ -465,6 +465,20 @@ container.getBoundingClientRect()
 
 ### Repaint(重绘) 和 Reflow(回流)
 Repaint occurs when some changes only its skin styles, such as color and visibility. Reflow occur when the page of DOM changes its layout.
+
+
+### css position
+The position property specifies the type of positioning method used for an element
+value | description
+------------ | -------------
+static | Default value. Elements render in order, as they appear in the document flow
+absolute | The element is positioned relative to its first positioned (not static) ancestor element
+fixed | The element is positioned relative to the browser window
+relative | The element is positioned relative to its normal position, so "left:20px" adds 20 pixels to the element's LEFT position
+sticky | The element is positioned based on the user's scroll position
+initial | Sets this property to its default value
+inherit | Inherits this property from its parent element.
+
 
 
 

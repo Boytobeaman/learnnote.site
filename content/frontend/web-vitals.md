@@ -130,6 +130,10 @@ ETag和If-None-Match，Last-Modified和If-Modified-Since，
 使用协商缓存的时候status显示的是304
 
 如果 Last-Modified 和 ETag 同时被使用，则要求它们的验证都必须通过才会返回304，若其中某个验证没通过，则服务器会按常规返回资源实体及200状态码。
+
+ETag 适合重要量小的资源 
+Last-Modified 适合不重要的量大的资源 （比如一些图片等静态文件的修改，如果每次扫描内容生成 ETag 来比较，显然要比直接比较修改时间慢很多）
+
 ```
 
 ```
