@@ -16,9 +16,11 @@ metaDescription: "css 常见问题，css 面试问题"
 ### 标准模型和IE模型的区别
 ```
 标准模型的宽高为content的宽高
-IE模型的宽高包括border
+IE模型的宽高包括content、padding、border
 
-标准模型：box-sizing：content-box
+
+//如何设置两种盒模型
+标准模型：box-sizing：content-box （默认浏览器）
 IE模型：box-sizing：border-box
 ```
 ### JS如何设置/获取盒模型对应的宽高
@@ -28,6 +30,12 @@ dom.currentStyle.width/height：渲染后的最终宽高（IE）
 window.getComputedStyle(dom).width/height：DOM标准，不支持IE
 dom.getBoundingClientRect().width/height：计算元素的绝对位置（视窗左顶点为起点，含left/right/height/width）
 ```
+
+### 根据盒模型解释边距重叠
+
+
+
+
 
 ### BFC (Block formatting context)是什么，讲一下原理
 ```
@@ -448,7 +456,7 @@ td:not(.action-column):not(.ant-table-selection-column){
 
 
 ### 拿元素的位置
-
+```
 container.getBoundingClientRect()
 
 {
@@ -461,14 +469,15 @@ container.getBoundingClientRect()
   x: 202.125
   y: 290.5833435058594
 }
-
+```
 
 ### Repaint(重绘) 和 Reflow(回流)
 Repaint occurs when some changes only its skin styles, such as color and visibility. Reflow occur when the page of DOM changes its layout.
 
 
 ### css position
-The position property specifies the type of positioning method used for an element
+The position property specifies the type of positioning method used for an element  
+
 value | description
 ------------ | -------------
 static | Default value. Elements render in order, as they appear in the document flow
