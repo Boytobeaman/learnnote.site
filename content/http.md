@@ -6,9 +6,8 @@ metaDescription: "http 教程，http 笔记，http 面试问题"
 
 http 常用状态码
 
+HTTP状态码分类  
 
-
-HTTP状态码分类
 分类 | 分类描述
 ------------ | -------------
 1** | 信息，服务器收到请求，需要请求者继续执行操作
@@ -33,4 +32,12 @@ HTTP状态码分类
 404 | not found （访问的资源不存在）
 500 | internal server error
 503 | service unavailable
+
+
+### http 协议的主要特点
+
+简单快速  
+灵活  
+无连接  
+无状态
 

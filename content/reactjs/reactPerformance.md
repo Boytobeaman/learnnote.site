@@ -59,6 +59,8 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 ```
 
+### useMemo 的原理？
+
 ### useCallback
 ```
 // const getItems = (incrementor) => {
@@ -96,4 +98,50 @@ export default function List( {getItems} ){
 ```
 useCallback 返回的是一个function， useMemo 返回的是一个值
 useCallback 里面的函数可以传参
+```
+
+
+#### PureComponent
+React.PureComponent 与 React.Component 唯一的区别在于 Rect.Component 没有实现 shouldComponentUpdate(), 而 React.PureComponent 中以浅层对比 prop 和state 的方式来实现了该函数。
+
+
+
+#### React.memo
+
+React.memo 相当与类组件里面的 PureComponent, 默认对 props 做一次浅比较，如果 props 没有变化，则子组件不会重新执行  
+
+If your component renders the same result given the same props, you can wrap it in a call to React.memo for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+
+```
+// Person的依赖只是 info，当这个info不变的情况下，如果父组件里面的 count 变化，Person 也会重新渲染，
+// 优化： 使用高阶函数 React.memo 将 Person 包起来，info不变，Person 就不会重新渲染
+
+function Person(props) {
+  console.log(`render person...`);
+  return (
+    <div>
+      name:{props.info.name}, age:{props.info.age}
+    </div>
+  );
+}
+
+let MemoPerson = React.memo(Person);
+
+let info = {
+  name: "xiaohong",
+  age: 20
+};
+
+export default function App() {
+  let [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <h1>count {count}</h1>
+      <button onClick={() => setCount(count + 1)}>add count</button>
+      <MemoPerson info={info} />
+      <h2>Start editing to see some magic happen!</h2>
+    </div>
+  );
+}
 ```

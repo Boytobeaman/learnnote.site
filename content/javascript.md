@@ -1393,3 +1393,70 @@ var a = 1 ^ 2;
 //4
 
 ```
+
+
+### DOM 事件
+
+#### 基本概念 
+
+#### DOM 事件的级别
+```
+DOM 0: 
+
+element.onclick = function(){}  
+
+<h1 id="h1a" onclick="trigger()">hello world triggered from html</h1>
+
+
+DOM 2: 
+elementb.addEventListener("click", function(){
+  console.log(`dom 2 event triggered`)
+}, false)
+
+DOM 3: 增加了 keyup 等键盘鼠标事件
+elementc.addEventListener("keyup", function(){
+  console.log(`dom 3 (keyup)event triggered`)
+}, false)
+
+
+注意 
+addEventListener 第三个参数：
+isCapture 是否在捕获阶段执行回调。默认为false，表示在冒泡阶段执行回调
+```
+
+
+
+#### DOM 事件模型
+指事件捕获、事件冒泡
+
+#### DOM 事件流
+事件通过捕获到达目标阶段（捕获），目标元素在上传到window对象（冒泡）的过程
+
+#### 描述DOM 事件捕获的具体流程
+
+#### Event 对象的常见应用
+```
+Event.preventDefault()
+
+Event.stopPropagation()
+
+Event.stopImmediatePropagation()
+//同一个元素绑定了很多监听事件，如果在某一个里面使用了stopImmediatePropagation，它后面的事件就不会执行了
+
+Event.currentTarget
+currentTarget is the element that the event listener is attached to.
+
+Event.target
+target is the element that triggered the event (e.g., the user clicked on)
+```
+
+### 自定义事件
+```
+let eve = new Event("test")
+
+elementc.addEventListener("test", function(){
+  console.log(`custom event triggered`)
+})
+
+elementc.dispatchEvent(eve)
+```

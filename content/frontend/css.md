@@ -32,7 +32,7 @@ dom.getBoundingClientRect().width/height：计算元素的绝对位置（视窗�
 ```
 
 ### 根据盒模型解释边距重叠
-
+块的上外边距(margin-top)和下外边距(margin-bottom)有时合并(折叠)为单个边距，其大小为单个边距的最大值(或如果它们相等，则仅为其中一个)，这种行为称为边距折叠。
 
 
 
@@ -40,6 +40,8 @@ dom.getBoundingClientRect().width/height：计算元素的绝对位置（视窗�
 ### BFC (Block formatting context)是什么，讲一下原理
 ```
 块级格式化上下文
+
+边距重叠解决方案
 
 BFC是Web页面 CSS 视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响范围的一个区域。
 
@@ -62,7 +64,7 @@ BFC是Web页面 CSS 视觉渲染的一部分，用于决定块盒子的布局及
 
 #### 绝对定位(Absolute positioning)
 
-### BFC布局规则是？
+### BFC布局规则是？(BFC 原理)
 ```
 内部的Box会在垂直方向，一个接一个地放置。
 Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
@@ -79,6 +81,9 @@ display的值为inline-block、table-cell、table-caption
 overflow的值不为visible
 根元素
 ```
+
+### BFC 使用场景
+
 
 ### 如何水平居中
 
@@ -490,6 +495,7 @@ inherit | Inherits this property from its parent element.
 
 
 
+### z-index
 
 
 ### Bootstrap 4 media queries code snippet
