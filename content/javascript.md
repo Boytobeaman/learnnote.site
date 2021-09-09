@@ -1460,3 +1460,22 @@ elementc.addEventListener("test", function(){
 
 elementc.dispatchEvent(eve)
 ```
+
+
+### 前端安全
+```
+xss 跨站脚本攻击
+Cross-site scripting
+XSS enables attackers to inject client-side scripts into web pages viewed by other users
+
+方法：
+转义<> 等特殊字符
+
+XSRF 跨站请求伪造
+Cross-site request forgery, also known as one-click attack or session riding and abbreviated as CSRF or XSRF, is a type of malicious exploit of a website where unauthorized commands are transmitted from a user that the web application trusts.
+
+方法：
+Token 验证
+增加验证流程，短信、密码、指纹等
+
+```

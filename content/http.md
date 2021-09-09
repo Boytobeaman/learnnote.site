@@ -41,3 +41,19 @@ HTTP状态码分类
 无连接  
 无状态
 
+
+
+
+### 跨域通信的几种方式
+
+JSONP
+利用script标签可以加载跨域资源来实现
+
+HASH
+
+postMessage(H5)
+
+websocket
+
+CORS
+CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。

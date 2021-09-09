@@ -151,13 +151,20 @@ close callbacks：执行close事件的callback，例如socket.on("close",func)
 Javascript 有一个 main thread 主线程和 call-stack 调用栈(执行栈)，所有的任务都会被放到调用栈等待主线程执行。
 
 
+js 是单线程的是的是js 引擎线程。
+
+在浏览器中，有js 引擎线程 和渲染线程，且两个线程互斥。  
+node js 环境中，只有js 线程
+
 异步任务的分类
+
 宏任务
+macrotask
 task主要包含：setTimeout、setInterval、setImmediate、I/O、UI交互事件
 ![js macrotasking](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/js-macrotasking.jpg)
 
-
-microtask 微任务
+微任务
+microtask 
 microtask主要包含：Promise、process.nextTick、MutaionObserver
 ![js microtasking](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/js-microtasking.jpg)
 

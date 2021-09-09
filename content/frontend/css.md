@@ -246,6 +246,31 @@ css
     // 显示为red
 ```
 
+### 块及元素与行内元素
+每个块级元素默认占一行高度
+div 
+h1-h6
+p
+hr
+ul
+ol
+section
+header
+footer
+article
+aside
+pre
+
+
+行内元素也叫内联元素、内嵌元素等
+a
+img
+input
+label
+select
+textarea 
+strong
+
 ### css 选择器
 
 #### Combinator selectors (select elements based on a specific relationship between them)
