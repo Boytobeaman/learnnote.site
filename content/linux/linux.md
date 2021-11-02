@@ -169,6 +169,14 @@ node    58954 leon   22u  IPv6 9275377      0t0  TCP *:10020 (LISTEN)
 
 杀掉10020对应的进程 PID(58954),因此10020端口就free了
 kill -9 58954
+
+
+对于windows
+查看指定端口的占用情况，并找到其pid
+netstat -aon|findstr "8080"
+
+直接强制杀死指定端口
+taskkill /pid 4136 -t -f
 ```
 
 ### pkill命令
