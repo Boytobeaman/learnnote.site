@@ -185,6 +185,8 @@ eg: joinplastic.com 跳转配置
 rewrite ^/products/palletBox/palletBox.php$ https://www.joinplastic.com/product-category/pallet-box/ permanent;
 rewrite ^/products/foldableBox/foldablePlasticCrates.php$ https://www.joinplastic.com/product-category/folding-crate/ permanent;
 rewrite ^/products/pallets/pallet.php$ https://www.pallet-wholesale.com/plastic-pallets/ permanent;
+rewrite ^/products/attached-lid-containers/attached-lid-containers.php$ https://www.plastic-crates.com/product-category/totes-with-lids/ permanent;
+rewrite ^/products/stackableBox/stackableBox.php$ https://www.joinplastic.com/product-category/plastic-stacking-crates/ permanent;
 
 
 ```
