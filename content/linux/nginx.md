@@ -171,6 +171,24 @@ server {
 }
 ```
 
+### 一个简单的 302 案例
+```
+rewrite ^/oldlocation$ http://www.newdomain.com/newlocation redirect;
+```
+
+
+### 一个简单的 301 案例
+```
+rewrite ^/oldlocation$ http://www.newdomain.com/newlocation permanent;
+
+eg: joinplastic.com 跳转配置
+rewrite ^/products/palletBox/palletBox.php$ https://www.joinplastic.com/product-category/pallet-box/ permanent;
+rewrite ^/products/foldableBox/foldablePlasticCrates.php$ https://www.joinplastic.com/product-category/folding-crate/ permanent;
+rewrite ^/products/pallets/pallet.php$ https://www.pallet-wholesale.com/plastic-pallets/ permanent;
+
+
+```
+
 ### 如果有花括号（量词），需要用双引号或者单引号将表达式包起来
 Curly braces are used both in regex and for block control, you must enclose your regex with quotes (single or double)
 ```
