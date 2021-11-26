@@ -153,6 +153,44 @@ location ~* /(media|images|cache|tmp|logs)/.*.(php|jsp|pl|py|asp|cgi|sh)$ {
 }
 ```
 
+### Redirecting from a Former Name to the Current Name
+```
+server {
+  listen 80;
+  listen 443 ssl;
+  server_name www.old-name.com old-name.com;
+  return 301 $scheme://www.new-name.com$request_uri;
+}
+```
+### Forcing all Requests to Use SSL/TLS
+```
+server {
+    listen 80;
+    server_name www.domain.com;
+    return 301 https://www.domain.com$request_uri;
+}
+```
+
+### 一个简单的 302 案例
+```
+rewrite ^/oldlocation$ http://www.newdomain.com/newlocation redirect;
+```
+
+
+### 一个简单的 301 案例
+```
+rewrite ^/oldlocation$ http://www.newdomain.com/newlocation permanent;
+
+eg: joinplastic.com 跳转配置
+rewrite ^/products/palletBox/palletBox.php$ https://www.joinplastic.com/product-category/pallet-box/ permanent;
+rewrite ^/products/foldableBox/foldablePlasticCrates.php$ https://www.joinplastic.com/product-category/folding-crate/ permanent;
+rewrite ^/products/pallets/pallet.php$ https://www.pallet-wholesale.com/plastic-pallets/ permanent;
+rewrite ^/products/attached-lid-containers/attached-lid-containers.php$ https://www.plastic-crates.com/product-category/totes-with-lids/ permanent;
+rewrite ^/products/stackableBox/stackableBox.php$ https://www.joinplastic.com/product-category/plastic-stacking-crates/ permanent;
+
+
+```
+
 ### 如果有花括号（量词），需要用双引号或者单引号将表达式包起来
 Curly braces are used both in regex and for block control, you must enclose your regex with quotes (single or double)
 ```
