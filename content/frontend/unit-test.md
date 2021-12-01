@@ -125,8 +125,64 @@ describe('matching cities to foods', () => {
 ### 异步代码的测试方法
 #### 回调函数类型
 ```
+test('fetchData 返回结果为 。。。', (done) => {
+  fetchData((data) => {
+    expect(data.status).toEqual(200);
+    //注意这里要调用一下done()才可以
+    done();
+  })
+})
 
 ```
+#### promise 类型
+```
+test('fetchDataPromise 返回结果为 。。。', () => {
+  //前面加return
+  return fetchDataPromise().then(response => {
+    expect(response.status).toEqual(200)
+  })
+})
+
+
+test('fetchDataPromiseError 返回结果为 。。。', () => {
+  //测试接口返回404的场景，必须要走catch 里面的逻辑，要加expect.assertions(1),表示catch 里面的expect必须要执行到
+  //不然fetchDataPromiseError 这个方法如果能返回正常，也是测试通过的，因为正常的话就走不到catch的逻辑
+
+  expect.assertions(1);
+  return fetchDataPromiseError().catch(e => {
+    expect(e.toString().indexOf('404') > -1).toBe(true);
+  })
+})
+
+
+// async await 方式
+
+test('fetchDataPromise 返回结果(async await)为 。。。', async () => {
+  const response = await fetchDataPromise();
+  expect(response.status).toEqual(200)
+})
+
+test('fetchDataPromiseError 返回结果(async await)为 。。。', async () => {
+  expect.assertions(1);
+  try {
+    await fetchDataPromiseError();
+  } catch (e) {
+    expect(e.toString().indexOf("404") > -1).toBe(true)
+  }
+})
+```
+### Mock
+```
+```
+
+### 相关插件
+```
+vs code 编辑器可以安装 Jest 插件，这个插件安装后可以主动帮我们跑测试脚本，并且每个测试用例的通过状态都会直观显示出来，不用我们再yarn test 跑脚本了
+```
+
+
+### 相关名词
+TDD (Test Driven Development) 测试驱动的开发
 
 ### 获取HTML元素
 ```
