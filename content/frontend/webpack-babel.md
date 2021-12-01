@@ -56,6 +56,55 @@ npm install --save-dev babel-loader babel-core
 npm install babel-preset-env --save-dev
 ```
 
+### 配置文件
+通常在项目跟目录下，名称一般为 .babelrc
+
+### bebel preset
+Babel presets can act as sharable set of Babel plugins and/or config options.
+
+#### Official Presets
+```
+@babel/preset-env for compiling ES2015+ syntax
+@babel/preset-typescript for TypeScript
+@babel/preset-react for React
+@babel/preset-flow for Flow
+```
+
+#### Using a Preset
+```
+{
+  "presets": ["babel-preset-myPreset", "@babel/preset-env"]
+}
+```
+#### Preset Ordering
+Preset ordering is reversed (last to first).
+```
+{
+  "presets": ["a", "b", "c"]
+}
+```
+Will run in the following order: c, b, then a.
+
+#### Preset Options
+Both plugins and presets can have options specified by wrapping the name and an options object in an array inside your config.
+```
+{
+  "presets": [
+    "presetA", // bare string
+    ["presetA"], // wrapped in array
+    ["presetA", {}] // 2nd argument is an empty options object
+		[
+      "@babel/preset-env",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ]
+  ]
+}
+```
+
+
 ### nextjs 配置 babel
 例如要加 styled-components 插件的 server-side rendering 支持
 https://styled-components.com/docs/tooling#babel-plugin  
