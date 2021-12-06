@@ -183,7 +183,55 @@ vs code 编辑器可以安装 Jest 插件，这个插件安装后可以主动帮
 
 ### 相关名词
 TDD (Test Driven Development) 测试驱动的开发
+BDD (Behavior Driven Development) 行为驱动开发
+E2E (End To End) 即端对端测试,属于黑盒测试,通过编写测试用例,自动化模拟用户操作,确保组件间通信正常,程序流数据传递如预期。
 
+通常对于函数库，比如像lodash 这样的，一般用TDD 模式的单元测试，确保比较高的代码覆盖率；
+对应前端业务代码，一般用BDD模式的集成测试， 确保核心逻辑、主流程功能正常
+
+
+### 使用 enzyme 测试html 页面 元素
+```
+https://enzymejs.github.io/enzyme/
+
+
+安装依赖
+npm i --save-dev enzyme enzyme-adapter-react-16
+
+
+Example:
+import React from 'react';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import App from './index'
+
+Enzyme.configure({ adapter: new Adapter() });
+
+test('renders without crashing', () => {
+
+  const wrapper = shallow(<App />)
+  expect(wrapper.find('.app').length).toBe(2);
+})
+
+```
+
+### 集成jest-enzyme
+```
+安装依赖
+yarn add jest-enzyme --dev
+
+配置 jest.config.js
+setupFilesAfterEnv: [
+  './node_modules/jest-enzyme/lib/index.js'
+],
+
+
+或者在package.json 里面配置 jest
+// package.json
+"jest": {
+  "setupFilesAfterEnv": ['./node_modules/jest-enzyme/lib/index.js'],
+}
+```
 ### 获取HTML元素
 ```
 screen.getByText()
