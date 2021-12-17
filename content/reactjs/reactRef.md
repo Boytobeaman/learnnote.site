@@ -200,3 +200,36 @@ export default connect(
 	})
 )(HOCForm);
 ```
+
+
+#### 如何直接传 ref 让HOC 里面的form 接收到
+```
+//HOC 组件
+
+const WrappedForm = Form.create({ name: 'saveAsIOTComForm' })(App);
+
+const theWrappedForm = (props) =>{
+  const {forwardedRef, ...otherProps} = props
+  return <WrappedForm {...otherProps} ref={forwardedRef} />
+}
+
+const HOC = withTranslation()(theWrappedForm)
+
+
+export default React.forwardRef((props, ref) => {
+  return <HOC {...props} forwardedRef={ref} />;
+});
+
+
+// 父组件可以直接传ref
+// 原理是子组件（HOC）使用 forwardRef 可以接收到父组件传来的ref,然后 传递赋值到 具体的form ref中。
+
+<SaveAsIOTComForm 
+  ref={SaveAsIOTComFormRef} 
+  visible={showSaveAsComponentModal} 
+  IOTcheckKeys={IOTcheckKeys} 
+/>
+
+
+
+```
