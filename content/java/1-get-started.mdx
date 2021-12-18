@@ -4,6 +4,70 @@ metaTitle: "Java快速入门"
 metaDescription: "Java快速入门"
 ---
 
+
+### 安装java
+
+#### centos 7
+```
+yum install java-1.8.0-openjdk -y
+```
+
+#### java 项目部署与维护
+
+```
+//运行某个jar 包
+java -jar xxx.jar
+
+
+//指定端口号运行某个jar 包
+java -jar xxx.jar --server.port=21000
+
+//后台运行某个jar 包，后面有个&
+nohup java -jar xxx.jar --server.port=21000 &
+
+
+不挂断运行（后台运行）程序，并且将日志输出到 projectName.log 文件中
+nohup java -jar xxx.jar > projectName.log &
+
+
+查看日志
+tail -f projectName.log
+
+
+linux停止jar包：
+ps aux|grep xxxx.jar : 
+
+查询xxxx.jar运行的进程，可以得到以下结果。知道jar运行的进程是 47906
+root 47906 0.2 0.1 38639516 450428 pts/1 Sl+ 15:53 0:22 java -jar xxxx.jar
+root 59890 0.0 0.0 112800 984 pts/5 S+ 18:09 0:00 grep --color=auto xxxx.jar
+
+kill -9 47906 : 停止进程
+
+
+或者查看端口的占用进程：
+netstat -lnp|grep 8000
+或者
+lsof -i:8000
+
+得到进程信息，例如得到进程 11100 占用 8000 端口
+ps 11100 : 查看进程详细信息
+kill -9 11100 杀掉进程
+```
+
+
+### java version maping
+```
+49 = Java 5
+50 = Java 6
+51 = Java 7
+52 = Java 8
+53 = Java 9
+54 = Java 10
+55 = Java 11
+56 = Java 12
+57 = Java 13
+58 = Java 14
+```
 ### Java快速入门
 
 在Java中，每个应用程序都以一个类名开头，并且该类必须与文件名匹配。
