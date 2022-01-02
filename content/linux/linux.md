@@ -747,6 +747,19 @@ iptables -A INPUT -ptcp --dport 8001 -j ACCEPT
 //保存 iptables 配置
 service iptables save
 
+
+删除某一个端口规则，比如8080端口
+// 先使用命令查看具体端口（8080）配置的位置
+iptables -nL --line-number
+
+比如在第4行，下面命令就删除了8080端口的开发
+iptables -D INPUT 4
+
+
+//卸载 (oneinstack自带的和新安装的iptables-services )
+yum remove iptables 
+
+yum remove　iptables-services 
 ```
 
 
