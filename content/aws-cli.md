@@ -4,6 +4,17 @@ metaTitle: "aws cli"
 metaDescription: "aws cli"
 ---
 
+
+### 安装
+```
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+```
+### 安装后查看 aws cli 版本
+```
+aws --version
+```
+
 ### 使用前配置
 ```
 aws configure
