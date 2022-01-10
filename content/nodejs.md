@@ -27,6 +27,17 @@ npm -v
 
 ```
 
+### centos 安装nvm 管理node 版本
+```
+//如果没有curl，安装curl
+yum install curl -y 
+
+//下载并安装 nvm
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+
+//重新打开terminal后nvm 命令就生效了
+```
+
 ### why node.js
 
 #### CPU 密集 vs I/O 密集
