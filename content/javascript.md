@@ -1434,6 +1434,33 @@ isCapture 是否在捕获阶段执行回调。默认为false，表示在冒泡�
 
 #### 描述DOM 事件捕获的具体流程
 
+
+#### 常见 DOM 操作
+```
+// 通过id获取元素
+let element = document.getElementById("cssSelectors");
+
+// 通过选择器 获取匹配的第一个匹配元素
+let element = baseElement.querySelector(cssSelectors);
+
+// 通过选择器 获取匹配的所有元素
+let elements = document.querySelectorAll("cssSelectors");
+
+// 元素的显示和隐藏
+element.style.display="block"
+element.style.display="none"
+
+
+// 获取元素属性值
+let attribute = element.getAttribute(attributeName);
+eg:
+const align = div1.getAttribute('align')
+
+// 增加和删除元素class
+element.classList.add("w3-black");
+element.classList.remove("w3-black");
+```
+
 #### Event 对象的常见应用
 ```
 Event.preventDefault()
