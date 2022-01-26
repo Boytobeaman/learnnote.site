@@ -104,6 +104,20 @@ Both plugins and presets can have options specified by wrapping the name and an 
 }
 ```
 
+### 项目启动时，加载 node_modules 下某个js 因为js语法报错
+通常 webpack 在构建时，是不会让 node_modules 下的文件走 babel tranpile 的，如果让 node_modules 下的文件也都走 babel tranpile会慢很多, 所以业界有个潜在的约定，npm 包发布前需要先用 babel 转出一份 es5 的代码。
+
+但是有些 npm 包不遵守这个约定，没有转成 es5 就发上去，但有些包只支持 es5 的语法，遇到 const、let、()=> 类似的语法，就抛错了。
+
+umi3 配置node_module 下的 pdfjs-dist 文件走babel tranpile
+```
+export default defineConfig({
+  nodeModulesTransform: {
+    type: 'none',
+    exclude: ['pdfjs-dist']
+  }
+});
+```
 
 ### nextjs 配置 babel
 例如要加 styled-components 插件的 server-side rendering 支持

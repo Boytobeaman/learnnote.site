@@ -588,3 +588,12 @@ max-width 不包含指定值
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 ```
+
+
+### 前端常用组件
+
+#### animate.css
+https://animate.style/
+```
+Animate.css is a library of animations for use in your web projects. Great for emphasis, home pages, sliders, and attention-guiding hints.
+```
