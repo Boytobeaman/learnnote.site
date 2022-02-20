@@ -53,8 +53,9 @@ $(document).ready(function(){
 
 
 window.addEventListener('load', (event) => {
-  console.log('load ---- page is fully loaded');
+  console.log('load ---- page is fully loaded with images etc');
 });
+
 ```
 
 #### async defer in script
@@ -66,6 +67,9 @@ With async (asynchronous), browser will continue to load the HTML page and rende
 async scripts load in the background and run when ready. The DOM and other scripts don’t wait for them, and they don’t wait for anything. A fully independent script that runs when loaded.
 
 带async的脚本一定会在load事件之前执行，可能会在DOMContentLoaded之前或之后执行。
+
+
+带 defer 的脚本和普通脚本（不带 defer 属性）的脚本一样，一定会在 DOMContentLoaded之前执行.
 
 async 使用场景：
 第三方脚本如：广告脚本
