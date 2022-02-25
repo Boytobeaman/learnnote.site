@@ -25,6 +25,13 @@ Step 3 – Check Node.js and NPM Version
 node -v
 npm -v 
 
+
+
+
+卸载 nodejs (最好用nvm管理node)
+
+yum remove -y nodejs
+
 ```
 
 ### centos 安装nvm 管理node 版本
@@ -36,6 +43,15 @@ yum install curl -y
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
 
 //重新打开terminal后nvm 命令就生效了
+
+
+
+centos 每次打开新的 terminal，nvm 设置的 node 版本就失效，非要重新设置一下
+可以使用命令：
+nvm alias default node_version
+
+eg:
+nvm alias default 14.19.0
 ```
 
 ### why node.js

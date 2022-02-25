@@ -6,6 +6,12 @@
 npm install -g yrm
 ```
 
+
+### config
+```
+yarn config set python /usr/bin/python2
+```
+
 ### 列出当前可用的所有镜像源
 ```
 yrm ls
