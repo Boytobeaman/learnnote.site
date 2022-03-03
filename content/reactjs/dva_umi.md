@@ -87,3 +87,70 @@ APP_VARIABLE 为 my development
 如果使用 yarn build 命令打包项目，部署打包后的项目
 APP_VARIABLE 为 my production
 ```
+
+
+### UMI 中的 .env 文件
+Umi 中约定根目录下的 .env 为环境变量配置文件，即约定式配置文件，里面可以配置的内容已经由umi 约定好了，不可以添加自定义的变量
+```
+### 以 3000 端口启动 dev server
+PORT=3000
+
+### localhost 开启 https
+HTTPS=1 umi dev
+
+```
+
+### 如果多种环境配置，比如 dev, uat, sit, prod
+
+#### 安装cross-env 兼容windows 及 mac
+#### package.json 配置
+```
+"scripts": {
+    "start": "cross-env UMI_ENV=dev umi dev",
+    "uat": "cross-env UMI_ENV=uat umi build",
+    "sit": "cross-env UMI_ENV=sit umi build",
+    "build": "cross-env UMI_ENV=prod umi build",
+},
+```
+
+创建对应的配置文件
+.umirc.dev.ts
+```
+export default {
+  define: {
+    'process.env.UMI_ENV': 'dev',
+  }
+}
+```
+
+.umirc.uat.ts
+```
+export default {
+  define: {
+    'process.env.UMI_ENV': 'uat',
+  }
+}
+```
+
+.umirc.sit.ts
+```
+export default {
+  define: {
+    'process.env.UMI_ENV': 'sit',
+  }
+}
+```
+
+.umirc.prod.ts
+```
+export default {
+  define: {
+    'process.env.UMI_ENV': 'prod',
+  }
+}
+```
+
+项目中，直接使用process.env.UMI_ENV变量，即可获取当前处于哪个环境
+```
+console.log(process.env.UMI_ENV);
+```
