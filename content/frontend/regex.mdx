@@ -195,6 +195,54 @@ var b = /!.+?!/g
 正则中的?可以使正则式采用非贪婪模式进行匹配；
 
 
+### 先行断言(lookahead)和后行断言(lookbehind)
+Sometimes we need to find only those matches for a pattern that are followed or preceded by another pattern.
+
+Pattern | Type | Matches
+------------ | ------------- | -------------
+X(?=Y) | Positive lookahead 正向先行断言 | X if followed by Y
+X(?!Y) | Negative lookahead 负向先行断言 | X if not followed by Y
+(?<=Y)X | Positive lookbehind 正向后行断言 | X if after Y
+(?<!Y)X | Negative lookbehind 负向后行断言 | X if not after Y
+
+// Lookbehind browser compatibility
+Please Note: Lookbehind is not supported in non-V8 browsers, such as Safari, Internet Explorer.
+
+```
+Positive Lookahead
+
+let str = "1 turkey costs 30€";
+alert( str.match(/\d+(?=€)/) ); // 30, the number 1 is ignored, as it's not followed by €
+
+
+Negative lookahead
+
+let str = "2 turkeys cost 60€";
+alert( str.match(/\d+\b(?!€)/g) ); // 2 (the price is not matched)
+
+
+Positive Lookbehind
+
+let str = "1 turkey costs $30";
+// the dollar sign is escaped \$
+alert( str.match(/(?<=\$)\d+/) ); // 30 (skipped the sole number)
+
+
+Negative lookbehind
+
+let str = "2 turkeys cost $60";
+alert( str.match(/(?<!\$)\b\d+/g) ); // 2 (the price is not matched)
+```
+
+####  Capture the lookaround expression in Capturing groups
+in some situations we might want to capture the lookaround expression as well, or a part of it. That’s possible. Just wrap that part into additional parentheses.
+```
+let str = "1 turkey costs 30€";
+let regexp = /\d+(?=(€|kr))/; // extra parentheses around €|kr
+
+alert( str.match(regexp) ); // 30, €
+```
+
 
 ### 除掉特殊字符
 ```
