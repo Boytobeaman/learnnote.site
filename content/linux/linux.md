@@ -856,3 +856,20 @@ Host 54.218.*.214
    # 走 socks5 代理（如 Shadowsocks）
    ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
 ```
+
+
+### rz 命令
+```
+//安装rz sz 命令
+yum install lrzsz
+
+
+rz命令本地上传文件到服务器
+eg:
+rz 
+//会打开选择文件对话框
+
+sz命令发送文件到本地
+eg:
+sz filename
+```
