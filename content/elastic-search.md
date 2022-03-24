@@ -60,6 +60,56 @@ from  表示从第几个开始
 ```
 
 
+#### 查询条件
+
+##### Match query
+```
+{
+  "query": {
+    "match": {
+      "message": {
+        "query": "this is a test"
+      }
+    }
+  }
+}
+```
+
+#### Short request example
+```
+{
+  "query": {
+    "match": {
+      "message": "this is a test"
+    }
+  }
+}
+```
+##### Multi-match query 多字段搜索
+```
+{
+  "query": {
+    "multi_match" : {
+      "query":    "this is a test", 
+      "fields": [ "subject", "message" ] 
+    }
+  }
+}
+
+```
+##### Fields can be specified with wildcards 通配符指定字段
+```
+{
+  "query": {
+    "multi_match" : {
+      "query":    "Will Smith",
+      "fields": [ "title", "*_name" ] 
+    }
+  }
+}
+// the title, first_name and last_name fields 都可以被搜索.
+```
+
 
 ### 分词器插件
 ```
@@ -71,4 +121,95 @@ https://github.com/medcl/elasticsearch-analysis-ik
 elasticsearch安装位置根目录/plugins
 eg:
 D:\software-install\elasticsearch-7.16.0\plugins
+```
+
+
+## Elasticsearch nodejs client library
+
+### 安装
+```
+npm install @elastic/elasticsearch
+
+//To install a specific major of the client, run the following command:
+npm install @elastic/elasticsearch@<major>
+```
+
+## elasticsearch version 8.1 js api
+
+
+### 创建一个index
+```
+await client.indices.create({
+  index: 'tweets',
+  operations: {
+    mappings: {
+      properties: {
+        id: { type: 'integer' },
+        text: { type: 'text' },
+        user: { type: 'keyword' },
+        time: { type: 'date' }
+      }
+    }
+  }
+}, { ignore: [400] })
+```
+### indexing some data
+```
+// Let's start by indexing some data
+await client.index({
+  index: 'game-of-thrones',
+  document: {
+    character: 'Ned Stark',
+    quote: 'Winter is coming.'
+  }
+})
+
+// forcing an index refresh
+await client.indices.refresh({ index: 'game-of-thrones' })
+```
+
+
+### index 时避免重复
+```
+// 创建记录时增加id，下面指定的id 将会成为es 这条记录的_id
+
+client.index({
+  index: productIndex,
+  id: product.id,
+  document: doc
+})
+
+```
+
+### client.index、client.create 与client.update 区别
+```
+```
+
+### 统计数量
+```
+const count = await client.count({ index: productIndex })
+
+{
+  count: 20,
+  _shards: { total: 1, successful: 1, skipped: 0, failed: 0 }
+}
+```
+
+### search
+```
+const result= await client.search({
+  index: 'game-of-thrones',
+  query: {
+    match: { quote: 'winter' }
+  }
+})
+
+console.log(result.hits.hits)
+```
+
+### 删除 index
+```
+client.indices.delete({
+  index: `some-index-name`
+})
 ```

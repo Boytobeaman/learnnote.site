@@ -40,6 +40,26 @@ const query = qs.stringify({
 await request(`/api/users?${query}`);
 
 ```
+
+### null 的查询
+```
+// 比如indexed 字段为null 或者为 false, filter可以这样写
+
+filters:{
+  $or:[
+    {
+      indexed:{
+        $eq: false
+      }
+    },
+    {
+      indexed:{
+        $null: true
+      }
+    }
+  ]
+}
+```
 #### 利用 and 和 or 完成复杂条件过滤
 Find books with 2 possible dates & a specific author
 ```
