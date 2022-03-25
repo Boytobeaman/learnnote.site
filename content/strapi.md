@@ -12,6 +12,17 @@ strapi_administrator | 超级管理员
 strapi_role | strapi role （Super Admin/Editor/Author）
 
 
+
+### 常用技巧
+To list all the available services, run
+```
+yarn strapi services:list
+```
+To list all the available controllers, run 
+```
+yarn strapi controllers:list
+```
+
 #### 忘记密码
 ```
 //重置密码
@@ -231,4 +242,69 @@ module.exports = {
 │    │    └─────────────── hour (0 - 23)
 │    └──────────────────── minute (0 - 59)
 └───────────────────────── second (0 - 59, OPTIONAL)
+```
+
+
+### 增加自定义api
+在某个content-type 目录下，比如 /api/ali-product
+
+在其 routes 目录下 已有个默认的 ali-product.js
+需要再创建一个 es-ali-product.js 文件, 如下
+```
+module.exports = {
+  routes: [
+    { // Path defined with a URL parameter
+      method: 'GET',
+      path: '/es-ali-products/hello',
+      handler: 'ali-product.hello',
+    },
+    { // Path defined with a URL parameter
+      method: 'POST',
+      path: '/es-ali-products/aliProductChange',
+      handler: 'ali-product.aliProductChange',
+    }
+  ]
+}
+// 注意 path: '/es-ali-products/aliProductChange'
+// 其中 es-ali-products 不能与已有的 ali-products 路由一样；
+```
+
+然后在原有的
+/src/api/ali-product/controllers/ali-product.js 中增加方法
+
+```
+'use strict';
+
+/**
+ *  ali-product controller
+ */
+
+const { createCoreController } = require('@strapi/strapi').factories;
+
+module.exports = createCoreController('api::ali-product.ali-product',({ strapi }) =>  ({
+  // Method 1: Creating an entirely custom action
+    async hello(ctx) {
+      console.log(`hello called in ali-product.js`)
+      try {
+        ctx.body = 'hello';
+      } catch (err) {
+        ctx.body = err;
+      }
+    },
+
+    async aliProductChange(ctx) {
+
+      try {
+        const { id } = ctx.params;
+        const { query } = ctx;
+        const { body } = ctx.request;
+        
+        ctx.body = 'aliProductChange';
+      } catch (err) {
+        ctx.body = err;
+      }
+    }
+  })
+);
+
 ```
