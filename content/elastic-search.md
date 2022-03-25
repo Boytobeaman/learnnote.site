@@ -110,6 +110,21 @@ from  表示从第几个开始
 // the title, first_name and last_name fields 都可以被搜索.
 ```
 
+##### Individual fields can be boosted with the caret (^) notation
+```
+const result= await client.search({
+    index: productIndex,
+    query: {
+        multi_match: {
+            query: keyword,
+            fields: ["controlled_rank_str^3", "product_title", ]
+        }
+    },
+    // size: 200
+})
+// 这里 controlled_rank_str 字段的匹配权重将增大3倍
+```
+
 
 ### 分词器插件
 ```
