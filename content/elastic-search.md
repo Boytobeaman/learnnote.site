@@ -56,7 +56,7 @@ GET /bank/_search
 _search 表示查询
 query 是查询条件, 这里是所有
 size  表示每次查询的条数, 分页的条数. 如果不传, 默认是10条. 在返回结果的hits中显示.
-from  表示从第几个开始
+from  表示跳过的hits,默认是0.  The from parameter defines the number of hits to skip, defaulting to 0
 ```
 
 
@@ -226,5 +226,13 @@ console.log(result.hits.hits)
 ```
 client.indices.delete({
   index: `some-index-name`
+})
+```
+
+### 删除某条记录
+```
+client.delete({
+  index: `some-index-name`,
+  id
 })
 ```
