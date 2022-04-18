@@ -1,6 +1,28 @@
 
 
-### 基础概念
+## 基础概念
+
+
+## linux 安装
+centos 安装  elasticsearch
+
+https://www.elastic.co/guide/en/elasticsearch/reference/8.1/rpm.html#rpm-repo
+
+centos 安装  kibana
+https://www.elastic.co/guide/en/kibana/current/rpm.html
+
+generate an enrollment token for Kibana with the elasticsearch-create-enrollment-token tool:
+
+centos 下位置
+/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+### 常见问题
+
+
+#### 占用内存过高
+```
+
+https://www.elastic.co/guide/en/elasticsearch/reference/8.1/advanced-configuration.html#set-jvm-heap-size
+```
 
 #### 索引
 含有相同属性的文档的集合
@@ -97,6 +119,16 @@ from  表示跳过的hits,默认是0.  The from parameter defines the number of 
 }
 
 ```
+
+##### 避免返回结果10000条总数的限制,加上 track_total_hits
+```
+{
+  "query": {
+    "match_all": {}
+  },
+  "track_total_hits": true
+}
+```
 ##### Fields can be specified with wildcards 通配符指定字段
 ```
 {
@@ -150,6 +182,39 @@ npm install @elastic/elasticsearch@<major>
 ```
 
 ## elasticsearch version 8.1 js api
+
+
+初始化client
+
+```
+const { Client } = require('@elastic/elasticsearch')
+
+
+const client = new Client({
+    cloud: {
+      id: 'se-es:dXMtY2vvvvv4ZGE2',
+    },
+    auth: {
+      username: 'elastic',
+      password: 'PPw0m999ddddddddddddddd'
+    }
+})
+
+
+
+
+const client = new Client({
+  node: 'https://localhost:9200',
+  auth: {
+    username: 'elastic',
+    password: 'changeme'
+  },
+  tls: {
+    ca: fs.readFileSync('./http_ca.crt'),
+    rejectUnauthorized: false
+  }
+})
+```
 
 
 ### 创建一个index
