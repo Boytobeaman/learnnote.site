@@ -197,3 +197,21 @@ function Profile() {
 }
 ```
 In this example, the useSWR hook accepts a key string and a fetcher function. key is a unique identifier of the data (normally the API URL) and will be passed to fetcher. fetcher can be any asynchronous function which returns the data, you can use the native fetch or tools like Axios.
+
+
+
+### 后端无法在前端写入cookie 的问题
+```
+在axios中默认是不让后端写入cookie的，所以你要设置axios.defaults.withCredentials = true
+
+
+umi-request 中去掉credentials: 'omit'的配置或者不配置
+
+import { extend, ResponseError } from 'umi-request';
+const request = extend({
+  errorHandler, // 默认错误处理
+  // credentials: 'omit', // 默认请求不带cookie
+  timeout: 0,
+});
+
+```
