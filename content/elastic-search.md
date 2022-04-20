@@ -35,6 +35,12 @@ https://www.elastic.co/guide/en/elasticsearch/reference/8.1/advanced-configurati
 #### 文档
 文档是可以被索引的基本数据单位
 
+#### TF IDF
+##### TF (Term Frequency)
+搜索文本中的各个词条在field文本中出现了多少次，出现次数越多，就越相关
+##### IDF (Inverse Document Frequency)
+搜索文本中的各个词条在整个索引的所有文档中出现了多少次，出现的次数越多，就越不相关
+
 ### elasticsearch 默认端口 9200
 By default, Elasticsearch will use port 9200 for requests and port 9300 for communication between nodes within the cluster.
 ```
@@ -300,4 +306,56 @@ client.delete({
   index: `some-index-name`,
   id
 })
+```
+
+
+### 查看分词状态
+```
+GET /movie/_analyze
+{
+  "text": "eating an apple a day & keep your doctor away",
+  "field": "name"
+}
+```
+
+
+### 查看排名得分细节依据, 加上 explain true
+```
+GET /ali-products/_search
+{
+  "query": {
+    "match": {
+      "product_title": "folding crates"
+    }
+  },
+  "explain": true
+}
+```
+
+#### 使用结构化的方式 重新创建索引, 设置字段的 analyzer，默认是 standard
+如果对应的是英文搜索，设置成 english 比较好，这样如果搜索 eating, 结果中有 eat 也会匹配上
+```
+PUT /movie
+{
+  "settings": {
+    "number_of_replicas": 1,
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "name":{
+        "type": "text",
+        "analyzer": "english"
+      }
+    }
+  }
+}
+```
+
+### mappings 里字段的 type
+
+```
+Text: 被分析索引的字符串类型
+Keyword: 不能被分析只能被精确匹配的字符串类型
+Date: 日期类型，可以配合format一起使用
 ```
