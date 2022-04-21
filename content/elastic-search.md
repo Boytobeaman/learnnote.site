@@ -352,6 +352,100 @@ PUT /movie
 }
 ```
 
+### Mapping parameters mapping 对应的字段
+
+#### analyzer
+Only text fields support the analyzer mapping parameter.  
+The standard analyzer is the default analyzer which is used if none is specified.
+
+常见的还有 analyzer 还有
+simple
+whitespace  
+stop  
+pattern  
+fingerprint  
+
+
+可以安装分词器插件，比如针对中文有ik 分词器  
+https://github.com/medcl/elasticsearch-analysis-ik
+
+```
+PUT my-index-000001
+{
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "whitespace"
+      }
+    }
+  }
+}
+```
+##### Language Analyzers
+Elasticsearch provides many language-specific analyzers like english or french.
+
+#### 插件安装分词器
+plugin can be installed using the plugin manager
+```
+// 安装 analysis-smartcn
+sudo bin/elasticsearch-plugin install analysis-smartcn
+
+
+// 卸载 analysis-smartcn
+sudo bin/elasticsearch-plugin remove analysis-smartcn
+
+// 安装 中文 analysis-ik 分词器， 根据elasticsearch 版本替换下载 url 中的版本
+sudo bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v8.1.2/elasticsearch-analysis-ik-8.1.2.zip
+
+centos 默认 安装位置
+/etc/elasticsearch/analysis-ik
+
+安装后可以使用的 Analyzer: ik_smart , ik_max_word
+‘
+最佳实践：
+对于中文 一般可以使用 analyzer: ik_max_word 构建索引,来保证查全率; 使用 search_analyzer: ik_smart 保证查准率
+
+比如 test_chinese 索引的content字段
+PUT test_chinese/
+{
+  "mappings": {
+    "properties":{
+      "content":{
+        "type":"text",
+        "analyzer":"ik_max_word",
+        "search_analyzer":"ik_smart"
+      }
+    }
+  }
+}
+
+```
+The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
+
+#### 测试分词器效果
+```
+GET _analyze?pretty
+{
+  "analyzer": "standard",
+  "text": "中华人民共和国"
+}
+
+// 安装中文 analysis-ik 分词器后测试
+GET _analyze?pretty
+{
+  "analyzer": "ik_max_word",
+  "text": "中华人民共和国"
+}
+
+
+GET _analyze?pretty
+{
+  "analyzer": "ik_smart",
+  "text": "驻洛杉矶领事馆遭亚裔男子枪击 嫌犯已自首"
+}
+```
+
 ### mappings 里字段的 type
 
 ```
