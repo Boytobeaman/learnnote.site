@@ -23,3 +23,20 @@ mac
 向下多光标
 shift+ctrl+down（下箭头）
 
+
+
+
+
+
+### idea/vscode 公用快捷键
+```
+向下复制当前行 duplicate line or selection
+Ctrl+D
+
+删除当前行 Delete line
+Ctrl+Y
+
+
+选择所有匹配项 select all Occurrences of find match
+Ctrl + Shift + L
+```
