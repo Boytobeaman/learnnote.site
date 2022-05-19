@@ -95,3 +95,64 @@ resultType: 对应dao接口类的返回结果类型，无返回结果可省略�
 ```
 企业版本的idea在侧栏中会有spring initializr选项，然而社区版的idea却没有这个选项，需要我们自己去安装插件spring assistant，安装完成后重启
 ```
+
+
+### 请求参数相关的注解
+#### @RequestParam @PathVariable
+```
+路由
+/2/get?id=100&name=jim
+
+页面结果
+//Hello 2,100,jim!
+
+后端代码
+@GetMapping("/{studentId}/get")
+public String hello(@PathVariable("studentId") String studentId,
+                    @RequestParam String id,
+                    @RequestParam String name) {
+    return String.format("Hello %s!", studentId + "," + id + ","  + name);
+}
+
+//如果参数变量名保持一致，注解里面的参数可以省略，比如这里的 id 和 name
+
+
+```
+#### @PathVariable
+```
+路由
+/hello/56
+
+页面结果
+//Hello 56!
+
+后端代码
+@GetMapping("/hello/{studentId}")
+public String helloStudent(@PathVariable("studentId") String studentId) {
+    return String.format("Hello %s!", studentId);
+}
+```
+#### @RequestBody @RequestHeader @CookieValue
+```
+
+POST
+路由
+/create
+
+后端代码
+@PostMapping("/create")
+public String createStudent(@RequestBody Map<String, Object> map,
+                            @RequestHeader("Content-Type") String cType,
+                            @CookieValue("clientId") String clientId,
+                            HttpServletRequest request) {
+
+    System.out.println(map);
+    String output = "Content-Type = " + cType +
+                    "clientId = " + clientId +
+                    "token = " + request.getHeader("token");
+    return output;
+}
+
+header 里面的 token 等也可以用 HttpServletRequest 的 request.getHeader("token") 获得
+```
+
