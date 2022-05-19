@@ -118,20 +118,7 @@ public String hello(@PathVariable("studentId") String studentId,
 
 
 ```
-#### @PathVariable
-```
-路由
-/hello/56
 
-页面结果
-//Hello 56!
-
-后端代码
-@GetMapping("/hello/{studentId}")
-public String helloStudent(@PathVariable("studentId") String studentId) {
-    return String.format("Hello %s!", studentId);
-}
-```
 #### @RequestBody @RequestHeader @CookieValue
 ```
 
