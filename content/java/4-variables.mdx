@@ -154,3 +154,38 @@ int int1 = (int)d1;
 1. 名称也可以以$和_开头（但在本教程中我们将不使用它）
 1. 名称区分大小写（“ myVar”和“ myvar”是不同的变量）
 1. 保留字（例如Java关键字，例如int或 boolean）不能用作名称
+
+
+
+### 成员变量
+成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。
+```
+public class  ClassName{
+    int a;
+    public void printNumber（）{
+        // 其他代码
+    }
+}
+```
+
+### 局部变量
+在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。
+```
+public class  ClassName{
+    public void printNumber（）{
+        int a;
+    }
+    // 其他代码
+}
+```
+
+### 类变量
+类变量也声明在类中，方法体之外，但必须声明为 static 类型。静态成员属于整个类，可通过对象名或类名来调用。
+```
+public class  ClassName{
+  static int a;
+  public void printNumber（）{
+      // 其他代码
+  }
+}
+```
