@@ -49,7 +49,7 @@ const config = {
     frontline: false,
     ignoreIndex: true,
     title:
-      "<a href='https://hasura.io/learn/'>graphql </a><div class='greenCircle'></div><a href='https://hasura.io/learn/graphql/react/introduction/'>react</a>",
+      "<div class='greenCircle'></div>",
   },
   siteMetadata: {
     title: 'Gatsby Gitbook Boilerplate | Hasura',
