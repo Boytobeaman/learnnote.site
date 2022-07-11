@@ -270,17 +270,17 @@ A JOIN clause is used to combine rows from two or more tables, based on a relate
 
 
 #### Different Types of SQL JOINs
-##### (INNER) JOIN
+##### INNER JOIN
 Returns records that have matching values in both tables
 
 
-#### LEFT (OUTER) JOIN
+#### LEFT OUTER JOIN
 Returns all records from the left table, and the matched records from the right table
 
-#### RIGHT (OUTER) JOIN
+#### RIGHT OUTER JOIN
 Returns all records from the right table, and the matched records from the left table
 
-#### FULL (OUTER) JOIN
+#### FULL OUTER JOIN
 Returns all records when there is a match in either left or right table
 
 ![SQL JOIN](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/sql-join.gif)

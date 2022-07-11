@@ -24,7 +24,7 @@ mysql>FLUSH PRIVILEGES
 ```
 
 
-### Mysql清空表(truncate)与删除表中数据(delete)的区别
+### Mysql清空表 truncate 与删除表中数据 delete 的区别
 如表名wp_comments
 ```
 truncate table wp_comments;
