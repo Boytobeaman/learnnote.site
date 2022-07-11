@@ -186,7 +186,7 @@ CREATE TABLE Persons (
 );
 
 ```
-### 
+### insert
 ```
 INSERT INTO table_name (column1, column2, column3, ...)
 VALUES (value1, value2, value3, ...);
@@ -218,7 +218,7 @@ DELETE * FROM table_name;
 
 ```
 ### ALTER TABLE
-删除一个表的某一列（某个字段）
+删除一个表的某一列 某个字段
 ```
 ALTER TABLE table_name
 DROP COLUMN column_name;
@@ -235,16 +235,20 @@ ADD column_name datatype;
 ALTER TABLE table_name
 MODIFY COLUMN column_name datatype;
 ```
+
+
+```
 SQL IFNULL(), ISNULL(), COALESCE(), and NVL() Functions
 
 The IFNULL() function lets you return an alternative value if an expression is NULL.
+```
 
 ```
 SELECT IFNULL(NULL, "W3Schools.com");
 return 'W3Schools.com'
 ```
 
-COALESCE() function returns the first non-null expression in a list.
+COALESCE function returns the first non-null expression in a list.
 ```
 SELECT COALESCE(NULL, 1, 2, 'W3Schools.com');
 //return 1
