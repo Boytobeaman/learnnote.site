@@ -16,7 +16,7 @@ atob   ASCII to binary | Decodes a base-64 encoded string
 
 
 #### 相关名称解释
-ASCII 美国信息交换标准码（American Standard Code for Information Interchange）
+ASCII 美国信息交换标准码American Standard Code for Information Interchange
 
 #### why btoa
 Base64 encoding schemes are commonly used when there is a need to encode binary data that needs to be stored and transferred over media that are designed to deal with ASCII. This is to ensure that the data remain intact without modification during transport. 
