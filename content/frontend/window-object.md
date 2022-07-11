@@ -10,8 +10,8 @@ metaDescription: "The window object represents an open window in a browser"
 
 Method | Description
 ------------ | -------------
-btoa()  binary to ASCII | Encodes a string in base-64
-atob()  ASCII to binary | Decodes a base-64 encoded string
+btoa   binary to ASCII | Encodes a string in base-64
+atob   ASCII to binary | Decodes a base-64 encoded string
 
 
 
