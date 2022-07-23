@@ -49,3 +49,24 @@ npx patch-package @react-pdf-viewer/locales
 
 "postinstall": "npx patch-package" 
 ```
+
+
+### yarn或者npm install 出现问题 getaddrinfo ENOENT raw.githubusercontent.com
+#### 问题原因
+
+是由于Github的raw文件读取地址raw.githubusercontent.com遭受DNS污染
+
+#### 解决方式
+```
+1. 修改HOSTS文件
+查出raw.githubusercontent.com的真实IP，进入这个网址：https://www.ipaddress.com/
+
+hosts文件中添加
+199.232.68.133(查出来的ip地址) raw.githubusercontent.com
+
+
+2. 修改电脑 DNS 配置
+使用Google DNS 服务
+8.8.8.8
+8.8.4.4
+```
