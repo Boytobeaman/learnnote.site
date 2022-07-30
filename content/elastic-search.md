@@ -126,6 +126,88 @@ from  表示跳过的hits,默认是0.  The from parameter defines the number of 
 
 ```
 
+### filter
+```
+You only want to show them red shirts made by Gucci in the search results. Normally you would do this with a bool query:
+
+GET /shirts/_search
+{
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "color": "red"   }},
+        { "term": { "brand": "gucci" }}
+      ]
+    }
+  }
+}
+
+
+GET /_search
+{
+  "query": { 
+    "bool": { 
+      "must": [
+        { "match": { "title":   "Search"        }},
+        { "match": { "content": "Elasticsearch" }}
+      ],
+      "filter": [ 
+        { "term":  { "status": "published" }},
+        { "range": { "publish_date": { "gte": "2015-01-01" }}}
+      ]
+    }
+  }
+}
+
+filter 相当于等于的概念
+如 { "term":  { "status": "published" }}, 
+// status 的值必须是published
+
+ { "range": { "publish_date": { "gte": "2015-01-01" }}}
+// publish_date 必须是大于 2015-01-01 的值
+```
+## Term-level queries
+Exists query  
+Fuzzy  
+IDs  
+Prefix  
+Range  
+Regexp  
+Term  
+Terms  
+Terms set  
+Wildcard  
+
+### Exists query
+Returns documents that contain an indexed value for a field.
+```
+GET /_search
+{
+  "query": {
+    "exists": {
+      "field": "user"
+    }
+  }
+}
+
+eg: 必须存在 ali_company_id，也就是这个字段不为空，不为null
+{
+  "query": {
+    "bool": {
+      "must":[
+        {"multi_match": {
+          "query": "plastic milk crate",
+          "fields": ["controlled_rank_str^10","product_title"]
+        }},
+        {"exists": {
+          "field": "ali_company_id"
+        }}
+      ]
+    }
+  }
+}
+```
+
 ##### 避免返回结果10000条总数的限制,加上 track_total_hits
 ```
 {
