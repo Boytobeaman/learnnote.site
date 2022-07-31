@@ -47,6 +47,10 @@ By default, Elasticsearch will use port 9200 for requests and port 9300 for comm
 启动elasticsearch
 windows:
 bin/elasticsearch.bat
+
+
+查看elasticsearch 状态
+systemctl status elasticsearch
 ```
 
 ### kibana 默认端口 5601
@@ -347,6 +351,28 @@ client.index({
   document: doc
 })
 
+```
+
+
+### updateByQuery 批量更新
+```
+
+// 匹配到 ali_company_id 值的所有 productIndex， 将其disabled设置为false
+client.updateByQuery({
+  index: productIndex,
+  refresh: true,
+  script: {
+    lang: 'painless',
+    source: 'ctx._source["disabled"] = false'
+  },
+  query: {
+    term: {
+      ali_company_id:{
+        value: "some value"
+      }
+    }
+  }
+})
 ```
 
 ### client.index、client.create 与client.update 区别
