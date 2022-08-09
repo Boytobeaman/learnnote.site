@@ -353,6 +353,19 @@ client.index({
 
 ```
 
+### client.update(...)
+```
+Updates a document with a script or partial document.
+
+client.update({
+  index: productIndex,
+  id,
+  doc: es_doc
+})
+
+// 注意 update 里面数据的key 叫 doc, 不是index接口里面的document
+```
+
 
 ### updateByQuery 批量更新
 ```

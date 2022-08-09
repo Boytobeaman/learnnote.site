@@ -368,3 +368,28 @@ you’re repeating the entire character class. You’re not repeating just the c
 
 The regex [0-9]+ can match 837 as well as 22
 ```
+
+
+### variable in regexp
+
+```
+
+正则
+/[abc]/
+
+new RegExp("[abc]")
+可以提取 字符串abc作为变量
+
+let str = 'abc'
+reg = new RegExp("[" + str + "]")
+
+
+eg:
+let input = `kd dd[  ()djk[`;
+
+// 去掉空格 换行 （）【】{}()｛｝[]［］,，。./、   注意有些需要转译一下比如 \s (空格)要变为 \\s
+let str = `\\s\\r\\n（）【】{}()｛｝\\[\\]［］,，。\.\/、`;
+let reg = new RegExp("[" + str + "]", "g");
+
+let newInput = input.replace(reg, '')
+```
