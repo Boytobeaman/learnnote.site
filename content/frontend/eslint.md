@@ -55,5 +55,19 @@ env 中 browser 表示浏览器端，node表示commonjs 语法
 React 项目 要在 extends里面加上 "plugin:react/jsx-runtime"
 ```
 
+
+### .eslintignore
+```
+
+// prevent linting on tests
+src/*.test.js
+```
+
 ### vscode
 一般要在vscode 里面安装 ESLint 插件
+
+### 几大相关插件的区别
+
+ESLint ✔️: Checks for certain code patterns to stop errors or potential bugs.  
+Lint-Staged 🔧: Lints code before a commit occurs to keep production code clean.  
+Prettier ✨: Keeps code formatting consistent based on our own preferences.
