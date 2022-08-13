@@ -80,9 +80,16 @@ delete from table_bak;
 
 
 
-连接mysql
+连接mysql 数据库
 ```
 mysql -u root -p
+
+然后输入密码
+
+eg:
+连接到远程 aws rds mysql 数据库, 加-h 指定host
+
+./mysql -u USER -p -h database-1.****.us-west-2.rds.amazonaws.com
 
 然后输入密码
 ```
