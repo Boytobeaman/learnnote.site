@@ -13,6 +13,8 @@ ctx.params
 eg:
 const { id } = ctx.params;
 
+
+Path parameters 路径参数
 前端请求：
 http://localhost:8100/users/123
 
@@ -28,6 +30,8 @@ router.get('/:id', function (ctx, next) {
 
 ### ctx.request.query 或者 ctx.query
 ```
+Query string parameters
+
 前端请求：
 http://localhost:8100/users/123?name=jim&age=18
 
@@ -39,6 +43,7 @@ ctx.request.query 或者 ctx.query
 ```
 ### ctx.request.body
 ```
+Request bodies
 前端请求：
 POST 方法
 前端请求的body传
