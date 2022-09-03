@@ -197,7 +197,7 @@ export default FilterLink
 ```
 
 ### Passing the Store
-The option we recommend is to use a special React Redux component called <Provider>
+The option we recommend is to use a special React Redux component called Provider
 ```
 import React from 'react'
 import { render } from 'react-dom'
