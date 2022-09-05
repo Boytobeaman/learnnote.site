@@ -6,6 +6,39 @@ metaDescription: "umi js, dva 教程，umi 笔记，umi 面试问题"
 
 ## umi 笔记
 
+
+
+### umi4
+umi 4 中提供了hook方式 获取dva 中的数据和dispatch
+```
+import { useDispatch, useSelector } from 'umi';
+
+
+const TeacherPage: React.FC = () => {
+
+  const dispatch = useDispatch();
+  const storeState = useSelector((s) => s);
+
+  // 整个store 中会有 loading 对象，它会记录dva 中 effects 的状态，比如是否正在发送请求，可以用此来控制前端的loading状态
+  const { loading } = storeState;
+  const loadingQueryTeacherList = loading?.effects?.["teacher/queryTeacherList"];
+
+
+  const getTeacherList = () => {
+    // 可以直接用hook 方式获取的dispatch， 触发dva 中的 effects
+    dispatch({ type: 'teacher/queryTeacherList', payload: { ...pagination } });
+  };
+
+  useEffect(() => {
+    getTeacherList();
+  }, [pagination]);
+
+  return (
+    <div></div>
+  )
+}
+```
+
 #### dva model effects异步中通过select获取当前的state
 ```
 * getThirdIOTAuth(action, { put, select }) {
