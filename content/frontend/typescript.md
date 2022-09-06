@@ -394,3 +394,14 @@ declare function sum(a: number, b: number): number
 
 优点：能适用于第三方库  
 缺点：维护成本较大
+
+
+### question
+
+如何在局部共享 interface
+比如目录下有文件, index 和 addTeacherForm 中都要用到 TeacherDataType
+```
++-- Teacher
+|   +-- index.tsx
+|   +-- addTeacherForm.tsx
+```
