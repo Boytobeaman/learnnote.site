@@ -104,6 +104,9 @@ Both plugins and presets can have options specified by wrapping the name and an 
 }
 ```
 
+### Babel 竞争者 SWC-Speedy Web Compiler
+通过 rust 实现的 bable,速度快，但兼容性及生态比Babel 差
+
 ### 项目启动时，加载 node_modules 下某个js 因为js语法报错
 通常 webpack 在构建时，是不会让 node_modules 下的文件走 babel tranpile 的，如果让 node_modules 下的文件也都走 babel tranpile会慢很多, 所以业界有个潜在的约定，npm 包发布前需要先用 babel 转出一份 es5 的代码。
 
@@ -190,3 +193,7 @@ module.exports = {
     ]
 }
 ```
+
+
+
+### 构建工具
