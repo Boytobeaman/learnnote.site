@@ -107,6 +107,41 @@ function test(a: string, b?: string, c: string="jojo"){
 }
 ```
 
+### 指定函数返回值
+```
+function test(): void {
+  return "";
+  // 这里会报错，void表示函数无返回值
+}
+
+```
+
+### 参数声明类型
+```
+function test(name:string): string {
+  return "";
+}
+
+
+//可选参数? ,参数默认值=
+function test(a: string, b?: string, c: string="jojo"){
+  console.log(a)
+  console.log(b)
+  console.log(c)
+}
+```
+
+### async 函数范围为 Promise类型，且promise resolve的值为 string 类型
+```
+async function test(name:string): Promise<string> {
+  return new Promise((resolve,reject) =>{
+    setTimeout(() =>{
+      resolve("4")
+    })
+  });
+}
+```
+
 ### 类型适配（类型断言） type assersions
 ```
 let message: any;
@@ -324,6 +359,41 @@ Constructs a type by excluding null and undefined from Type.
 ```
 
 
+### 什么是 *.d.ts 文件-声明文件，它有什么作用？
+我们很多项目依然是js作为主力开发的语言。那么当我们也想享受TS带来的便利，或者当我们新的项目想使用TS无法兼容旧的js库时。我们应该怎么做呢？答案就是d.ts
+
+
+如旧的js 代码库 math.js
+```
+// math.js
+const sum = (a, b) => a + b
+
+export { sum }
+```
+TypeScript 没有关于函数的任何信息，包括名称、参数类型。为了在 TypeScript 文件中使用该函数，我们在 d.ts 文件中提供其定义：
+```
+// math.d.ts
+declare function sum(a: number, b: number): number
+```
+现在，我们可以在 TypeScript 中使用该函数，而不会出现任何编译错误。  
+
+
+对于d.ts有三种方式来使用它为我们的js代码添加类型信息。
+##### 在原本的js文件路径添加同名.d.ts文件
+编辑器会在你导入文件时寻找到同一路径下的d.ts文件，并将你声明的类型信息和你的js文件相对应。 
+优点：简单方便。 
+缺点：文件多了之后不便于管理。 
+
+##### 在package.json当中指定types文件夹
+你可以在项目的package.json当中通过types属性指定你的类型信息路径。编辑器依然会正确识别你导入文件的同名.d.ts文件中声明的类型信息。
+优点：集中管理不和其他文件混杂  
+缺点：仅适用于为自己发布的npm包有效。  
+
+##### 编写专门的@types包
+我们可以通过单独为我们的包编写另一个types包，另立一个项目。编辑器会自动从node_modules文件夹下查找@types文件夹中对应的项目来获取类型信息。这种方式一般适用于为不在自己掌握的第三方库添加类型信息。
+
+优点：能适用于第三方库  
+缺点：维护成本较大
 
 
 ### question

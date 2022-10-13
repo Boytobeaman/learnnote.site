@@ -34,7 +34,15 @@ export async function getServerSideProps(context) {
   }
 }
 ```
+#### Static File Serving 静态文件
+Next.js可以在根目录下的文件夹public下提供静态文件（例如图片）。
+代码中你可以以（/）开始引用public下的文件。
 
+例如添加 public/my-image.png 这个图片
+```
+<img src="/my-image.png" alt="my image" />
+```
+This folder is also useful for robots.txt, favicon.ico, Google Site Verification, and any other static files (including .html)!
 
 ### import image
 nextjs 不支持直接import image
@@ -108,21 +116,11 @@ location / {
   proxy_read_timeout          300;
   send_timeout                300;
 
-  #配置 图片缓存, 嵌套规则
-  location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {
-    expires 30d;
-    access_log off;
-    add_header    Cache-Control  max-age=86400;
-  }
-  location ^~ /_next/image {
-    add_header    Cache-Control  s-maxage==86400;
-  }
-
 }
 
 location ^~ /.well-known/acme-challenge/ {
   default_type "text/plain";
-  root /data/wwwroot/platform.90m.top/;
+  root /data/wwwroot/component.90m.top/;
 }
 
 
