@@ -382,6 +382,11 @@ Linux中第一个字符代表这个文件是目录、文件或链接文件等等
 接下来的字符中，以三个为一组，且均为『rwx』 的三个参数的组合。其中，[ r ]代表可读(read)、[ w ]代表可写(write)、[ x ]代表可执行(execute)。 要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号[ - ]而已。
 ![Linux document property permission](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/linux_directory_property.png "Linux document property permission")
 
+可读，可写，可执行分别的权限数值为
+* r = 4
+* w = 2
+* x = 1
+
 ### 删除隐藏文件
 ```
 rm -fr .*
