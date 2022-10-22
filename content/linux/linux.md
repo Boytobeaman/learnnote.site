@@ -882,3 +882,41 @@ sz命令发送文件到本地
 eg:
 sz filename
 ```
+
+
+### 日志 journalctl
+journalctl 用来查询 systemd-journald 服务收集到的日志。  
+systemd-journald 服务是 systemd init 系统提供的收集系统日志的服务。  
+命令格式为：journalctl [OPTIONS…] [MATCHES…]  
+journalctl 命令的路径为：/bin/journalctl  
+
+#### journalctl 常用的选项
+```
+-f : 实时显示最近的10条日志。
+-e : 跳转到日志末尾以显示最新事件。
+-r : 按时间倒序打印日志消息
+-k : 只显示内核日志。
+-u : 只显示指定systemd Unit的消息。
+-b : 显示来自特定引导的消息，如果不包括特定引导会话，则显示当前引导消息。
+–list-boots : 显示引导编号(相对于当前引导)、它的id以及与引导有关的第一个和最后一个消息的时间戳。
+–utc : 以UTC时间表示。
+-p, –priority= : 按消息优先级过滤输出。
+-S, –since= : 根据开始时间过滤日志
+-U, –until= : 根据结束时间过滤日志
+–disk-usage : 显示所有日志文件的当前磁盘使用情况。
+```
+
+#### journalctl 常用命令
+```
+// 按Unit过滤
+journalctl -u sshd.service
+
+
+
+//使用-f选项查看实时日志，如下所示。这在对某些问题进行故障排除时很有用。
+journalctl -f
+
+// 实时显示 trojan 的最新日志
+journalctl -uf trojan
+
+```
