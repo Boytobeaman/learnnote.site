@@ -187,3 +187,15 @@ export default {
 ```
 console.log(process.env.UMI_ENV);
 ```
+
+
+
+### 为什么 dva effects 里面的路由跳转要用 yield put
+```
+import { routerRedux } from 'dva/router';
+
+
+yield put(routerRedux.push('/login'));
+
+直接使用 routerRedux.push('/login') 为何不行？
+```
