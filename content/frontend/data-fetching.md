@@ -179,6 +179,22 @@ The Fetch API provides a JavaScript interface for accessing and manipulating par
 fetch('http://example.com/movies.json')
   .then(response => response.json())
   .then(data => console.log(data));
+
+
+// post 请求
+
+fetch(
+  "https://somedomain.top/DEMO_APP/util/mockAPI",
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify({delay: 15000}) , //body data type must match "Content-Type" header
+  }
+)
+  .then((res) => res.json())
 ```
 
 ## SWR (stale-while-revalidate)
