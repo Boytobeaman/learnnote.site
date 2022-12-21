@@ -948,3 +948,27 @@ tail [参数] [文件]
 eg:
 tail -f notes.log
 ```
+
+### sed
+SED is a text stream editor used on Unix systems to edit files quickly and efficiently. The tool searches through, replaces, adds, and deletes lines in a text file without opening the file in a text editor.
+
+#### Replace String Using the sed Command
+```
+sed 's/old_string/new_string/' filename.txt
+
+
+eg: 将 test.txt 中的box 替换成bin(如果文本中某一行有多个box，只替换第一个)
+sed 's/box/bin/' test.txt 
+
+如果全文替换需要加上g
+sed 's/old_string/new_string/g' filename.txt
+
+
+忽略大小写替换在命令后面加 i
+To ignore case while substituting text, add the i subcommand at the end of the command
+sed 's/old_string/new_string/i' filename.txt
+
+ß
+实际案例
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+```
