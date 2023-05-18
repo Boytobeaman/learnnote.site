@@ -245,7 +245,7 @@ Host bitbucket.org
 chmod 600 /root/.ssh/id_rsa
 ```
 
-### github 更新了RSA SSH host key
+### github 更新了RSA SSH host key, host key 过期
 ```
 导致服务器连接不上github代码库了
 
