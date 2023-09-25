@@ -67,3 +67,23 @@ step 2:
 	"gist_id": "some_id",
 }
 ```
+
+
+### sublime 配置js构建系统 create a new build system
+```
+Tools > Build System > New Build System
+
+
+{   
+  "cmd": ["node", "$file"],   
+  "selector": "source.js"   
+}
+
+
+不行就指定node路径，使用命令查看路径
+which node
+{   
+  "cmd": ["your/node/path", "$file"],   
+  "selector": "source.js"   
+}
+```
