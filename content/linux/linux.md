@@ -31,6 +31,14 @@ arch
 先 chmod 600 [fileName]
 
 ssh -i KEYFILE bitnami@SERVER-IP
+
+```
+
+#### vscode 连接远程服务器时，Permission denied publickey,gssapi-keyex,gssapi-with-mic
+
+```
+使用vscode 连接远程服务器时，要求.pem 文件的权限为属主只读
+chmod 400 [fileName]
 ```
 
 
