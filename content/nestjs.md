@@ -78,6 +78,37 @@ export class UsersController {
 
 
 
+### graphql 的 resolover 中定义 参数为可选参数的方法
+```
+  @Query(() => [Hotel], { nullable: true })
+  async hotels(
+    @Args('paginationArg') pagination?: PaginationArg,
+  ): Promise<PaginationedHotel> {
+    return await this.hotelsService.findAll(pagination);
+  }
+
+
+如参数 paginationArg 默认是必填的，加上{ nullable: true }这样参数 paginationArg 就是可选的
+@Args('paginationArg', { nullable: true }) pagination: PaginationArg,
+
+@Args('filters', { nullable: true }) filters: ReservationFiltersInput,
+```
+
+Graphql Object types
+```
+@ObjectType()
+export class PaginationedHotel {
+  @Field(() => [Hotel], { nullable: true })
+  result: Hotel[];
+
+  @Field(() => Pagination, { nullable: true })
+  pagination: Pagination;
+}
+
+// 注意 @Field(() => [Hotel], { nullable: true }) 是针对graphql 的定义,graphql 数组的写法[hotel]
+// result: Hotel[]; 是针对 typescript 类型定义, typescript 数组一般这样写 Hotel[]
+```
+
 
 ### mongoose schema Options
 

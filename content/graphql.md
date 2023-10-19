@@ -82,3 +82,71 @@ type Mutation {
   login(email: String): String # login token
 }
 ```
+
+### Input types
+In the GraphQL schema language, input types look exactly the same as regular object types, but with the keyword input instead of type:
+当做mutation操作时，比如创建user，创建用户所传的参数就可以当做一个 input type,
+```
+
+input CreateUserInput {
+  name: String!
+  username: String!
+  age: Int!
+  nationality: Nationality = BRAZIL
+}
+
+enum Nationality {
+  CANADA
+  BRAZIL
+  INDIA
+  GERMANY
+  CHILE
+}
+
+// 注意 开头是 input 关键词而不是 type
+// input 中可以设置默认值，比如这里的nationality为Nationality 类型，如果不传默认为BRAZIL
+```
+
+
+## server side
+
+### resolver
+```
+
+
+const resolvers = {
+  Query: {
+    user(parent, args, contextValue, info) {
+      return users.find((user) => user.id === args.id);
+    },
+  },
+  Mutation: {
+    createUser: (parent, args, contextValue, info) => {
+      const user = args.createUserInput;
+      const lastId = UserList[UserList.length - 1].id;
+      user.id = lastId + 1;
+      console.log(user)
+      return user
+    },
+  }
+};
+
+// 注意获取前端传过来的参数的方式，在第二个参数中（args）,比如在Mutation的createUser 中
+const user = args.createUserInput;
+
+// 这是前端传的
+{
+  "createUserInput": {
+    "name": "new name",
+    "username": "new username",
+    "age": 8
+  }
+}
+
+// 这里是 type 定义文件
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User
+}
+
+
+```

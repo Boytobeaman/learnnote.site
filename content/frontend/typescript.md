@@ -311,6 +311,47 @@ TypeScript provides several utility types to facilitate common type transformati
 ```
 Partial<Type>
 Constructs a type with all properties of Type set to optional. This utility will return a type that represents all subsets of a given type.
+
+
+/* 部分对象 Partial */
+
+interface User {
+  name: string;
+  age: number;
+  occupation: string;
+}
+
+export const users: User[] = [
+  {
+    name: "Max Mustermann",
+    age: 25,
+    occupation: "Chimney sweep"
+  },
+  {
+    name: "Wilson",
+    age: 23,
+    occupation: "Ball"
+  }
+];
+
+type Criteria = {
+  [Property in keyof User]?: User[Property];
+};
+
+// 等同于
+// type Criteria = Partial<User>;
+
+export const filterUsers = (users: User[], criteria: Criteria): User[] =>
+  users.filter((user) => {
+    const criteriaKeys = Object.keys(criteria) as (keyof Criteria)[];
+    return criteriaKeys.every((fieldName) => {
+      return user[fieldName] === criteria[fieldName];
+    });
+  });
+
+const usersOfAge23 = filterUsers(users, {
+  age: 23
+});
 ```
 
 #### Required
@@ -404,4 +445,20 @@ declare function sum(a: number, b: number): number
 +-- Teacher
 |   +-- index.tsx
 |   +-- addTeacherForm.tsx
+```
+
+
+
+
+### typescript 面试题
+
+
+#### 列出TypeScript中的内置数据类型
+```
+Number：代表数字类型的值。 这些数字在TypeScript中存储为浮点值。
+String：字符串表示存储为Unicode UTF-16代码的一系列字符。
+Boolean：代表逻辑值。 当我们使用布尔类型时，我们只能获得true或false的输出。
+Null：Null表示变量，其值未定义。 无法直接引用空类型值本身。
+Undefined：未定义类型表示所有未初始化的变量。
+Void：无效是不返回任何类型值的函数的返回类型。
 ```

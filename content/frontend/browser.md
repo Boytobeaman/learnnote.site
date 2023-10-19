@@ -56,3 +56,13 @@ position: transform: translate(npx, npx)
 
 #### 读写分离
 利用fastdom 进行元素位置的读写分离
+
+
+#### react fiber 时间分片 5 毫秒时间，以便响应更高优先级的任务，如用户输入点击等。浏览器渲染是每秒60帧，也就是16ms渲染一帧。每秒60帧是人类肉眼看起来比较流畅的
+
+
+#### window.requestAnimationFrame vs window.requestIdleCallback
+```
+window.requestAnimationFrame 每次渲染完都会执行，高优先级
+window.requestIdleCallback 空闲时才执行，低优先级
+```

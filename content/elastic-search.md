@@ -15,7 +15,52 @@ generate an enrollment token for Kibana with the elasticsearch-create-enrollment
 
 centos 下位置
 /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+
+
+
+查看安装版本
+./bin/elasticsearch --version
+
+eg
+/usr/share/elasticsearch/bin/elasticsearch --version
+
+
+
+
+配置文件位置，如端口host等
+/etc/elasticsearch/elasticsearch.yml
 ### 常见问题
+
+
+#### plugins
+```
+Listing plugins
+sudo bin/elasticsearch-plugin list
+
+Removing plugins
+sudo bin/elasticsearch-plugin remove [pluginname]
+
+Removing multiple plugins
+sudo bin/elasticsearch-plugin remove [pluginname] [pluginname] ... [pluginname]
+
+
+Updating plugins
+sudo bin/elasticsearch-plugin remove [pluginname]
+sudo bin/elasticsearch-plugin install [pluginname]
+```
+
+
+#### 备份还原  aws s3
+```
+https://www.elastic.co/guide/en/elasticsearch/reference/8.10/snapshot-restore.html
+
+配置s3 key
+/usr/share/elasticsearch/bin/elasticsearch-keystore add s3.client.default.access_key
+/usr/share/elasticsearch/bin/elasticsearch-keystore add s3.client.default.secret_key
+
+配置好了要重启elasticsearch
+
+```
 
 
 #### 占用内存过高
@@ -62,8 +107,34 @@ bin/kibana.bat
 
 
 http://localhost:5601
+
+
+
+配置文件位置
+/etc/kibana/kibana.yml
+
+
+如果要开放外网访问，设置
+server.host: 0.0.0.0
 ```
 
+### 查看kabana 日志
+```
+journalctl -u kibana.service
+```
+
+
+### 常用命令,注意安装位置可能会有差异
+```
+Reset the password of the elastic built-in superuser with 
+'/usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic'.
+
+Generate an enrollment token for Kibana instances with 
+ '/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana'.
+
+Generate an enrollment token for Elasticsearch nodes with 
+'/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node'.
+```
 
 ### logstash
 ```

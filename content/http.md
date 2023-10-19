@@ -25,7 +25,7 @@ HTTP状态码分类
 301 | moved permanently （永久重定向）
 302 | Found 临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI
 304 | Not Modified 未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源
-307 | 临时重定向。与302类似。使用GET请求重定向
+307 | 临时重定向。与302类似。使用GET请求重定向, 307 requires the client to use the same HTTP method in the redirected request as the original request. 302 does not require this.
 400 | Bad Request （客户端请求的语法错误，服务器无法理解）
 401 | unauthorized （请求要求用户的身份认证，比如没有传jwt 或者jwt 失效）
 403 | forbidden （访问被禁止，比如某些接口没有对特定的用户开放）

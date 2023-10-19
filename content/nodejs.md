@@ -302,6 +302,20 @@ module 被加载的时候执行，加载后缓存（如果加载多次某个文�
 一旦出现某个模块被循环加载，就只输出已经执行的部分，还未执行的部分不会输出
 ```
 
+
+#### Conditional exports
+Conditional exports provide a way to map to different paths depending on certain conditions. They are supported for both CommonJS and ES module imports.
+```
+// package.json
+{
+  "exports": {
+    "import": "./index-module.js",
+    "require": "./index-require.cjs"
+  },
+  "type": "module"
+} 
+```
+
 #### timer
 ```
 setImmediate(()=>{

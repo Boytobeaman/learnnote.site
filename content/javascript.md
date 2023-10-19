@@ -1502,7 +1502,10 @@ XSRF 跨站请求伪造
 Cross-site request forgery, also known as one-click attack or session riding and abbreviated as CSRF or XSRF, is a type of malicious exploit of a website where unauthorized commands are transmitted from a user that the web application trusts.
 
 方法：
-Token 验证
+http referer 验证
+Token 验证, 在请求地址中添加 token 并验证
+在 HTTP 头中自定义属性并验证。
 增加验证流程，短信、密码、指纹等
+
 
 ```
