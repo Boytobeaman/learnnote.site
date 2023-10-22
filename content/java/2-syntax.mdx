@@ -34,3 +34,20 @@ public void eat(String name){
 ```
 
 
+#### turn hashmap to array
+
+```
+public static void main (String[] args) {
+  HashSet<String> set = new HashSet<>(); //Creation of HashSet
+    
+  set.add("GeeksforGeeks");
+  set.add("learning");
+  set.add("platform");
+  
+  ArrayList<String> list =new ArrayList<>(); //Creation of ArrayList
+  list.addAll(set); //HashSet to ArrayList
+    
+  System.out.println("I am from HashSet "+set);
+  System.out.println("I am from ArrayList "+list);
+}
+```

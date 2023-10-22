@@ -45,6 +45,24 @@ server.port=8082
 ### what is Maven
 java 的包管理工具，相当于node 的npm
 
+#### 配置maven 阿里云镜像
+```
+用户配置路径: 
+${user.home}/.m2/settings.xml
+
+
+//加入镜像内容
+
+<mirrors>
+  <mirror>
+    <id>nexus-aliyun</id>
+    <mirrorOf>*</mirrorOf>
+    <name>Nexus aliyun</name>
+    <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+  </mirror> 
+</mirrors>
+```
+
 
 ### 打jar包，与启动jar 包
 ```
@@ -56,10 +74,76 @@ java -jar file.jar
 
 eg:
 java -jar boot-01-helloworld-1.0-SNAPSHOT.jar
+
+
+
+// 后台运行程序， 此语句比第一个命令多一个&符号,但是Ctrl+c或者关闭窗口后 后台程序仍然继续执行。
+java -jar xxx.jar & 
+
+
+// 指定输出日志 mylog.log
+java -jar example.jar >> mylog.log &
+
+
+// 查看日志
+tail -f mylog.log
 ```
 
 ### what is Gradle
 
+
+
+### 在哪里配置环境变量，如定义的一个可变外部url 地址
+application.properties 也支持自定义属性
+```
+// application.properties 中定义
+elastic.domain=https://elasticxxx.com
+
+
+// 在controller 文件中使用，使用Value注解读取配置属性
+
+
+import org.springframework.beans.factory.annotation.Value;
+
+@RestController
+public class GreetingController {
+
+    @Value("${elastic.domain}")
+    private String elasticDomain;
+
+    @GetMapping("/info")
+    public String info(){
+        System.out.println(elasticDomain);
+        return elasticDomain;
+    }
+}
+
+```
+
+### 不同环境，不同文件配置
+```
+开发环境
+application-dev.properties
+
+
+生产环境
+application-prod.properties
+
+
+可以在主配置文件 application.properties 中指定生效的配置文件
+// 如这里指 dev 开发环境文件生效
+spring.profiles.active=dev
+
+
+
+在生产环境，.properties 文件可以在build项目后放到 jar 包同级目录下，springboot 会自动加载
+```
+### idea 里面 jdk 配置
+Go to File | Project Structure | Project Settings | Project | sdk.
+
+
+### springboot 日志
+Spring 框架选择使用了 JCL 作为默认日志输出。而 Spring Boot 默认选择了 SLF4J 结合 LogBack
 
 ### mybatis
 
@@ -90,6 +174,7 @@ src/main/resources/mapping/XXXMapper.xml
 id: 对应dao接口类的方法名
 parameterType: 对应dao接口类的参数类型，无参数可省略此属性
 resultType: 对应dao接口类的返回结果类型，无返回结果可省略此属性
+```
 
 ### 解决IDEA无Spring Initializr的问题
 ```
@@ -143,3 +228,10 @@ public String createStudent(@RequestBody Map<String, Object> map,
 header 里面的 token 等也可以用 HttpServletRequest 的 request.getHeader("token") 获得
 ```
 
+
+
+
+### 常见插件
+
+#### lombok
+Lombok 是一个 java 类库，它利用注解方式自动生成 java bean 中 getter、setter、equals 等方法，还能自动生成 logger、toString、hashCode、builder 等 日志相关变量
