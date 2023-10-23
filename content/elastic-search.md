@@ -121,6 +121,10 @@ server.host: 0.0.0.0
 ### 查看kabana 日志
 ```
 journalctl -u kibana.service
+
+
+// 默认文件位置
+/var/log/kibana/kibana.log
 ```
 
 

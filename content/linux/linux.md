@@ -980,3 +980,24 @@ sed 's/old_string/new_string/i' filename.txt
 实际案例
 sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
 ```
+
+### wc
+#### calculates a file's word, line, character, or byte count
+```
+
+default output of wc is the file's number of lines, words, and characters,
+# wc kibana.log
+1899   8912 978114 kibana.log
+
+// -l 查看行数
+wc -l < kibana.log
+1899
+```
+### split
+#### split large files into smaller files. It splits the files into 1000 lines per file(by default)
+```
+split [options] name_of_file prefix_for_new_files
+
+// 以4行分割文件index.txt，分割后的文件名以 split_file 开头
+split -l 4 index.txt split_file
+```
