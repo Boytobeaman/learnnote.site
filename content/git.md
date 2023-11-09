@@ -522,7 +522,23 @@ git branch --set-upstream-to=远程分支名 本地分支名
 git branch --set-upstream-to=origin/master master
 ```
 
+### 相同域下，比如github，不同账号ssh key 配置
+比如有一个新的 github账号，ssh 生成了一对 公钥和私钥 id_rsa_sonny.pub 与 id_rsa_sonny
 
+这时需要配置一下 ssh 的config 信息
+```
+vim /Users/anxxxylu/.ssh/config
+
+加上
+Host github-sonny
+  HostName github.com
+  IdentityFile /Users/anxxxylu/.ssh/id_rsa_sonny
+  User sonny
+
+// 说明：Host github-sonny 是为了区分 老的github 账号的，这在pull 代码的时候要用到，方便程序知道用哪个私钥验证权限
+// 使用 git remote add origin git@github-sonny:username/some-repo.git 关联sonny github 账号的repo
+// github-sonny 实际指向还是 github.com
+```
 
 删除git项目所有提交历史，使其成为一个新仓库
 ```
