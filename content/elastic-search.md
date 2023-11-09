@@ -461,6 +461,52 @@ client.updateByQuery({
     }
   }
 })
+
+
+
+
+// dev tool 操作
+
+// 批量设置 level=1
+POST ali-products/_update_by_query
+{
+  "script": {
+    "source": "ctx._source.level=1",
+    "lang": "painless"
+  }
+}
+
+
+// 加过滤条件
+POST ali-products/_update_by_query
+{
+  "script": {
+    "source": "ctx._source.level=1",
+    "lang": "painless"
+  }，
+  "query": { 
+    "term": {
+      "ali_company_id": "6666"
+    }
+  }
+}
+
+
+// 异步请求，如果数据量很大，容易timeout，wait_for_completion=false就是异步请求，会直接返回任务id
+POST ali-products/_update_by_query?wait_for_completion=false
+{
+  "script": {
+    "source": "ctx._source.level=1",
+    "lang": "painless"
+  }
+}
+
+
+```
+
+### Retrieve specific fields 指定返回字段
+```
+
 ```
 
 ### client.index、client.create 与client.update 区别
