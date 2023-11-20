@@ -108,3 +108,26 @@ http://github.com - automatic!
 +-- _site
 +-- index.html
 ```
+
+
+### Blockquotes
+```
+> "In a few moments he was barefoot, his stockings folded in his pockets and his
+  canvas shoes dangling by their knotted laces over his shoulders and, picking a
+  pointed salt-eaten stick out of the jetsam among the rocks, he clambered down
+  the slope of the breakwater."
+```
+> "In a few moments he was barefoot, his stockings folded in his pockets and his
+  canvas shoes dangling by their knotted laces over his shoulders and, picking a
+  pointed salt-eaten stick out of the jetsam among the rocks, he clambered down
+  the slope of the breakwater."
+
+
+### 横线
+```
+***
+
+对应html <hr>
+```
+
+***
