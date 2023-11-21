@@ -998,6 +998,16 @@ wc -l < kibana.log
 ```
 split [options] name_of_file prefix_for_new_files
 
-// 以4行分割文件index.txt，分割后的文件名以 split_file 开头
+// -l 是以多少行分割文件，如下面以4行分割文件index.txt，分割后的文件名以 split_file 开头
 split -l 4 index.txt split_file
+
+
+
+// -n 是平均分成多少份，如下面平均分成100份， 然后放到 tempfile文件夹下，分割后的文件以split-file开头
+split -n 100 wwwxxxuppliexom-out.log tempfile/split-file
+
+
+
+// Split file size using ‘-b’(bytes) option. 按大小分割
+split -b 16 index.txt index
 ```
