@@ -661,6 +661,21 @@ Prod.: (npm run build): .env.production.local, .env.production, .env.local, .env
 Test.: npm test: .env.test.local, .env.test, .env (note .env.local is missing)
 ```
 
+### 执行命令时添加环境变量
+```
+# OS X, Linux
+$ PORT=3000 umi dev
+
+# Windows (cmd.exe)
+$ set PORT=3000&&umi dev
+
+
+如果要同时考虑 OS X 和 Windows，可借助三方工具 cross-env
+yarn add cross-env --dev
+cross-env PORT=3000 umi dev
+
+```
+
 ### Higher-Order Components
 ```
 Concretely, a higher-order component is a function that takes a component and returns a new component.
