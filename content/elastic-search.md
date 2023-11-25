@@ -128,6 +128,13 @@ journalctl -u kibana.service
 ```
 
 
+### elasticsearch log
+```
+
+// 默认文件位置
+/var/log/elasticsearch/elasticsearch.log
+```
+
 ### 常用命令,注意安装位置可能会有差异
 ```
 Reset the password of the elastic built-in superuser with 

@@ -5,7 +5,7 @@ metaDescription: "vscode 常用快捷键"
 ---
 
 选中全文中所有的当前选中项
-⇧⌘L Select all occurrences of current selection
+ctrl+shift+L Select all occurrences of current selection
 
 
 
@@ -20,7 +20,7 @@ macOS
 Option+click 
 
 #### 往下一行相同位置增加光标 extend your selection or cursor position to the next line
-⌘+Option+Shift+Down
+control+Shift+Down
 
 
 #### 将光标移动到 当前行 行尾

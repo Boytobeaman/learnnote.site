@@ -1,3 +1,19 @@
+### 安装依赖
+```
+// 安装到 package.json 的 dependencies 里面
+
+yarn add <package-name>
+npm install <package-name>
+
+
+// 安装到 package.json 的 devDependencies 里面
+yarn add <package-name> --dev
+
+npm install <package-name> --save-dev
+```
+
+
+
 ### yarn 国内加速，修改镜像源
 
 

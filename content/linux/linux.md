@@ -24,6 +24,33 @@ arch
 //如果输出x86_64，则是64位
 ```
 
+### 安装软件centos yum
+
+If you want to install packages automatically without asking for any confirmation, use the option -y as shown below example.
+```
+yum install firefox
+
+yum -y install firefox
+```
+
+### Removing a Package with YUM
+```
+yum remove firefox
+
+In the same way, the above command will ask for confirmation before removing a package. To disable the confirmation prompt just add option -y as shown below.
+
+yum -y remove firefox
+```
+
+### Updating a Package using YUM
+```
+yum update mysql
+```
+
+### List a Package using YUM
+```
+yum list openssh
+```
 
 ### 连接远程 linux
 ```
@@ -1010,4 +1037,23 @@ split -n 100 wwwxxxuppliexom-out.log tempfile/split-file
 
 // Split file size using ‘-b’(bytes) option. 按大小分割
 split -b 16 index.txt index
+```
+
+### 在linux下执行php时无法执行，报错：php: command not found
+```
+查看php安装位置
+whereis php
+//返回安装目录
+/usr/local/php
+
+
+export PATH=$PATH:/usr/local/php/bin
+
+可以输入echo $PATH 查看下有没有添加成功
+
+如果还不行，则再输入以下命令：
+ln -s /usr/local/php/bin/php /usr/bin/php
+
+查看php 版本
+php -v
 ```

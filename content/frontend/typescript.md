@@ -37,6 +37,30 @@ never
 any
 ```
 
+
+#### 类型举例
+```
+tuple: 元组 固定类型+长度的数组
+const teacherInfo: [string, string, number] = ["xiaoming", "male", 25]
+
+
+
+enum: 枚举 罗列出来的所有情况 常量
+enum Direction{
+  up,
+  down,
+  left,
+  right
+}
+
+console.log(Direction.up)
+// 0
+
+console.log(Direction[0])
+// up
+
+```
+
 ### typescript 高级类型
 ```
 union （组合类型）
@@ -436,6 +460,22 @@ declare function sum(a: number, b: number): number
 优点：能适用于第三方库  
 缺点：维护成本较大
 
+
+
+
+### Generics
+Generics allow creating 'type variables' which can be used to create classes, functions & type aliases that don't need to explicitly define the types that they use.  
+Generics makes it easier to write reusable code.
+```
+function createPair<S, T>(v1:S, v2:T): [S, T]{
+    return [v1, v2]
+}
+
+createPair<string, number>("hello",10);
+createPair<boolean, string>(true, "真的");
+
+// 这里 createPair 使用泛型，可以适应更多的参数场景
+```
 
 ### question
 

@@ -125,3 +125,16 @@ location ^~ /.well-known/acme-challenge/ {
 
 
 ```
+
+### Why are destructured environment variables undefined in Next.js
+```
+const { API_KEY } = process.env; // = undefined
+const key = process.env.API_KEY; // = 'value'
+
+
+In order to keep server-only secrets safe, Next.js replaces process.env.* with the correct values at build time. This means that process.env is not a standard JavaScript object, so you’re not able to use object destructuring.
+
+
+// client-side React components
+The value will be inlined into JavaScript sent to the browser because of the NEXT_PUBLIC_ prefix. This inlining occurs at build time, so your various NEXT_PUBLIC_ envs need to be set when the project is built
+```

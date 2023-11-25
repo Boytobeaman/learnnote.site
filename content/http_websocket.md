@@ -72,6 +72,23 @@ Hash 算法：MD2、MD4、MD5、HAVAL、SHA-1、SHA256、SHA512、RipeMD、WHIRL
 
 Public-key cryptography, or asymmetric cryptography, is a cryptographic system that uses pairs of keys: public keys which may be disseminated widely, and private keys which are known only to the owner.
 
+#### 哈希算法
+哈希算法（Hash）又称摘要算法（Digest），它的作用是：对任意一组输入数据进行计算，得到一个固定长度的输出摘要。
+
+哈希算法最重要的特点就是：
+1. 相同的输入一定得到相同的输出；
+1. 不同的输入大概率得到不同的输出。
+哈希算法的目的就是为了验证原始数据是否被篡改。
+
+##### 哈希碰撞
+哈希碰撞是指，两个不同的输入得到了相同的输出：  
+一个安全的哈希算法必须满足   
+1. 碰撞概率低；
+1. 不能猜测输出。
+##### 哈希算法的用途
+因为相同的输入永远会得到相同的输出，因此，如果输入被修改了，得到的输出就会不同。因此可以利用哈希判断文件是原始的、未经篡改的文件  
+
+哈希算法的另一个重要用途是存储用户口令
 #### 使用非对称加密方案的登录流程
 1. 远程Server收到Client端用户TopGun的登录请求，Server把自己的公钥发给用户。
 1. Client使用这个公钥，将密码进行加密。
