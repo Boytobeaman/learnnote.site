@@ -1,9 +1,11 @@
 ---
 title: "strapi"
-metaTitle: "strapi 使用笔记"
-metaDescription: "strapi 使用笔记"
+metaTitle: "strapi 使用笔记, strapi 教程"
+metaDescription: "strapi 使用笔记, strapi 教程"
 ---
 
+
+## strapi 教程, strapi 使用笔记
 ### 数据库
 
 collection name | description
