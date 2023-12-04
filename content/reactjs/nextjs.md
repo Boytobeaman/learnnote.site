@@ -138,3 +138,31 @@ In order to keep server-only secrets safe, Next.js replaces process.env.* with t
 // client-side React components
 The value will be inlined into JavaScript sent to the browser because of the NEXT_PUBLIC_ prefix. This inlining occurs at build time, so your various NEXT_PUBLIC_ envs need to be set when the project is built
 ```
+
+
+### 配置文件注意点 next.config.js
+Next.js provide a transpileModules option in its configuration to specify which modules should be transpiled by Babel.  
+借助 babel 的转换，es6 的模块最终还是会转换成 commonjs 规范的模块。
+```
+使用 antd 时报错如下:
+import InternalCard from './Card';
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+
+
+需要配置 transpilePackages属性，数组中加上 antd 及其依赖的相关模块；
+module.exports = {
+  transpilePackages: [
+    "antd",
+    "rc-util",
+    // "@babel/runtime",
+    "@ant-design/icons",
+    "@ant-design/icons-svg",
+    "rc-pagination",
+    "rc-picker",
+    "rc-tree",
+    "rc-table",
+  ],
+}
+```

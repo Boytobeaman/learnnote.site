@@ -1,7 +1,7 @@
 ---
 title: "docker 常用快捷键"
-metaTitle: "docker 常用快捷键"
-metaDescription: "docker 常用快捷键"
+metaTitle: "docker 常用快捷键, docker面试"
+metaDescription: "docker 常用快捷键, docker面试"
 ---
 
 ### 基本概念

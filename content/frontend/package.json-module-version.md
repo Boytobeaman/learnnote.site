@@ -58,3 +58,28 @@ The main field is a module ID that is the primary entry point to your program.
   "main": "foo.js",
 }
 ```
+
+
+### and 模块文件结构及 引用方式
+当我们在前端页面引用时,是引用 es 文件夹里面的 某个模块还是 lib 文件夹下的模块？
+```
+import { Card } from "antd";
+
+//使用import 默认就使用es 文件夹里面的模块
+```
+
+and 模块文件结构
+```
++-- dist
++-- es
++-- lib
++-- package.json
+
+
+package.json
+{
+  "main": "lib/index.js",
+  "unpkg": "dist/antd.min.js",
+  "module": "es/index.js",
+}
+```

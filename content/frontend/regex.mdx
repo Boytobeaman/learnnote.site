@@ -370,9 +370,12 @@ The regex [0-9]+ can match 837 as well as 22
 ```
 
 
-### variable in regexp
+### variable in regexp 正则中使用变量
 
 ```
+const originwithoutwww = 'a.com';
+const regexp = new RegExp(`(https?:\/\/)?(www\.)?${originwithoutwww}`, 'gi')
+
 
 正则
 /[abc]/
