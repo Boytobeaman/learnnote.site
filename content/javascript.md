@@ -1,7 +1,7 @@
 ---
 title: "JavaScript"
 metaTitle: "javascript 教程，javascript 笔记，javascript 面试问题"
-metaDescription: "javascript 教程，javascript 笔记，javascript 面试问题"
+metaDescription: "javascript 教程，javascript 笔记，javascript 面试问题，防抖和节流"
 ---
 
 javascript 笔记
@@ -1106,8 +1106,8 @@ export function addObjectAttr(originalObject, addObject) {
 ### 二叉树
 
 
-### 防抖debounce 和 节流 throttle
-![debounce and throttle](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/throttle-vs-debounce.jpg)
+### 防抖和节流 debounce and throttle
+![防抖和节流](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/throttle-vs-debounce.jpg)
 
 #### 防抖debounce
 在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。
