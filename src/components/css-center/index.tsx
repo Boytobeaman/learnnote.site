@@ -1,7 +1,7 @@
 // Example from https://beta.reactjs.org/learn
 import * as styles from './index.module.css'
 
-const LoadingComponent = ({loadingInfo, ...otherProps}) => {
+const CssCenter = ({loadingInfo, ...otherProps}) => {
   return (
     <div className='css-center-section'>
       <h3 className={styles.heading}>css center</h3>
@@ -82,5 +82,5 @@ const LoadingComponent = ({loadingInfo, ...otherProps}) => {
   );
 };
 
-export default LoadingComponent;
+export default CssCenter;
 
