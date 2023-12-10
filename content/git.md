@@ -604,6 +604,11 @@ git branch -a
 git branch dev
 //创建名为dev的分支，创建分支时需要是最新的环境，创建分支但依然停留在当前分支
 
+
+```
+### git 删除分支
+如何删除本地或远程分支
+```
 git branch -d dev
 //删除dev分支，如果在分支中有一些未merge的提交，那么会删除分支失败，此时可以使用 
 
@@ -618,6 +623,7 @@ eg:
 git push origin --delete branch_a
 
 
+```
 git branch -vv
 //可以查看本地分支对应的远程分支
 

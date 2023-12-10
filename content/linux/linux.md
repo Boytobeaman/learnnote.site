@@ -442,8 +442,9 @@ Linux系统是一种典型的多用户系统，不同的用户处于不同的地
 total 64
 dr-xr-xr-x   2 root root 4096 Dec 14  2012 bin
 dr-xr-xr-x   4 root root 4096 Apr 19  2012 boot
-
-
+```
+### linux 查看文件大小
+```
 ls -lh
 //可以友好地显示文件大小, gives human readable file sizes, long format.
 ```
@@ -461,6 +462,14 @@ Linux中第一个字符代表这个文件是目录、文件或链接文件等等
 * w = 2
 * x = 1
 
+### linux 删除文件夹/文件
+```
+rm -rf 目录名字
+-r 向下递归，不管有多少级目录，一并删除。
+-f 直接强行删除，没有任何提示。
+
+rm -rf /var/log/httpd
+```
 ### 删除隐藏文件
 ```
 rm -fr .*
