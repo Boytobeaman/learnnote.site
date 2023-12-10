@@ -2,6 +2,8 @@ require("dotenv").config();
 const queries = require("./src/utils/algolia");
 const config = require("./config");
 const plugins = [
+  'gatsby-plugin-sass',
+  'gatsby-plugin-postcss',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-sharp',
   {
