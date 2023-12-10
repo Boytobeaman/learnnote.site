@@ -1,7 +1,7 @@
 ---
 title: "linux 常用快捷键"
-metaTitle: "linux 常用快捷键"
-metaDescription: "linux 常用快捷键"
+metaTitle: "linux 常用快捷键，linux 关机 命令"
+metaDescription: "linux 常用快捷键，linux 关机 命令，linux 查看端口占用"
 ---
 
 
@@ -24,6 +24,29 @@ arch
 //如果输出x86_64，则是64位
 ```
 
+
+### Linux 关机与重启命令
+
+立刻关机（需要root用户）  
+```
+shutdown -h now
+```
+10 分钟后自动关机  
+```
+shutdown -h 10
+```
+立刻关机
+```
+halt
+或者
+poweroff
+```
+Linux重启命令
+```
+reboot
+或者
+shutdown -r now
+```
 ### 安装软件centos yum
 
 If you want to install packages automatically without asking for any confirmation, use the option -y as shown below example.
@@ -75,7 +98,7 @@ curl -v -x socks5h://127.0.0.1:10809 https://www.google.com
 
 curl http://www.google.com --proxy socks5h://127.0.0.1:10809
 ```
-### 常用命令
+## 常用命令
 ```
 //复制指定目录下的全部文件到另一个目录中
 //假设复制源目录 为 dir1 ,目标目录为dir2
@@ -88,7 +111,9 @@ cp -r dir1/. dir2
 
 
 //如果dir2目录已存在,这时使用cp -r dir1 dir2,则也会将dir1目录复制到dir2中，明显不符合要求
-
+```
+### linux 移动文件夹
+```
 //移动文件
 mv file destination
 
@@ -99,6 +124,15 @@ mv .[^.]* destination
 eg:
 mv express_test/.[^.]* crawl.90m.top/
 //将 express_test 里面的所有文件放到crawl.90m.top里面
+```
+
+### linux 创建 文件 夹
+mkdir [-mp] 目录名
+```
+-m 选项用于手动配置所创建目录的权限，而不再使用默认权限。
+-p 选项递归创建所有目录，以创建 /home/test/demo 为例，在默认情况下，你需要一层一层的创建各个目录，而使用 -p 选项，则系统会自动帮你创建 /home、/home/test 以及 /home/test/demo。
+
+mkdir cangls
 ```
 ### 系统时间
 ```
@@ -126,14 +160,19 @@ tzselect
 
 tar zxvf /bbs.tar.zip -C /zzz/bbs
 
-用tar命令打包
+```
+### tar 打包
+用tar命令打包  
 将 当前目录下的zzz文件 打包到当前目录下并命名为zzz.tar.gz
+```
 tar -zcvf  zzz.tar.gz  ./zzz
 
 //将/home/leon/Staging 目录打包，命名为august_project.tar.gz
 tar -zcvf august_project.tar.gz /home/leon/Staging
 
 ```
+
+### linux 解压zip
 ### zip 和 unzip
 ```
 以下命令均在/home目录下操作
@@ -191,7 +230,8 @@ curl http://www.baidu.com/index.html
 * -n 用端口号来显示服务，而不是用服务名
 * -p 列出该服务的进程ID(PID)
 
-查看80端口的使用的情况
+### ubuntu 查看端口占用
+### linux 查看端口占用，查看指定端口的使用的情况
 ```
 lsof -i tcp:80
 
@@ -214,17 +254,16 @@ netstat -aon|findstr "8080"
 taskkill /pid 4136 -t -f
 ```
 
+### linux 查看端口占用，查看所有端口情况
+```
+lsof -i -P | grep -i 'listen'
+```
+
 ### pkill命令
 根据进程名kill进程
 ```
 pkill nginx
 ```
-
-### 查看所有端口情况
-```
-lsof -i -P | grep -i 'listen'
-```
-
 ### netstat -an
 查看已经连接的服务
 

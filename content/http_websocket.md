@@ -1,7 +1,7 @@
 ---
 title: "常见网络协议"
 metaTitle: "什么是 http, websocket, 常见网络协议"
-metaDescription: "什么是 http, websocket, 常见网络协议"
+metaDescription: "什么是 http, websocket, 常见网络协议, centos 开启ssh"
 ---
 
 ### TCP是什么？
@@ -139,7 +139,7 @@ id_rsa.pub | 保存公钥
 authorized_keys | 保存已授权的客户端公钥
 known_hosts | 保存已认证的远程主机ID
 
-#### SSH 服务端配置
+#### SSH 服务端配置, centos 开启ssh
 检测ssh服务是否启动 ： 
 netstat -ntlp | grep ssh
 

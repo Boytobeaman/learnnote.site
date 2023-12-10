@@ -6,8 +6,8 @@ const config = {
     trailingSlash: false,
   },
   header: {
-    logo: '',
-    logoLink: '',
+    logo: 'https://www.learnnote.site/images/icon.png',
+    logoLink: 'https://www.learnnote.site',
     title:
       "learnnote.site",
     githubUrl: 'https://github.com/Boytobeaman/learnnote.site',

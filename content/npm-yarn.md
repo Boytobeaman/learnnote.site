@@ -10,9 +10,35 @@ npm install <package-name>
 yarn add <package-name> --dev
 
 npm install <package-name> --save-dev
+
+
+//全局安装
+npm i -g json
+
+yarn global add json
+
 ```
 
+### npm 删除包
+```
+To remove a dev dependency:
+npm uninstall -D package-name or 
+npm uninstall --save-dev package-name
 
+npm uninstall jest
+
+To remove a global package:
+npm uninstall -g package-name
+
+
+
+// will remove jest both in devDependencies or dependencies
+yarn remove jest
+
+
+To remove a global package:
+yarn global remove json
+```
 
 ### yarn 国内加速，修改镜像源
 

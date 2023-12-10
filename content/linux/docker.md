@@ -1,7 +1,7 @@
 ---
 title: "docker 常用快捷键"
 metaTitle: "docker 常用快捷键, docker面试"
-metaDescription: "docker 常用快捷键, docker面试"
+metaDescription: "docker 常用快捷键, docker面试, docker 启动 容器"
 ---
 
 ### 基本概念
@@ -163,6 +163,7 @@ docker volume create todo-db
 ```
 docker images
 ```
+### docker 启动 容器
 
 运行 container
 ```

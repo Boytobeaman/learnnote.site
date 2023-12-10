@@ -1,8 +1,7 @@
-
 ---
 title: "git 常用命令"
-metaTitle: "git 常用命令"
-metaDescription: "git 常用命令"
+metaTitle: "git 常用命令, git clone 指定分支"
+metaDescription: "git 常用命令, git clone 指定分支"
 ---
 
 
@@ -26,6 +25,18 @@ git clone -b {branch} {remote_repo} | git clone -b my-branch git@github.com:user
 git rm | git rm命令把一个文件删除，并把它从git的仓库管理系统中移除。但是注意最后要执行git commit才真正提交到git仓库
 
 
+### git拉取远程分支
+将远程的michaelliao/gitskills 项目克隆到本地的gitskills
+```
+git clone git@github.com:michaelliao/gitskills.git
+```
+
+### git clone 指定分支
+```
+git clone -b {branch} {remote_repo}  
+如 克隆 myproject 的 my-branch 分支：  
+git clone -b my-branch git@github.com:user/myproject.git
+```
 ### git tag
 ```
 //查看tag
