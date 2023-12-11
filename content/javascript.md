@@ -1,7 +1,7 @@
 ---
 title: "JavaScript"
-metaTitle: "javascript 教程，javascript 笔记，javascript 面试问题"
-metaDescription: "javascript 教程，javascript 笔记，javascript 面试问题，防抖和节流"
+metaTitle: "javascript 教程，javascript 笔记，js array shift"
+metaDescription: "javascript 教程，javascript 笔记，javascript 面试问题，防抖和节流，js array shift"
 ---
 
 javascript 笔记
@@ -770,7 +770,47 @@ if (index > -1) {
 }
 
 ```
+### js array shift
+Shift (remove) the first element of the array:  
+会改变原数组，返回值为shift(remove)  的值
+```
+a = [1, 2, 3, 4, 5, 6, 7]
+b = a.shift()
 
+b // 1
+
+a // [2, 3, 4, 5, 6, 7]
+```
+
+### js array unshift
+The unshift() method adds new elements to the beginning of an array.
+```
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const c = fruits.unshift("Lemon","Pineapple");
+
+c // 6 返回值为新的数组的长度
+fruits //  ['Lemon', 'Pineapple', 'Banana', 'Orange', 'Apple', 'Mango']
+```
+
+### js array push
+The push() method adds new items to the end of an array.
+```
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const c = fruits.push("Kiwi");
+
+c // 5 返回值为新的数组的长度
+fruits // ['Banana', 'Orange', 'Apple', 'Mango', 'Kiwi']
+```
+### js array pop
+The pop() method removes (pops) the last element of an array.
+```
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const c = fruits.pop();
+
+
+c //'Mango' 返回删除的那条数据
+fruits // ['Banana', 'Orange', 'Apple']
+```
 ### arr sort
 ```
 array.sort(fun)；参数fun可选。规定排序顺序。必须是函数。
