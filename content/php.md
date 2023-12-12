@@ -41,7 +41,9 @@ $reg = '/^[a-z"]{1,'. preg_quote($number) .'}$/';
 
 ### 常用hooks
 
-### 集成 tailwind，保存post时，提取post里面的class 生成 safelist
+### 集成 tailwind，
+#### 保存post时，提取post里面的class 生成 safelist txt 文件
+#### 删除post时，删除对应的 safelist txt 文件
 ```
 function save_relative_class( $post_id ) {
     // If this is a revision, get real post ID.
@@ -57,10 +59,14 @@ function save_relative_class( $post_id ) {
 	$fileName='safe-'.$post_id.'.txt';
 	$myfile = fopen($folder.$fileName, "w") or die("Unable to open file!");
 	
-	error_log(print_r(get_template_directory(), TRUE)); 
 	
 	if(preg_match_all($pattern, $content, $matches)) {
 		$txt = join(" ",$matches[1]);
+		$txt = explode(" ",$txt);
+		// 除去重复class
+		$txt = array_unique($txt);
+		$txt = join(" ", $txt);
+		
 		fwrite($myfile, $txt);
 	}
 	
@@ -69,4 +75,19 @@ function save_relative_class( $post_id ) {
   
 }
 add_action( 'save_post', 'save_relative_class' );
+
+
+
+
+
+add_action( 'after_delete_post', 'remove_safelist_txt', 10, 2 );
+function remove_safelist_txt( $post_id, $post ) {
+	// get the txt file of the safe list
+	$folder=get_template_directory().'/safelist-post/';
+	$fileName='safe-'.$post_id.'.txt';
+
+	// The unlink() function deletes a file.
+	error_log(print_r($folder.$fileName, TRUE)); 
+	unlink($folder.$fileName);
+}
 ```
