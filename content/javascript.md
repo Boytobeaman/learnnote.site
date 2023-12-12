@@ -1529,7 +1529,7 @@ elementc.dispatchEvent(eve)
 ```
 
 
-### 前端安全
+### 前端安全 XSS XSRF/CSRF
 ```
 xss 跨站脚本攻击
 Cross-site scripting

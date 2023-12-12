@@ -37,3 +37,36 @@ echo str_replace("world","Peter","world Hello world!");
 ```
 $reg = '/^[a-z"]{1,'. preg_quote($number) .'}$/';
 ```
+
+
+### 常用hooks
+
+### 集成 tailwind，保存post时，提取post里面的class 生成 safelist
+```
+function save_relative_class( $post_id ) {
+    // If this is a revision, get real post ID.
+    $parent_id = wp_is_post_revision( $post_id );
+	
+	$content = get_post_field('post_content', $post_id);
+
+	$pattern = '/class="(.*?)"/i';
+	
+	$folder=get_template_directory().'/safelist-post/';
+	
+	
+	$fileName='safe-'.$post_id.'.txt';
+	$myfile = fopen($folder.$fileName, "w") or die("Unable to open file!");
+	
+	error_log(print_r(get_template_directory(), TRUE)); 
+	
+	if(preg_match_all($pattern, $content, $matches)) {
+		$txt = join(" ",$matches[1]);
+		fwrite($myfile, $txt);
+	}
+	
+	fclose($myfile);
+
+  
+}
+add_action( 'save_post', 'save_relative_class' );
+```

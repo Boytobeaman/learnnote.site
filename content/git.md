@@ -275,7 +275,7 @@ github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+V
  
 //--global是该参数的使用范围，如果只想对本版本库设置该参数，只要在上述命令中去掉--global即可。
 ```
-#### 设置ss socks5代理加速
+### 设置ss socks5代理加速
 ```
 //首先ss是可以运行和翻墙的
 
