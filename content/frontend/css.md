@@ -1,7 +1,7 @@
 ---
 title: "css 常见问题"
 metaTitle: "css 常见问题"
-metaDescription: "css 常见问题，css 面试问题,css 选择器"
+metaDescription: "css 常见问题，css 面试问题,css 选择器, css variables"
 ---
 
 
@@ -596,4 +596,57 @@ max-width 不包含指定值
 https://animate.style/
 ```
 Animate.css is a library of animations for use in your web projects. Great for emphasis, home pages, sliders, and attention-guiding hints.
+```
+
+
+### css variables
+
+Custom properties(sometimes referred to as CSS variables or cascading variables) are entities defined by CSS authors that represent specific values to be reused throughout a document. 
+
+```
+section {
+  --main-bg-color: brown;
+}
+
+
+
+define custom properties on the :root pseudo-class, so that it can be referenced globally
+使用 :root 定义变量，全局都可以使用
+
+:root {
+  --main-bg-color: brown;
+}
+
+
+The var() function is used to insert the value of a CSS variable.
+// 使用时用 var
+details {
+  background-color: var(--main-bg-color);
+}
+
+
+
+Code example:
+
+:root {
+  --blue: #6495ed;
+  --white: #faf0e6;
+}
+
+body { background-color: var(--blue); }
+
+h2 { border-bottom: 2px solid var(--blue); }
+
+.container {
+  color: var(--blue);
+  background-color: var(--white);
+  padding: 15px;
+}
+
+button {
+  background-color: var(--white);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 5px;
+}
 ```
