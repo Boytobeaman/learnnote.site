@@ -1,0 +1,46 @@
+.slider-new{
+  .js-marquee-wrapper{
+    overflow: auto;
+    width: 100000px;
+    // transform: translateX(-3550px);
+    animation: 80s linear 0s infinite normal none running marqueeAnimation-cat;
+    &.marquee-reverse{
+      transform: translateX(-3550px);
+      animation: 80s linear 0s infinite normal none running marqueeAnimation-people;
+    }
+    &:hover{
+      animation-play-state: paused;
+    }
+    .slider{
+      display: flex;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      white-space: nowrap;
+      >div {
+        padding: 10px 15px 20px;
+        width: 350px;
+        .slider-col {
+          min-height: 150px;
+          border-radius: 8px;
+          background: #fff;
+          box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.25);
+          overflow: hidden;
+          padding: 12px 15px;
+          background-size: cover!important;
+          .ct__slide-top{
+            background-color: rgb(0, 0, 0);
+            color: #fff;
+            justify-content: center;
+            opacity: 0.6;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+  
+  
+}
+
+@keyframes marqueeAnimation-people  { 100%  {transform:translateX(0)}}
+@keyframes marqueeAnimation-cat  { 100%  {transform:translateX(-3550px)}}
