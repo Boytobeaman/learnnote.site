@@ -26,6 +26,7 @@ const PageEvent = ({loadingInfo, ...otherProps}) => {
           window.addEventListener("load", function() {
             // Code to be executed after the page has finished loading
             // For example, manipulating DOM elements, making API calls, etc.
+            console.log('page load event triggered')
           
             // Accessing and manipulating DOM elements
             var element = document.getElementById("myElement");
@@ -41,7 +42,7 @@ const PageEvent = ({loadingInfo, ...otherProps}) => {
             event.preventDefault();
           
             // Prompt the confirmation message
-            event.returnValue = ""; // Some browsers require a non-empty string
+            event.returnValue = "Are you sure you want to leave this page 是否确认离开?"; // Some browsers require a non-empty string
           
             // Return the confirmation message
             return "Are you sure you want to leave this page 是否确认离开?";
