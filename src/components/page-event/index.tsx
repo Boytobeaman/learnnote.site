@@ -29,7 +29,8 @@ const PageEvent = ({loadingInfo, ...otherProps}) => {
             console.log('page load event triggered')
           
             // Accessing and manipulating DOM elements
-            var element = document.getElementById("myElement");
+            let element = document.getElementById("myElement");
+            console.log(element)
             element.innerHTML = "Page loaded successfully!";
           
             // Making API calls or performing other actions
@@ -43,7 +44,7 @@ const PageEvent = ({loadingInfo, ...otherProps}) => {
           
             // Prompt the confirmation message
             event.returnValue = "Are you sure you want to leave this page 是否确认离开?"; // Some browsers require a non-empty string
-          
+            //由于安全问题，window.onbeforeunload 已经不能自定义提示信息了，下面设置信息也是没用的
             // Return the confirmation message
             return "Are you sure you want to leave this page 是否确认离开?";
           });

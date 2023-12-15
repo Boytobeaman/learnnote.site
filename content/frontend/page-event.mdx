@@ -48,6 +48,7 @@ window.addEventListener("beforeunload", (event) => {
   event.returnValue = ""; // Some browsers require a non-empty string
 
   // Return the confirmation message
+  //由于安全问题，window.onbeforeunload 已经不能自定义提示信息了，下面设置信息也是没用的
   return "Are you sure you want to leave this page 是否确认离开?";
 });
 ```
