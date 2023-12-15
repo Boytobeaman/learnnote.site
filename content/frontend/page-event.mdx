@@ -1,0 +1,63 @@
+---
+title: "page event"
+metaTitle: "DOMContentLoaded，load，beforeunload，unload"
+metaDescription: "DOMContentLoaded，load，beforeunload，unload"
+---
+
+import PageEvent from "../../src/components/page-event";
+
+## 页面生命周期：DOMContentLoaded，load，beforeunload，unload
+
+### DOMContentLoaded
+浏览器已完全加载 HTML，并构建了 DOM 树，但像 img 和样式表之类的外部资源可能尚未加载完成。
+```
+function ready() {
+  alert('DOM is ready');
+
+  // 图片目前尚未加载完成（除非已经被缓存），所以图片的大小为 0x0
+  alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+}
+document.addEventListener("DOMContentLoaded", ready);
+```
+
+### load
+浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等
+```
+window.addEventListener("load", function() {
+  // Code to be executed after the page has finished loading
+  // For example, manipulating DOM elements, making API calls, etc.
+
+  // Accessing and manipulating DOM elements
+  var element = document.getElementById("myElement");
+  element.innerHTML = "Page loaded successfully!";
+
+  // Making API calls or performing other actions
+  
+});
+```
+
+### beforeunload
+beforeunload 事件在页面即将被卸载（关闭、刷新、导航到其他页面等场景）之前触发，
+当用户正在离开页面时, 我们可以检查用户是否保存了更改，并询问他是否真的要离开。
+```
+window.addEventListener("beforeunload", (event) => {
+  // 可以在这里提示用户保存未保存的数据，或离开前确认提示
+  event.preventDefault();
+
+  // Prompt the confirmation message
+  event.returnValue = ""; // Some browsers require a non-empty string
+
+  // Return the confirmation message
+  return "Are you sure you want to leave this page 是否确认离开?";
+});
+```
+
+### unload
+用户几乎已经离开了，但是我们仍然可以启动一些操作，例如发送统计数据。
+```
+window.addEventListener("unload", function() {
+  alert(`unload event triggered`)
+});
+```
+
+<PageEvent />
