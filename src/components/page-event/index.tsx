@@ -1,8 +1,15 @@
 // Example from https://beta.reactjs.org/learn
 import './index.scss'
 
+import React, {useEffect} from 'react';
+
 const PageEvent = ({loadingInfo, ...otherProps}) => {
   
+  useEffect(()=>{
+
+    console.log(`react useEffect called`)
+
+  },[])
 
 
   return (

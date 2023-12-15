@@ -24,6 +24,29 @@ composite（合成/复合）把页面拆成多个图层，进行绘制
 
 
 
+### 浏览器有 渲染引擎和 JS 引擎
+渲染引擎， 我们常说的浏览器内核主要指的就是渲染引擎： WebKit
+JavaScript 引擎是一个专门处理 JavaScript 脚本的虚拟机，常见的 js引擎： V8
+
+### 页面中有script标签时会阻塞html 的渲染
+如下面的 myElement 在script 下面，这时就去不到它的值，就会返回undefined
+```
+<script>
+  for (var i = 0; i < 5000000; i++) {
+    if(i%50000 === 0){
+      console.log(`i ==`,i)
+    }
+    
+  }
+  console.log(document.body.innerHTML);
+  let myElement = document.getElementById("myElement");
+  console.log(`myElement===`);
+  console.log(myElement);// undefined
+</script>
+<img id="img" src="https://www.learnnote.site/images/golden-retriever.png" />
+<div id="myElement" className='p-2 bg-gray-200 mt-1'>default content, the text should be changed to "Page loaded successfully!"</div>
+```
+
 ### 回流（reflow） 
 对页面做了一些事情，导致了layout过程的再次发生
 
