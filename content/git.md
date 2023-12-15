@@ -1,7 +1,7 @@
 ---
 title: "git 常用命令"
 metaTitle: "git 常用命令, git clone 指定分支"
-metaDescription: "git 常用命令, git clone 指定分支"
+metaDescription: "git 常用命令, git clone 指定分支, git 删除文件"
 ---
 
 
@@ -181,7 +181,7 @@ Since your pull was unsuccessful then HEAD (not HEAD^) is the last "valid" commi
 
 ```
 
-
+### git 删除文件
 #### remove local untracked files from the current Git branch
 ```
 git clean

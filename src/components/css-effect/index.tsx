@@ -722,8 +722,30 @@ const CssEffect = ({loadingInfo, ...otherProps}) => {
             </div>
           </div>
         </div>
-        
-        
+      </section>
+      <section className='mt-2 star-bg flex flex-auto flex-column overflow-hidden relative h-96 bg-slate-900'>
+        <p className='text-center text-white w-full absolute'>Dark sky with dynamic star background</p>
+        <div className="signup-space">
+          <div className="signup-stars" />
+          <div className="signup-stars" />
+          <div className="signup-stars" />
+          <div className="signup-stars" />
+          <div className="signup-stars" />
+          <div className="signup-stars" />
+        </div>
+        <div className="d-flex flex-justify-center z-2">
+          <img
+            src="/images/hero-glow.svg"
+            alt="Glowing universe"
+            className="js-warp-hide absolute overflow-hidden events-none max-w-none"
+            style={{
+              top: "50%",
+              left: "50%",
+              width: "200%",
+              transform: "translate(-50%, -50%)"
+            }}
+          />
+        </div>
       </section>
     </div>
   );
