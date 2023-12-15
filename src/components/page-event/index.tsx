@@ -10,6 +10,7 @@ const PageEvent = ({loadingInfo, ...otherProps}) => {
       <script
         dangerouslySetInnerHTML={{
           __html: `
+          console.log('script in component runing')
           function ready() {
             console.log('----DOM is ready------');
             alert('----DOM is ready------');
