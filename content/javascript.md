@@ -1150,7 +1150,9 @@ export function addObjectAttr(originalObject, addObject) {
 ![防抖和节流](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/throttle-vs-debounce.jpg)
 
 #### 防抖debounce
-在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。
+在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。  
+Debouncing is a technique used to control and limit the frequency of a function's execution. It is particularly useful in scenarios where a function is triggered by an event that can fire multiple times in a short period, such as scrolling, resizing, or typing. 
+debounce can help optimize performance and prevent excessive function calls. 
 ```
 //在一定时间内，触发多次事件，只认最后一次触发的并且重置时间，到了时间结束执行事件
 
@@ -1176,6 +1178,7 @@ function debounce (fn, time){
 
 
 #### 节流 throttle
+In JavaScript, throttling is a technique used to control the rate at which a function is executed. It limits the number of times a function can be called within a specified time interval. Throttling helps to optimize performance and prevent excessive function invocations, particularly in scenarios where a function might be called frequently, such as when handling scroll events or user input.
 ```
 function throttle (fn, time){
   let lastTime = 0;
@@ -1200,6 +1203,8 @@ function throttle (fn, time){
 
 #### 节流
 节流的首次点击立即有效，并记录此时为执行时间，后面一定时间间隔内的点击没用，等到一定时间间隔后的点击立即有效执行，并刷新此时为执行时间，然后一定时间间隔内的点击又没有效。。。
+
+
 
 节流的应用场景
 将一些事件降低触发频率。比如懒加载时要监听计算滚动条的位置，但不必每次滑动都触发，可以降低计算的频率

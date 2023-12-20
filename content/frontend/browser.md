@@ -86,6 +86,11 @@ position: transform: translate(npx, npx)
 
 #### window.requestAnimationFrame vs window.requestIdleCallback
 ```
-window.requestAnimationFrame 每次渲染完都会执行，高优先级
-window.requestIdleCallback 空闲时才执行，低优先级
+window.requestAnimationFrame 
+rAF是渲染之前发生，高优先级
+一般情况下，一帧会执行一次 requestAnimationFrame
+
+
+window.requestIdleCallback 
+空闲时才执行，低优先级
 ```

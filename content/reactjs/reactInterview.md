@@ -562,7 +562,7 @@ thirdIOTAuthData 为对象（引用数据类型值），会比较 地址是否�
 ```
 
 
-#### React Hook stale-closure 过期闭包的问题
+### React Hook stale-closure 过期闭包的问题
 
 ```
 import React, { useState } from "react";

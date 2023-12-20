@@ -60,27 +60,26 @@ let onceNumber = 20
 let currentIndex = 0
 
 const renderToPage = (total, currentIndex) => {
-if(total <= 0){
-    return
-}
-let loopNumber = Math.min(total, onceNumber);
-
-window.requestAnimationFrame(() => {
-    let fragment = document.createDocumentFragment();
-    for (let i = 1; i <= loopNumber; i++) {
-    let item = document.createElement('li')
-            item.innerText = `我是 new ${currentIndex + i}`
-    fragment.appendChild(item)
+    if(total <= 0){
+        return
     }
-    list.appendChild(fragment)
+    let loopNumber = Math.min(total, onceNumber);
 
-    let newTotal = total - loopNumber
-    let newIndex = currentIndex + loopNumber
-    if(newTotal > 0){
-    renderToPage(newTotal, newIndex)
-  }
-})
+    window.requestAnimationFrame(() => {
+        let fragment = document.createDocumentFragment();
+        for (let i = 1; i <= loopNumber; i++) {
+            let item = document.createElement('li')
+            item.innerText = `我是 new ${currentIndex + i}`
+            fragment.appendChild(item)
+        }
+        list.appendChild(fragment)
 
+        let newTotal = total - loopNumber
+        let newIndex = currentIndex + loopNumber
+        if(newTotal > 0){
+            renderToPage(newTotal, newIndex)
+        }
+    })
 }
 
 renderToPage(total, currentIndex)
