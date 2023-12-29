@@ -4,6 +4,7 @@ metaTitle: "前端面试，算法"
 metaDescription: "前端面试，算法"
 ---
 
+# 前端面试
 ### 页面从输入URL到页面加载显示完成，这个过程中都发生了什么
 ```
 1. 根据 dns 服务器获得对应的ip地址
@@ -277,4 +278,52 @@ console.log(que.length)
 console.log(que.delete())
 console.log(que.length)
 
+```
+
+
+### 链表
+数组需要一块连续的内存区间，而链表是零散的  
+链表、数组是一种物理结构，栈和队列是逻辑结构  
+java 中自带链表这种数据结构，js需要自己实现  
+
+链表查询慢O(n),新增和删除快O(1)
+数组查询快O(1),新增和删除慢O(n)
+
+
+
+#### 把JS array 转化为单向链表
+```
+
+interface ILinkListNode{
+	value: number
+	next?: ILinkListNode
+}
+
+function createLinkList(arr: number[]) : ILinkListNode{
+
+	const length = arr.length;
+	if(length === 0) throw new Error('arr is empty')
+
+	let curNode: ILinkListNode = {
+		value: arr[arr.length -1]
+	}
+
+	if(length === 1) return curNode
+
+	for (let index = length - 2; index >= 0; index--) {
+		const element = arr[index];
+		curNode= {
+			value: arr[index],
+			next: curNode
+		}
+		
+	}
+	return curNode
+	
+}
+
+
+let c= createLinkList([100, 200, 300]);
+
+console.log(c)
 ```

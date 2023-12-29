@@ -128,7 +128,7 @@ for (variable of iterable) {
 }
 ```
 
-#### 不支持原生的Object遍历
+#### For Of 不支持原生的Object遍历
 ```
 // 遍历的对象 objArr 不能是原生的对象，比如 { fname: "John", lname: "Doe", age: 25 }
 for(let value of objArr){

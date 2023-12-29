@@ -26,6 +26,17 @@ SYN(SYNchronization) ： 在连接建立时用来同步序号。当SYN=1而ACK=0
 完成了三次握手，客户端和服务器端就可以开始传送数据。以上就是TCP三次握手的总体介绍。
 ```
 
+### TCP 和 UDP 的区别
+特性 | TCP | UDP
+--- | --- | ---
+连接 |	面向连接 | 无连接
+速度 |	速度较慢 | 速度较快
+可靠性 |	可靠的传输保证 | 不保证传输可靠性
+流量控制 |	有流量控制机制 | 无流量控制机制
+拥塞控制 |	有拥塞控制机制 | 无拥塞控制机制
+顺序传输 |	保证数据包顺序传输 | 不保证数据包顺序传输
+适用场景 | 文件传输、网页浏览等 | 实时视频流、游戏等
+
 ### https
 ![how https work](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/how-https-work.jpg "how https work")
 

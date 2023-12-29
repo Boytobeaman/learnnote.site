@@ -14,7 +14,7 @@ const config = {
     helpUrl: '',
     tweetText: '',
     social: ``,
-    links: [{ text: '', link: '' }],
+    links: [{ text: 'ChatGPT中文网', link: 'https://www.chatgpt-use.com/' }],
     search: {
       enabled: true,
       indexName: 'test-doc',
