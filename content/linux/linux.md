@@ -17,6 +17,11 @@ cat /etc/redhat-release
 
 ```
 
+### 显示CPU架构信息和详细的CPU信息
+```
+lscpu
+```
+
 ### 查看linux 是不是64位
 ```
 arch
@@ -1104,4 +1109,12 @@ ln -s /usr/local/php/bin/php /usr/bin/php
 
 查看php 版本
 php -v
+```
+
+
+
+### linux 清除当前命令行输入的内容 ctrl+u
+```
+// 比如下面你在命令行里输入了很长的内容，但是你不想执行了，想删除它，可以使用ctrl+u 命令删除，如果想恢复使用 ctrl+y
+root@instance-v23:~# some very long content or some command
 ```

@@ -32,6 +32,7 @@ HTTP状态码分类
 404 | not found （访问的资源不存在）
 429 | too many requests （太多请求）
 500 | internal server error
+502 | Bad Gateway
 503 | service unavailable
 
 

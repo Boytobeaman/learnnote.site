@@ -166,4 +166,10 @@ eg:
 ./mysql -p -u root aqetech.com < /tmp/test_50d_top.sql
 
 然后输入密码
+
+
+
+前提是需要数据库已经存在，如果不存在需要创建一下
+比如
+create database `aqetech.com`;
 ```
