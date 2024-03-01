@@ -562,14 +562,14 @@ git add .
 //commit代码
 git commit -m "xxx"
 
-//删除原来的master分支
-git branch -D master
+//删除原来的 main 分支,以前叫 master
+git branch -D main
 
-//将当前分支重命名为master
-git branch -m master
+//将当前分支重命名为main
+git branch -m main
 
 //最后，强制更新您的存储库
-git push -f origin master
+git push -f origin main
 ```
 
 ### 常用命令

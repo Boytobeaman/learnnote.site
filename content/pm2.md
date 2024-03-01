@@ -114,6 +114,14 @@ pm2 logs 'project-name'
 // 或者使用项目id
 pm2 logs -1
 
+
+// 查看 1000 行
+pm2 logs appName --lines 1000
+
+
+// 仅查看 错误信息
+pm2 logs appName --err --lines=100
+
 ```
 
 
