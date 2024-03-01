@@ -623,7 +623,6 @@ eg:
 git push origin --delete branch_a
 
 
-```
 git branch -vv
 //可以查看本地分支对应的远程分支
 
