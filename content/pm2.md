@@ -44,6 +44,10 @@ pm2 restart all
 
 
 
+启动某个script 如： pm2-start-prod
+pm2 start "npm run pm2-start-prod" --name backend-prod
+
+
 // pm2 启动 npm start
 pm2 start npm --name "Your APP Name" -- start
 
@@ -77,6 +81,40 @@ chmod +x ./test.sh
 pm2 启动 python脚本
 pm2 start main.py --interpreter /usr/local/bin/python3.7 --name proxy_pool
 
+
+
+也可以使用 ecosystem.config.js 启动项目
+
+使用  
+pm2 init simple 
+创建ecosystem.config.js 文件
+
+
+配置案例
+module.exports = {
+  apps : [{
+    name   : "app1",
+    script : "./app.js",
+    ignore_watch: ["node_modules", "output", "temp","download", "\\.git", "*.log"],
+    env_production: {
+       NODE_ENV: "production"
+    },
+    env_development: {
+       NODE_ENV: "development"
+    }
+  }]
+}
+
+pm2 start ecosystem.config.js --only api-app
+
+// 开启watch
+pm2 start ecosystem.config.js --only api-app --watch
+
+```
+### Auto restart apps on file change
+```
+// 加上 --watch
+pm2 start app.js --watch
 ```
 
 ### pm2 日志管理
