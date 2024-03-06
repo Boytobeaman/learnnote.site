@@ -70,6 +70,22 @@ export class UsersController {
     console.log(postdata);
     return { userid, postid };
   }
+
+
+
+
+
+  // :id 带冒号的是路由变量， status 不带: 是固定字符串
+  // 如Patch路由 /525b14d0-3b46-45d9-8e64-0c3846611430/status
+  @Patch('/:id/status')
+  updateTaskStatus(
+    @Param('id') id: string,
+    @Body ('status') status: TaskStatus
+  ): Task{
+    return this.taskService.updateTaskStatus(id, status)
+  }
+
+
 }
 
 
@@ -161,3 +177,37 @@ Nodejs 环境下最常用的logger
 
 ### nestjs lifecycle
 ![nestjs lifecycle](https://raw.githubusercontent.com/Boytobeaman/learnnote.site/master/static/documents/images/nestjs-lifecycle.png)
+
+
+
+
+### 环境变量
+If a module configuration depends on the environment variables, and these variables are loaded from the .env file, you can use the ConfigModule.envVariablesLoaded hook to ensure that the file was loaded before interacting with the process.env object, see the following example:  
+
+tasks.module.ts
+```
+
+import { Module } from '@nestjs/common';
+import { TasksController } from './tasks.controller';
+import { ConfigModule } from '@nestjs/config';
+
+
+
+// 这时为 undefined： process.env.PORT
+console.log(`${process.env.PORT} =====TASK MODULE`)
+
+export async function getStorageModule() {
+  await ConfigModule.envVariablesLoaded;
+
+  // 这时可以取到process.env.PORT的值，如10000 
+  console.log(`${process.env.PORT} =====TASK MODULE`)
+}
+
+getStorageModule()
+
+@Module({
+  controllers: [TasksController]
+})
+export class TasksModule {}
+
+```
