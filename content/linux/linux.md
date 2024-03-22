@@ -1118,3 +1118,68 @@ php -v
 // 比如下面你在命令行里输入了很长的内容，但是你不想执行了，想删除它，可以使用ctrl+u 命令删除，如果想恢复使用 ctrl+y
 root@instance-v23:~# some very long content or some command
 ```
+
+
+
+### 挂载新硬盘
+```
+// 可以查看硬盘列表，uuid信息
+lsblk -f
+
+//格式化磁盘
+Format the disk device using the mkfs tool
+// 注意 DEVICE_NAME 改成你的新的磁盘名
+
+ sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/DEVICE_NAME
+
+
+
+ 挂载
+ Mount the disk
+ 先创建要挂载到的目录，如 /data
+
+ sudo mkdir -p /data
+
+
+//挂载
+sudo mount -o discard,defaults /dev/sba /data
+
+ 
+
+Configure read and write permissions on the disk. For this example, grant write access to the disk for all users.
+
+sudo chmod a+w /data
+
+
+
+Configure automatic mounting on VM restart
+配置重启服务器后自动挂载
+
+
+先备份一下fstab 文件
+sudo cp /etc/fstab /etc/fstab.backup
+
+//列出对应磁盘的uuid
+sudo blkid /dev/sba
+
+
+
+//编辑/etc/fstab， 加上一行
+UUID=UUID_VALUE /data ext4 discard,defaults,nofail 0 2
+
+
+
+
+
+sudo umount /dev/sdb
+
+
+
+如果umount 时无法umount,说 target is busy!
+
+use lsof +f -- /dev/sdb  to list all processes with open files on the device containing the filesystem, and then kill them
+
+lsof +f -- /dev/sdb 
+
+kill -9 pid
+```
