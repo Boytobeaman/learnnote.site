@@ -166,3 +166,18 @@ module.exports = {
   ],
 }
 ```
+
+### nextjs 取消部署时检查 typescript 格式
+```
+next.config.js
+
+module.exports = {
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+}
+```
