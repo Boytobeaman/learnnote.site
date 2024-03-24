@@ -45,7 +45,7 @@ location / {
   proxy_set_header X-Real-IP $remote_addr;
   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   proxy_set_header X-Forwarded-Proto https;
-  proxy_connect_timeout       300;
+  proxy_connect_timeout       300; //注意这里几个配置决定了API的timeout时间
   proxy_send_timeout          300;
   proxy_read_timeout          300;
   send_timeout                300;
