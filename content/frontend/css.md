@@ -75,6 +75,7 @@ BFC就是页面上的一个隔离的独立容器，容器里面的子元素不�
 
 ### 哪些元素会生成BFC?
 ```
+根元素，即HTML元素
 float不为none
 position不为static/relative
 display的值为inline-block、table-cell、table-caption
@@ -501,7 +502,7 @@ container.getBoundingClientRect()
 }
 ```
 
-### Repaint(重绘) 和 Reflow(回流)
+### Repaint(重绘) 和 Reflow(回流/重排)
 Repaint occurs when some changes only its skin styles, such as color and visibility. Reflow occur when the page of DOM changes its layout.
 
 
