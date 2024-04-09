@@ -706,7 +706,7 @@ class App extends React.Component {
 
 
 ```
-### react router dom 实现原理
+### react router dom 实现原理 window.history API
 ```
 H5 提供了一个好用的 history API
 使用 window.history.pushState() 使得我们即可以修改 url 也可以不刷新页面，一举两得。

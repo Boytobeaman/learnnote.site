@@ -299,6 +299,19 @@ git config --global --get-regexp http.*
 git config list
 //查看所有的npm config
 
+
+
+npm config list
+//查看npm 所有配置
+
+
+//设置 registry 地址（淘宝镜像）
+npm config set registry https://registry.npmmirror.com
+
+// 查看 registry 设置是否成功
+npm get registry
+
+
 npm config delete https-proxy
 //删除某个proxy 比如https-proxy
 
