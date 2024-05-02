@@ -94,3 +94,23 @@ rAF是渲染之前发生，高优先级
 window.requestIdleCallback 
 空闲时才执行，低优先级
 ```
+
+
+### 如何判断用户打开了浏览器控制台
+```
+// 页面上加上如下代码，如果用户没有打开控制台，debugger 不会生效，
+// 这时 timeConsumed 会很小，一般会小于1，
+// 如果 用户打开了控制台，debugger 生效，往下走 timeConsumed 肯定会大于100
+
+setInterval(() => {
+  let startTime = performance.now();
+  debugger
+  let endTime = performance.now();
+  let timeConsumed = endTime - startTime;
+  console.log(`timeConsumed`, timeConsumed)
+  if(timeConsumed > 100){
+    console.log(`opened f12`)
+  }
+
+}, 100)
+```
