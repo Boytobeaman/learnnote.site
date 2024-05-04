@@ -70,6 +70,20 @@ overlay=(main_w-overlay_w):(main_h-overlay_h)
 ffmpeg -i input.mp4 -i watermark.png -filter_complex "[1][0]scale2ref=oh*mdar:ih*0.2[logo][video];[video][logo]overlay=(main_w-overlay_w):(main_h-overlay_h)" output_bottom_right.mp4
 ```
 
+
+
+### 放在左上和右下角
+```
+
+// 这里不改变图片的比例，如果图片和视频的像素比例如果差别太大，合成的效果可能会不理想
+ffmpeg -i demo.mp4 -i cat.png -filter_complex "[0][1]overlay=10:10[v];[v][1]overlay=(W-w-10):(H-h-10)" both_corners.mp4
+
+
+// 首先 [1][0]scale2ref='oh*mdar:ih*0.2 指定logo 的尺寸为视频的0.2倍且按比例缩放
+// [logo]split=2[logo1][logo2] 是将一个 logo stream 复制两份，以便后续使用，因为要加到两个地方
+ffmpeg -i demo.mp4 -i cat.png -filter_complex "[1][0]scale2ref='oh*mdar:ih*0.2'[logo][video];[logo]split=2[logo1][logo2];[video][logo1]overlay=10:10[v1];[v1][logo2]overlay=(W-w-10):(H-h-10)" both_corners.mp4
+```
+
 ### Adjust the Transparency of the Watermark
 ```
 You can adjust the transparency of the image using this option:
