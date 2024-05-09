@@ -59,6 +59,20 @@ eg:
 nvm alias default 14.19.0
 ```
 
+### ubuntu 安装nvm
+```
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+
+Verify the NVM version installed with:
+nvm --version
+
+
+install node, for example v18:
+nvm install v18
+```
+
 ### why node.js
 
 #### CPU 密集 vs I/O 密集

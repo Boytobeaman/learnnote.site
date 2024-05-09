@@ -872,6 +872,25 @@ localhost 是一个域名，在过去它指向 127.0.0.1 这个IP地址。在操
 在服务器中，0.0.0.0指的是本机上的所有IPV4地址，，如果我绑定的端口指定了0.0.0.0，那么通过内网地址或外网地址都可以访问我的应用。但是如果我只绑定了内网地址，那么通过外网地址就不能访问
 ```
 
+### Private IP address 私有IP地址
+```
+10.0.0.0 to 10.255.255.255 (10.0.0.0/8): 
+大型企业或组织适用
+比如一些云平台某服务器的私有IP地址如：10.0.0.4
+This range provides a large pool of addresses for use in private networks. It is commonly used by large organizations and enterprises.
+
+
+172.16.0.0 to 172.31.255.255 (172.16.0.0/12): 
+中型-大型网络适用
+This range consists of multiple Class B networks within the 172.16.0.0/12 network space. It is often used for medium to large-sized networks.
+
+
+192.168.0.0 to 192.168.255.255 (192.168.0.0/16): 
+中小企业适用
+比如我们开发者启动本地开发程序，可能会使用如 192.168.60.40 的地址
+This range is widely used for home networks and small to medium-sized businesses due to its ease of use and availability of addresses.
+```
+
 ## scp 本地与远程直接copy 文件
 ```
 scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
@@ -1123,7 +1142,10 @@ root@instance-v23:~# some very long content or some command
 
 ### 挂载新硬盘
 ```
-// 可以查看硬盘列表，uuid信息
+查看硬盘列表,包括未挂载的磁盘
+lsblk
+
+// 可以查看硬盘列表，包含磁盘uuid信息
 lsblk -f
 
 //格式化磁盘
