@@ -360,3 +360,79 @@ server {
 
 }
 ```
+
+
+
+### 为一个域名配置 nginx 服务器
+#### 创建配置文件
+配置文件通常在  
+/etc/nginx/sites-enabled  
+/etc/nginx/sites-available  
+下，以 your_domain.conf 命名
+
+
+for example:
+```
+server {  
+    listen 80;  
+    server_name example.com www.example.com;  
+    root /var/www/example.com;  
+} 
+```
+
+
+#### 创建网站根目录
+根据配置文件里面指定的 root，创建网站根目录及入口文件
+如：
+vim /var/www/example.com/index.html  
+
+
+```
+<html>  
+<head>  
+    <title>Welcome to example.com!</title>  
+</head>  
+<body>  
+    <h1>Hello, world!</h1>  
+</body>  
+</html>  
+
+```
+
+#### 重启nginx 服务，是配置生效
+```
+sudo systemctl restart nginx 
+```
+
+
+### 为域名添加安全证书
+Secure Nginx with Let's Encrypt on Ubuntu 20.04
+
+#### Step 1 — Installing Certbot
+
+```
+sudo apt install certbot python3-certbot-nginx
+```
+
+#### Step 2 — Confirming Nginx’s Configuration
+Certbot needs to be able to find the correct server block in your Nginx configuration for it to be able to automatically configure SSL. Specifically, it does this by looking for a server_name directive that matches the domain you request a certificate for.
+
+#### Step 3 — Allowing HTTPS Through the Firewall/云服务的安全组端口配置
+要开放80，443 端口访问
+
+
+#### Step 4 — Obtaining an SSL Certificate
+```
+sudo certbot --nginx -d example.com -d www.example.com
+```
+
+
+#### Step 5 — Verifying Certbot Auto-Renewal
+
+```
+sudo systemctl status certbot.timer
+```
+To test the renewal process, you can do a dry run with certbot:
+```
+sudo certbot renew --dry-run
+```
