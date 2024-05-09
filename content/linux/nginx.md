@@ -399,7 +399,7 @@ vim /var/www/example.com/index.html
 
 ```
 
-#### 重启nginx 服务，是配置生效
+#### 重启nginx 服务，使配置生效
 ```
 sudo systemctl restart nginx 
 ```
