@@ -173,6 +173,7 @@ eg:
 docker run -p 3306:3306 --name mymysql -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
 
 // 端口映射
+-p {HOST_PORT}:{CONTAINER_PORT}
 -p 3306:3306
 将宿主机的3306 端口和container 的3306 端口作映射
 
@@ -275,6 +276,20 @@ ENTRYPOINT | 容器入口
 USER | 指定用户
 VOLUME | mount point
 
+
+#### COPY 命令
+```
+eg:
+COPY src /app/
+
+
+copy src 文件夹下的所有文件到 /app/ 下，不包含src这个文件夹，
+如：src 下有一个文件 index.js
+
+最终到container 里面结构是
+app
+  index.js
+```
 
 ### K8S
 就是基于容器的集群管理平台，它的全称，是kubernetes。
