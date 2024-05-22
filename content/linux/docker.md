@@ -155,8 +155,47 @@ docker volume create
 eg:
 docker volume create todo-db
 
+
+新建的数据卷会放到默认宿主文件夹下
+/var/lib/docker/volumes
+
 ```
 
+#### 删除数据卷
+```
+docker volume rm [OPTIONS] VOLUME [VOLUME...]
+
+eg:
+docker volume rm todo-db
+```
+
+
+#### volumn 类型
+
+```
+命名数据卷 named volume
+
+docker-compose.yaml
+
+version: '3',
+services:
+  mongodb:
+    image:mongo
+    ports:
+      - 27017:27017
+    volumns:
+      -db-data:/var/lib/mysql/data
+  mongo-express:
+    image:mongo-express
+    ...
+volumns:
+  db-data
+
+
+这里的 db-data 就是命名的数据卷
+volumns:
+  db-data
+```
 
 
 列出image
