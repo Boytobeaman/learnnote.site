@@ -66,6 +66,13 @@ eg:
 docker exec -it mymysql /bin/bash
 docker exec -it 8d07b861dedc /bin/bash
 
+
+更新--
+bash 不行了，直接 /bin/sh
+
+docker exec -it mymysql /bin/sh
+docker exec -it 8d07b861dedc /bin/sh
+
 exit
 推出容器
 ```
