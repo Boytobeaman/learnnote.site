@@ -72,7 +72,7 @@ focusInput () {
 ```
 #### 注意
 如果 ChildInputRef 在 modal里或者 在tab 里，没有实际渲染，
-则 componentDidMount 里 this.ChildInputRef.current 为 null
+则 componentDidMount 里 this.ChildInputRef.current 为 null
 
 ### 父组件利用 forwardRef 直接控制 子组件的某个元素
 
