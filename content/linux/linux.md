@@ -264,6 +264,14 @@ taskkill /pid 4136 -t -f
 lsof -i -P | grep -i 'listen'
 ```
 
+### 查看某服务器的某个端口是否开启
+```
+nc -zv ip port
+
+eg:
+nc -zv 3.xx.121.xx 22
+```
+
 ### pkill命令
 根据进程名kill进程
 ```
