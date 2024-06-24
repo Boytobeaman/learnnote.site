@@ -47,6 +47,22 @@ module.exports = {
   // 测试代码环境，浏览器或者nodejs, The test environment that will be used for testing
   testEnvironment: "jsdom",
 
+  // 指定覆盖率
+  coverageThreshold: {
+    global: {
+      statements: 80,
+      branches: 80,
+      lines: 80,
+    },
+    "src/componentA.ts": {
+      branches: 100,
+      lines: 0,
+    },
+    "src/componentB.ts": {
+      branches: 92,
+      lines: 92,
+    },
+  }
 }
 
   
@@ -62,6 +78,18 @@ test('renders learn react link', () => {
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
+```
+
+####  Jest tests with coverage for one specific file
+```
+jest test-file-name --coverage
+
+eg:
+jest test/myTest.spec.ts --coverage
+
+
+如果jest 只是安装在项目中，没有全局安装，可以使用npx 命令运行
+npx jest tests/example.test.js  
 ```
 
 #### 断言常用语句
