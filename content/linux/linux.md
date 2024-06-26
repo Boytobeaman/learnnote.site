@@ -259,6 +259,32 @@ netstat -aon|findstr "8080"
 taskkill /pid 4136 -t -f
 ```
 
+## ss command
+ss is the socket statistics command that replaces netstat  
+ss的优势在于它能够显示更多更详细的有关TCP和连接状态的信息，而且比netstat更快速更高效
+```
+ss [ OPTIONS ] [ FILTER ]
+
+ss -t -a 【显示TCP连接】
+
+-t： tcp
+
+-a:  all
+
+-l:  listening         【ss -l列出所有打开的网络连接端口】
+
+-s:  summary        【显示 Sockets 摘要】
+
+-p:  progress
+
+-n:  numeric         【不解析服务名称】
+
+-r:  resolve        【解析服务名称】
+
+-m: memory        【显示内存情况】
+```
+
+
 ### linux 查看端口占用，查看所有端口情况
 ```
 lsof -i -P | grep -i 'listen'

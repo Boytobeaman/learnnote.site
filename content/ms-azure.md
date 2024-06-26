@@ -17,6 +17,7 @@ LLM | large language model
 URI | Uniform Resource Identifier
 acs | azure cognitive search
 AML | azure machine learning
+aria | Accessible Rich Internet Applications
 
 MSI
 

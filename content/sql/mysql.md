@@ -23,6 +23,20 @@ mysql>GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'%'IDENTIFIED BY 'mypassword' WITH
 mysql>FLUSH PRIVILEGES
 ```
 
+### 修改密码
+```
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+
+
+MySQL 8版本
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'lu5541118';
+
+// 退出后重新进入mysql 就需要密码了
+exit;
+
+
+```
+
 
 ### Mysql清空表 truncate 与删除表中数据 delete 的区别
 如表名wp_comments
@@ -78,7 +92,7 @@ alter table table_name add id int(11) primary key auto_increment first;
 5、检查没问题的话，备份的表可以删了
 delete from table_bak;
 
-
+```
 
 连接mysql 数据库
 ```
@@ -125,7 +139,13 @@ GRANT ALL PRIVILEGES ON *.* TO 'some_user'@'%' WITH GRANT OPTION;
 
 FLUSH PRIVILEGES;
 ```
+### 查看所有mysql用户
+```
+登录成功后
 
+USE mysql; （这一步通常是可选的，因为默认就会使用 mysql 数据库）
+SELECT User, Host FROM mysql.user;
+```
 
 ### aws RDS mysql 问题
 #### 无法还原数据库
