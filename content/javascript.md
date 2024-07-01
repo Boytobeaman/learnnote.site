@@ -1143,6 +1143,121 @@ export function addObjectAttr(originalObject, addObject) {
 }
 ```
 
+### 过滤树结构数据
+```
+function filterTree(node, keyword) {  
+  // Initialize an array to store filtered children  
+  const filteredChildren = [];  
+
+  // Recursively filter children  
+  for (const child of node.children) {  
+      const filteredChild = filterTree(child, keyword);  
+      if (filteredChild !== null) {  
+          filteredChildren.push(filteredChild);  
+      }  
+  }  
+
+  // Check if the current node's name contains the keyword  
+  const nodeMatches = node.name.toLowerCase().includes(keyword.toLowerCase());  
+
+  // If the node matches or any of its children match, include the node with the filtered children  
+  if (nodeMatches || filteredChildren.length > 0) {  
+      return {  
+          id: node.id,  
+          name: node.name,  
+          children: filteredChildren  
+      };  
+  }  
+
+  // If neither the node nor its children match, return null  
+  return null;  
+}
+
+
+
+example data:
+const treeData = {  
+    id: "1",  
+    name: "Root",  
+    children: [  
+        {  
+            id: "1.1",  
+            name: "Branch 1",  
+            children: [  
+                {  
+                    id: "1.1.1",  
+                    name: "Leaf 1.1.1",  
+                    children: []  
+                },  
+                {  
+                    id: "1.1.2",  
+                    name: "Leaf 1.1.2",  
+                    children: []  
+                }  
+            ]  
+        },  
+        {  
+            id: "1.2",  
+            name: "Branch 2",  
+            children: [  
+                {  
+                    id: "1.2.1",  
+                    name: "Branch 2.1",  
+                    children: [  
+                        {  
+                            id: "1.2.1.1",  
+                            name: "Leaf 1.2.1.1",  
+                            children: []  
+                        },  
+                        {  
+                            id: "1.2.1.2",  
+                            name: "Leaf 1.2.1.2",  
+                            children: []  
+                        }  
+                    ]  
+                },  
+                {  
+                    id: "1.2.2",  
+                    name: "Leaf 1.2.2",  
+                    children: []  
+                },
+                {  
+                    id: "1.9.2",  
+                    name: "Leaf 1.9.2",  
+                    children: []  
+                }  
+            ]  
+        },  
+        {  
+            id: "1.3",  
+            name: "Branch 3",  
+            children: [  
+                {  
+                    id: "1.3.1",  
+                    name: "Branch 3.1",  
+                    children: [  
+                        {  
+                            id: "1.3.1.1",  
+                            name: "Leaf 1.3.1.1",  
+                            children: []  
+                        }  
+                    ]  
+                } ,
+                {  
+                    id: "1.2.600",  
+                    name: "Leaf 1.2.600",  
+                    children: []  
+                }  
+            ]  
+        }  
+    ]  
+};  
+
+
+const keyword = "1.2";  
+const filteredTree = filterTree(treeData, keyword);  
+```
+
 ### 二叉树
 
 
