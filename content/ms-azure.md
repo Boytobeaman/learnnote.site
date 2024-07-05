@@ -18,6 +18,10 @@ URI | Uniform Resource Identifier
 acs | azure cognitive search
 AML | azure machine learning
 aria | Accessible Rich Internet Applications
+SLA | Service Level Agreement
+PST | Pacific Standard Time
+RCA | Root Cause Analysis
+GA |  General Availability
 
 MSI
 
