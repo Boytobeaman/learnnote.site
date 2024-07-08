@@ -12,16 +12,17 @@ First Header | Second Header
 ARM | Azure Resource Manager
 SAS | shared access signatures
 RAG | Retrieval Augmented Generation
-AAD | Azure Active Directory
 LLM | large language model
 URI | Uniform Resource Identifier
 acs | azure cognitive search
+AAD | Azure Active Directory
 AML | azure machine learning
 aria | Accessible Rich Internet Applications
 SLA | Service Level Agreement
 PST | Pacific Standard Time
 RCA | Root Cause Analysis
 GA |  General Availability
+CSI | Chinasoft International (中软国际)
 
 MSI
 
@@ -31,4 +32,5 @@ MSI
 Use a service principal, shared access signature (SAS) token or account key to authenticate access to your storage account.
 #### Identity-based:
 Use your Microsoft Entra identity or managed identity.
+
 

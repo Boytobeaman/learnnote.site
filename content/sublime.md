@@ -26,8 +26,6 @@ shift+ctrl+down（下箭头）
 
 
 
-
-
 ### idea/vscode/sublime 公用快捷键
 ```
 向下复制当前行 duplicate line or selection
@@ -39,6 +37,10 @@ Ctrl+Y
 
 选择所有匹配项 select all Occurrences of find match
 Ctrl + Shift + L
+
+
+向下添加光标 add cursor below
+Ctrl + Alt + DownArrow
 
 
 撤销
@@ -58,7 +60,16 @@ sync settings
 
 
 step 2:
-按照sync settings 里面的配置步骤创建gist,上传配置，或者在新设备里面下载配置
+按照sync settings 里面的配置步骤创建gist,
+
+上传配置命令
+Sync Settings: Upload
+
+或者在新设备里面还原/下载配置
+命令
+Sync Settings: Download
+还原时最好使用全新下载的 sublime，不然配置有冲突的话，还原会出错，
+
 
 要记得 sync settings 对应的gist 配置,比如
 ```
