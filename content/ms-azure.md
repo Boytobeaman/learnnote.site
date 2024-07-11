@@ -23,6 +23,12 @@ PST | Pacific Standard Time
 RCA | Root Cause Analysis
 GA |  General Availability
 CSI | Chinasoft International (中软国际)
+ADX | Azure Data Explorer
+RAS | Remote Access Service
+SCA | Site Collection Administrators
+FTE | Microsoft full-time employee
+SAW | Secure Access Workstation
+ETA | estimated time of arrival
 
 MSI
 
