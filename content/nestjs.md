@@ -6,6 +6,35 @@ metaDescription: "nestjs study"
 
 #### nestjs request
 
+### 命令行工具 nest cli
+```
+全局安装命令行工具
+npm i -g @nestjs/cli
+安装后可以使用 nest 命令
+
+或者使用
+npx @nestjs/cli@latest
+替代nest 命令
+
+
+模拟命令，可以看到命令生成的文件，但不会真正生成
+--dry-run
+
+eg:
+nest g module user --dry-run
+
+
+CRUD generator
+可以生成 module, controller, service, dto etc
+nest g resource
+
+eg:
+nest g resource users
+
+
+To avoid generating test files, you can pass the --no-spec flag, as follows: 
+nest g resource users --no-spec
+```
 
 ##### 使用装饰器获取 request 的param， body， query
 ```

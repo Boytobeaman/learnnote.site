@@ -70,6 +70,44 @@ yrm test taobao
 ```
 
 
+### 更新安装包
+updates the packages listed in package.json to the latest versions according to the specified version ranges  
+根据 package.json 里面指定的 版本范围更新 package.json
+```
+yarn upgrade
+
+npm update
+
+
+
+yarn upgrade: 
+Updates only the yarn.lock file to the latest versions within the specified ranges in package.json. Does not change package.json.
+
+yarn upgrade <package>: 
+Updates only the yarn.lock file to the latest version within the specified range for that package. Does not change package.json.
+
+yarn upgrade <package>@<version>: 
+Updates both package.json and yarn.lock to reflect the new version.
+```
+
+### 如何 更新/指定 依赖的依赖的版本
+Using Yarn Resolutions  
+
+如 some-package 模块，要依赖 sub-dependency 模块，我们可以使用 resolutions 指定 sub-dependency 模块的版本   
+这种场景通常是 sub-dependency 有漏洞，已经有升级的版本了，但是 默认情况下 some-package 不会安装最新版本的 sub-dependency  
+那么我们就可以使用 resolutions 指定其版本号
+```
+{  
+  "dependencies": {  
+    "some-package": "^1.0.0"  
+  },  
+  "resolutions": {  
+    "sub-dependency": "2.0.1"  
+  }  
+}  
+```
+
+
 ### 如何修改第三方包，以满足自己的业务需求
 ```
 比如 这两个包有些问题需要修改
