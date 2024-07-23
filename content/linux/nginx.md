@@ -8,6 +8,19 @@ metaDescription: "nginx 常用命令，nginx 教程"
 ```
 // 一键安装脚本
 wget http://nginx.org/download/nginx-1.12.2.tar.gz && tar zxvf nginx-1.12.2.tar.gz && cd nginx-1.12.2 && ./configure && make && make install && ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
+
+
+//ubuntu
+sudo apt-get update
+
+//install nginx
+sudo apt-get install nginx
+
+//start nginx
+sudo systemctl start nginx
+
+//enable Nginx to start automatically at boot time
+sudo systemctl enable nginx
 ```
 ### 常用命令
 ```

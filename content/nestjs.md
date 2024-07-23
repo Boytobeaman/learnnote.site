@@ -34,6 +34,10 @@ nest g resource users
 
 To avoid generating test files, you can pass the --no-spec flag, as follows: 
 nest g resource users --no-spec
+
+
+
+npx @nestjs/cli new project-name
 ```
 
 ##### 使用装饰器获取 request 的param， body， query
