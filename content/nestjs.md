@@ -244,3 +244,36 @@ getStorageModule()
 export class TasksModule {}
 
 ```
+
+
+### typeorm example
+
+```
+return await this.eventRepository.find({
+  where:{
+    id: MoreThan(1),
+    when: MoreThan(new Date("2021-02-12T13:00:00"))
+  },
+  take: 2, // limit
+  skip: 1, // offset
+  order:{
+    id: 'DESC',
+  }
+})
+
+
+//multiple or condition
+
+where:[
+  {
+    id: MoreThan(1),
+    when: MoreThan(new Date("2021-02-12T13:00:00"))
+  },
+  {
+    description: Like('%meet%')
+  }
+],
+
+// specify returned fields
+select:["id", "address", "description"],
+```

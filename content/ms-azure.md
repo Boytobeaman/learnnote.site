@@ -16,6 +16,8 @@ LLM | large language model
 URI | Uniform Resource Identifier
 acs | azure cognitive search
 AAD | Azure Active Directory
+ME-ID | Microsoft Entra ID
+MSI | Managed Service Identity
 AML | azure machine learning
 aria | Accessible Rich Internet Applications
 SLA | Service Level Agreement
@@ -29,8 +31,15 @@ SCA | Site Collection Administrators
 FTE | Microsoft full-time employee
 SAW | Secure Access Workstation
 ETA | estimated time of arrival
-
-MSI
+ADO | Azure DevOps
+LRS | Locally-redundant storage
+NER |  Named Entity Recognition
+PII |  personally identifiable information
+NLU |  Natural Language Understanding
+CLU |  conversational language understanding
+ASR |  Automatic Speech Recognition
+CFS |  Central Feed Services
+OSS |  Open Source Software
 
 
 ### two different authentication methods

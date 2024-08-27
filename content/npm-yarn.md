@@ -107,6 +107,29 @@ Using Yarn Resolutions
 }  
 ```
 
+### 同时启动多个script
+```
+第一步
+安装 npm-run-all 包
+yarn add npm-run-all --dev
+
+
+第二步：
+创建 script 文件并在package.json 里添加对应的script 命令
+"scripts": {
+  "custom1": "node ./src/scripts/script1.js",
+  "custom2": "node ./src/scripts/script2.js",
+  "customall": "npm-run-all --parallel start custom1 custom2"
+},
+
+// --parallel 是并行执行， --serial 是串行执行
+
+第三步：
+启动命令
+
+yarn customall
+```
+
 
 ### 如何修改第三方包，以满足自己的业务需求
 ```
