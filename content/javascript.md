@@ -141,6 +141,18 @@ package.json："main": "index.mjs" 或 "type": "module", "main": "index.js"
 ```
 
 
+### 使用import 或者 require 都可以的模块
+```
+// package.json
+
+"main": "./cjs/index.js",
+"module": "./esm/index.js",
+
+In this package.json file, the "main" field specifies that the entry point for the CommonJS module
+In this package.json file, the "module" field specifies that the entry point for the ESM module is;
+
+```
+
 
 ### nodejs 环境如何运行 es6 代码
 ```

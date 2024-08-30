@@ -89,6 +89,19 @@ DEL runoobkey
 // 1 成功删除一条数据 返回 1
 ```
 
+
+### 查找所有符合给定模式 pattern 的 key
+```
+KEYS PATTERN
+
+
+// 获取 redis 中所有的 key 可用使用 *
+KEYS *
+
+// 查找以 runoob 为开头的 key：
+KEYS runoob*
+```
+
 #### 返回 key 所储存的值的类型
 ```
 TYPE key
@@ -120,7 +133,13 @@ HMGET key field1 [field2]
 SET resource:lock "Redis Demo"
 EXPIRE resource:lock 120
 
+
+以秒为单位返回 key 的剩余过期时间
+TTL KEY_NAME
 TTL resource:lock => 113
+
+// 当 key 不存在时，返回 -2 
+// 当 key 存在但没有设置剩余生存时间时，返回 -1
 ```
 
 
