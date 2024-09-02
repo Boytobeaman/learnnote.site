@@ -32,8 +32,55 @@ systemctl status pure-ftpd
 
 ### Create FTP User
 ```
-adduser azuser
 
+创建系统用户的组
+sudo groupadd ftpgroup
+
+
+创建系统用户，加入刚刚创建的组
+sudo useradd ftpuser -g ftpgroup -s /sbin/nologin
+
+
+创建ftp存储目录，并使相应的系统用户拥有权限
+sudo mkdir -p /data/wwwroot/ftpfolder
+
+sudo chown -R ftpuser:ftpgroup /data/wwwroot/ftpfolder
+
+
+创建虚拟用户 user1
+sudo pure-pw useradd user1 -u ftpuser -g ftpgroup -d /data/wwwroot/ftpfolder/user1
+
+用户创建完成后需要运行下面命令创建/更新用户数据库。或者在运行 pure-pw useradd 等命令时加上 -m 参数直接创建/更新数据库以省略本步。 
+sudo pure-pw mkdb
+
+
+使用 apt-get 安装的 pure-ftpd 默认没有开启虚拟用户的的认证方式，所以就算创建了虚拟用户，仍然无法登陆ftp。pure-ftpd 的默认配置文件位置在 /etc/pure-ftpd 文件夹下，启用虚拟用户认证的方式需要在认证文件夹 /etc/pure-ftpd/auth 下创建对应认证方式的软连接。
+
+cd /etc/pure-ftpd/auth/
+创建虚拟用户认证的软连接
+sudo ln -s ../conf/PureDB 60puredb
+
+还需要检查一下设置中虚拟用户方式是否是开启状态
+cat 60puredb 
+结果为 /etc/pure-ftpd/pureftpd.pdb 。内容为虚拟用户数据库文件
+
+
+之后再重启 pure-ftpd 服务
+sudo systemctl restart pure-ftpd
+
+此时已经可以通过 ftp 客户端使用创建好的虚拟用户进行连接了
+
+
+
+# 修改密码
+eg: 修改 user1 的密码
+sudo pure-pw passwd user1
+
+# 修改后要更新一下
+sudo pure-pw mkdb
+
+# 显示用户列表
+sudo pure-pw list
 ```
 
 ### Create a Self-signed SSL/TLS certificate

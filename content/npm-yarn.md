@@ -70,6 +70,16 @@ yrm test taobao
 ```
 
 
+### yarn info
+查看某个模块的版本
+```
+yarn info module versions
+
+eg:
+yarn info lodash versions
+```
+
+
 ### 更新安装包
 updates the packages listed in package.json to the latest versions according to the specified version ranges  
 根据 package.json 里面指定的 版本范围更新 package.json

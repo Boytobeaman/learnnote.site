@@ -619,6 +619,20 @@ w
 cat /etc/group 
 //查看用户组
 
+返回格式如下
+root:x:0:  
+daemon:x:1:  
+bin:x:2:
+adm:x:4:syslog,username
+
+Each line in this file represents a single group and contains the following fields, separated by colons (:):
+Group name: The name of the group.
+Password: Group password, if any. Usually, this field contains an x indicating that the password is stored in a shadow file.
+GID: The group ID number.
+Group List: A comma-separated list of usernames that are members of the group.
+
+
+
 
 groups 
 //查看当前登录用户的组内成员
@@ -659,6 +673,12 @@ xxx ALL=(ALL) ALL
 其中xxx是你要加入的用户名称，这里是name1
 输入:wq保存并退出配置文件，改动立即生效
 
+
+删除用户
+userdel
+
+eg:
+sudo userdel ftpuser
 
 ```
 ### 切换用户
