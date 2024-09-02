@@ -1239,3 +1239,23 @@ lsof +f -- /dev/sdb
 
 kill -9 pid
 ```
+
+
+### what is passwd file in linux
+The passwd file is typically located in the /etc directory, The file has a simple text-based format, with each line representing a single user account and containing several fields separated by colons
+
+example of a passwd file entry:
+```
+jdoe:x:1000:1000:John Doe:/home/jdoe:/bin/bash
+
+
+In this example, the fields are:
+
+jdoe: the username
+x: the encrypted password (the actual password is stored in a separate file or database)
+1000: the user ID (UID)
+1000: the group ID (GID)
+John Doe: the user's full name or description
+/home/jdoe: the user's home directory
+/bin/bash: the user's default shell
+```
