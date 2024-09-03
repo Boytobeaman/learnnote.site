@@ -30,6 +30,11 @@ apt-get install pure-ftpd -y
 systemctl status pure-ftpd
 ```
 
+### remove pure-ftpd
+```
+apt-get remove --purge pure-ftpd pure-ftpd-common
+```
+
 ### Create FTP User
 ```
 
@@ -81,6 +86,9 @@ sudo pure-pw mkdb
 
 # 显示用户列表
 sudo pure-pw list
+
+# 删除用户
+pure-pw userdel someuser
 ```
 
 ### Create a Self-signed SSL/TLS certificate
