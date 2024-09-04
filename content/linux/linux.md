@@ -571,6 +571,9 @@ chmod g+w,o+w bb.av
 
 //所有用户（a），都将赋予对dd.av 的读写执行权限
 chmod a=rwx dd.av
+
+//将改变应用到其子目录和文件上 加上 -R
+chmod g+w someFolder -R
 ```
 ##### 符号类型改变文件权限
 ```
@@ -646,6 +649,14 @@ whoami
 cat /etc/passwd|grep -v nologin|grep -v halt|grep -v shutdown|awk -F":" '{ print $1"|"$3"|"$4 }'|more
 //一个简明的layout命令
 
+sudo usermod -aG ftpgroup ubuntu
+// 给一个用户添加到某个组里，不移除其已所属的组
+// 为用户 ubuntu 加到一个 ftpgroup 组里
+
+groups username
+eg:
+groups ubuntu
+//查看一个用户所在的组
 
 useradd
 //添加用户

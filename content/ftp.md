@@ -43,7 +43,7 @@ sudo groupadd ftpgroup
 
 
 创建系统用户，加入刚刚创建的组
-sudo useradd ftpuser -g ftpgroup -s /sbin/nologin
+sudo useradd ftpuser -g ftpgroup -d /data/wwwroot -s /sbin/nologin
 
 
 创建ftp存储目录，并使相应的系统用户拥有权限
@@ -145,4 +145,12 @@ etc/pure-ftpd/pureftpd.passwd
 
 oneinstack
 /usr/local/pureftpd/etc/pureftpd.passwd
+```
+
+### View Pure-FTPd Logs with journalctl
+```
+sudo journalctl -u pure-ftpd
+
+# For real-time log updates, use:
+sudo journalctl -u pure-ftpd -f
 ```
