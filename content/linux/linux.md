@@ -635,7 +635,8 @@ GID: The group ID number.
 Group List: A comma-separated list of usernames that are members of the group.
 
 
-
+创建系统用户的组
+sudo groupadd ftpgroup
 
 groups 
 //查看当前登录用户的组内成员

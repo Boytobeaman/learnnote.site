@@ -137,11 +137,20 @@ NoAnonymous                  yes
 PassivePortRange             30000 50000
 
 ```
+### pureftpd.pdb 文件
+pureftpd.pdb is a file used by the Pure-FTPd server to store user account information and other configuration data.  
+When you make changes to user accounts using the pure-pw tool, the changes are written to the pureftpd.pdb file. The Pure-FTPd server then reads the updated file to load the new user account information and configuration data
+```
+/etc/pure-ftpd/pureftpd.pdb
+
+oneinstack
+/usr/local/pureftpd/etc/pureftpd.pdb
+```
 
 
 ### pureftp passwd 文件位置
 ```
-etc/pure-ftpd/pureftpd.passwd
+/etc/pure-ftpd/pureftpd.passwd
 
 oneinstack
 /usr/local/pureftpd/etc/pureftpd.passwd
