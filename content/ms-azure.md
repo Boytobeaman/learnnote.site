@@ -40,6 +40,10 @@ CLU |  conversational language understanding
 ASR |  Automatic Speech Recognition
 CFS |  Central Feed Services
 OSS |  Open Source Software
+SCM |  Source Control Management
+MSAL |  Microsoft Authentication Library
+OCV |  One Customer Voice
+PLT |  Page Load Time
 
 
 ### two different authentication methods
@@ -48,4 +52,8 @@ Use a service principal, shared access signature (SAS) token or account key to a
 #### Identity-based:
 Use your Microsoft Entra identity or managed identity.
 
+
+
+public preview
+private preview
 

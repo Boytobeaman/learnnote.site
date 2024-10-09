@@ -449,3 +449,34 @@ To test the renewal process, you can do a dry run with certbot:
 ```
 sudo certbot renew --dry-run
 ```
+
+
+### nginx 配置 for v2ray
+```
+server
+{
+    listen 443 ssl; # 监听 SSL/TLS 连接
+
+    location /yourpath/trojan {
+      proxy_pass http://127.0.0.1:10000; # 10000为v2ray 的运行端口
+
+      #页面访问 v2ray 路径时，会直接返回 Bad request, 下面设置自定义返回页面
+      proxy_intercept_errors on;
+      error_page 400 = https://name.yourdomain/;
+
+      # 代理 WebSocket 连接
+      proxy_http_version 1.1;
+
+      # the "Upgrade" header switch the protocol from HTTP to another protocol, such as WebSocket
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+      proxy_read_timeout 600s;
+
+      # 传递客户端 IP 地址
+      proxy_set_header X-Real-IP $remote_addr;
+    	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+    # ...
+}
+
+```

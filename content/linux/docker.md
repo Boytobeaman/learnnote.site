@@ -62,6 +62,9 @@ bash
 ```
 docker exec -it <container_name|container_id> /bin/bash
 
+或者
+docker exec -it <container_name|container_id> bash
+
 eg:
 docker exec -it mymysql /bin/bash
 docker exec -it 8d07b861dedc /bin/bash
