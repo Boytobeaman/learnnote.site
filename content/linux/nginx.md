@@ -479,4 +479,17 @@ server
     # ...
 }
 
+
+
+//配置 v2ray 错误页（400 badrequest），也就是前端页面访问时到达的页面
+// 可以自定义一个网址
+// 也可以自定义到本地某个html页面
+
+proxy_intercept_errors on;
+# error_page 400 = https://www.bing.com;
+error_page 400 =200 /index.html;
+location =/index.html {
+  root /data/wwwroot/xxx.com;
+}
+
 ```

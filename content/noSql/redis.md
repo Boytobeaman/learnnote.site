@@ -4,6 +4,13 @@ metaTitle: "redis 常用命令"
 metaDescription: "redis 常用命令"
 ---
 
+
+### 常见redis服务商
+#### upstash
+https://upstash.com/pricing/redis
+
+#### redis.io
+https://redis.io/try-free/
 ### redis 常用命令
 
 ### 安装redis

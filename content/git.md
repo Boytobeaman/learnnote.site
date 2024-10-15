@@ -312,6 +312,10 @@ npm config set registry https://registry.npmmirror.com
 npm get registry
 
 
+
+npm config set proxy http://127.0.0.1:7890
+npm config set https-proxy http://127.0.0.1:7890
+
 npm config delete https-proxy
 //删除某个proxy 比如https-proxy
 
