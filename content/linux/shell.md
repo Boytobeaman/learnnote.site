@@ -101,3 +101,101 @@ myUrl="https://www.runoob.com"
 ```
 unset variable_name
 ```
+
+
+### 条件判断
+#### if Statement
+```
+#!/bin/bash  
+  
+# Define a variable  
+NUMBER=3  
+  
+# Check if the number is greater than 5  
+if [ $NUMBER -gt 5 ]; then  
+    echo "The number is greater than 5."  
+else  
+    echo "The number is not greater than 5."  
+fi  
+```
+
+#### if-else Statement
+```
+#!/bin/bash  
+  
+# Define a variable  
+NUMBER=3  
+  
+# Check if the number is greater than 5  
+if [ $NUMBER -gt 5 ]; then  
+    echo "The number is greater than 5."  
+else  
+    echo "The number is not greater than 5."  
+fi  
+
+```
+
+#### if-elif-else Statement
+```
+#!/bin/bash  
+  
+# Define a variable  
+NUMBER=5  
+  
+# Check different conditions  
+if [ $NUMBER -gt 5 ]; then  
+    echo "The number is greater than 5."  
+elif [ $NUMBER -eq 5 ]; then  
+    echo "The number is equal to 5."  
+else  
+    echo "The number is less than 5."  
+fi
+```
+
+
+### function
+```
+#!/bin/bash  
+  
+# Define the function  
+greet() {  
+    echo "Hello"  
+}  
+  
+# Call the function  
+greet
+```
+
+### function with parameter
+```
+#!/bin/bash  
+  
+# Define the function  
+greet() {  
+    echo "Hello, $1!"  
+}  
+  
+# Call the function  
+greet "Alice"  
+
+// output
+// Hello, Alice!
+```
+
+#### More Complex Function
+```
+#!/bin/bash  
+  
+# Function to add two numbers  
+add_numbers() {  
+    local sum=$(( $1 + $2 ))  # Calculate the sum  
+    echo $sum                 # Print the sum  
+}  
+  
+# Call the function and capture the output  
+result=$(add_numbers 5 10)  
+  
+# Print the result  
+echo "The sum is: $result"  
+
+```
