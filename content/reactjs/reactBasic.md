@@ -724,3 +724,20 @@ Link最终会转成 a 标签,react-router 接管了其默认的链接跳转行�
 Link 的“跳转”行为只会触发相匹配的 Route 对应的页面内容更新，而不会刷新整个页面,避免了不必要的重渲染
 
 而 a 标签就是普通的超链接了，用于从当前页面跳转到 href 指向的另一个页面（非锚点情况）
+
+
+### why react introduce sever component and what problem that solve?
+
+#### Performance Optimization
+Reduced JavaScript Bundle Size, Faster Time-to-Interactive
+
+
+#### Improved Data Fetching
+Server-Side Data Fetching: Server Components can fetch data directly on the server, allowing for a more efficient way to manage data requirements without the need for client-side fetching. This reduces the need for additional API calls from the client.
+
+#### Better SEO
+Pre-rendered Content: Since Server Components render HTML on the server, search engines can index the content more effectively compared to client-side rendered applications. This can improve SEO for web applications.
+
+#### Security and Encapsulation
+Sensitive Logic: Business logic and data fetching can be encapsulated in Server Components, minimizing exposure of sensitive information or logic to the client. This enhances security by limiting what is sent to the user’s browser.
+

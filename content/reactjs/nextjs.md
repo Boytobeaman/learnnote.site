@@ -4,6 +4,27 @@ metaTitle: "nextjs 笔记, nextjs 服务端渲染，nextjs ssr"
 metaDescription: "nextjs 笔记, nextjs 服务端渲染，nextjs ssr"
 ---
 
+
+## app route
+
+### nest dynamic route
+```
+app/blog/[slug]/page.js
+
+export default function Page({ params }: { params: { slug: string } }) {
+  return <div>My Post: {params.slug}</div>
+}
+
+```
+| Route | Example URL | `params` |
+| --- | --- | --- |
+| `app/blog/[slug]/page.js` | `/blog/a` | `{ slug: 'a' }` |
+| `app/blog/[slug]/page.js` | `/blog/b` | `{ slug: 'b' }` |
+| `app/blog/[slug]/page.js` | `/blog/c` | `{ slug: 'c' }` |
+
+
+
+
 ### Static Generation with Data using getStaticProps
 ```
 export default function Home(props) { ... }
