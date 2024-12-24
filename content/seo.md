@@ -31,16 +31,16 @@ offers.seller.name: 产品买家名称
             "https://d2j6dsome.cloudfront.net/images/someimg/1.jpg",
             "https://d2j6dsome.cloudfront.net/images/someimg/6.jpg"
   ],
-    "description": "The 40\" x 48\"dling tasks in a wide variety of applications. Shop online with some.",
+  "description": "The 40\" x 48\"dling tasks in a wide variety of applications. Shop online with some.",
   "sku": "UP404845-0",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "171",
+    "priceValidUntil": "2024-03-31",
     "url": "https://www.some.com/product/Unick-Container",
     "valueAddedTaxIncluded": false,
-      "itemCondition": "http://schema.org/NewCondition",
-
+    "itemCondition": "http://schema.org/NewCondition",
     "availability": "http://schema.org/InStock",
     "seller": {
       "@type": "Organization",
@@ -138,4 +138,33 @@ offers.seller.name: 产品买家名称
   ]  
 }  
 </script>  
+```
+
+### an example of organization information in JSON-LD code
+```
+// name 可能会显示在谷歌搜索结果上
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "image": "https://www.example.com/example_image.jpg",
+    "url": "https://www.example.com",
+    "sameAs": ["https://example.net/profile/example1234", "https://example.org/example1234"],
+    "logo": "https://www.example.com/images/logo.png",
+    "name": "Example Corporation",
+    "description": "The example corporation is well-known for producing high-quality widgets",
+    "email": "contact@example.com",
+    "telephone": "+47-99-999-9999",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue Improbable 99",
+      "addressLocality": "Paris",
+      "addressCountry": "FR",
+      "addressRegion": "Ile-de-France",
+      "postalCode": "75001"
+    },
+    "vatID": "FR12345678901",
+    "iso6523Code": "0199:724500PMK2A2M1SQQ228"
+  }
+  </script>
 ```
