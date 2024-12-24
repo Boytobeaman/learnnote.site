@@ -49,4 +49,93 @@ offers.seller.name: 产品买家名称
   }
 }
 </script>
+
+// 加上 aggregateRating
+"aggregateRating": {  
+  "@type": "AggregateRating",  
+  "ratingValue": "4.5",  
+  "reviewCount": "100"  
+},
+
+
+// 加上一个review
+"review": {  
+  "@type": "Review",  
+  "author": {  
+    "@type": "Person",  
+    "name": "John Doe"  
+  },  
+  "reviewRating": {  
+    "@type": "Rating",  
+    "ratingValue": "4.5",
+    "bestRating": "5"
+  },  
+  "description": "Great product!"  
+}
+
+//使用数组 加上多个review
+"review": [  
+    {  
+      "@type": "Review",  
+      "author": {  
+        "@type": "Person",  
+        "name": "John Doe"  
+      },  
+      "reviewRating": {  
+        "@type": "Rating",  
+        "ratingValue": "4.5",  
+        "bestRating": "5"  
+      },  
+      "description": "Great product!"  
+    },  
+    {  
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Jane Smith"  
+      },  
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },  
+      "description": "Excellent quality and fast shipping!"  
+    }  
+  ] 
+```
+
+### BreadcrumbList schema
+```
+<script type="application/ld+json">  
+{  
+  "@context": "https://schema.org",  
+  "@type": "BreadcrumbList",  
+  "itemListElement": [  
+    {  
+      "@type": "ListItem",  
+      "position": 1,  
+      "name": "Home",  
+      "item": "https://example.com/"  
+    },  
+    {  
+      "@type": "ListItem",  
+      "position": 2,  
+      "name": "Category",  
+      "item": "https://example.com/category"  
+    },  
+    {  
+      "@type": "ListItem",  
+      "position": 3,  
+      "name": "Subcategory",  
+      "item": "https://example.com/category/subcategory"  
+    },  
+    {  
+      "@type": "ListItem",  
+      "position": 4,  
+      "name": "Product Name",  
+      "item": "https://example.com/category/subcategory/product"  
+    }  
+  ]  
+}  
+</script>  
 ```

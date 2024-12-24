@@ -9,6 +9,10 @@ metaDescription: "curl 命令"
 curl http://localhost:4700/
 ```
 
+### curl 获取 HTTP 头信息
+```
+curl -i https://www.example.com
+```
 
 ### CURL POST
 ```
@@ -31,4 +35,15 @@ curl -d "param1=value1&param2=value2" -X POST http://localhost:3000/data
 
 explicit:
 curl -d "param1=value1&param2=value2" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/data
+```
+
+### curl  使用代理
+```
+curl -x proxy.server.com:3128 https://www.example.com
+```
+
+### curl 下载文件
+```
+curl -o filename.txt https://www.example.com/file.txt
+
 ```

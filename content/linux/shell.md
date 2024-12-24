@@ -152,6 +152,17 @@ else
 fi
 ```
 
+### check if an variable is set
+```
+#!/bin/bash  
+  
+# Check if SUBSCRIPTION_ID is set  
+if [ -z "$SUBSCRIPTION_ID" ]; then  
+  echo "Error: SUBSCRIPTION_ID is not set."  
+  exit 1  
+fi  
+```
+
 
 ### function
 ```
