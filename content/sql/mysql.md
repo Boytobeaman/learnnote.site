@@ -193,3 +193,16 @@ eg:
 比如
 create database `aqetech.com`;
 ```
+### MySQL字段内容替换, mysql 更改字段值替换内容
+要替换某一个字段中的部分内容，可以用update 语句和REPLACE方法，结构如下：
+```
+UPDATE 表名 SET 字段名 = REPLACE(字段名, '待替换内容', '替换后内容');
+
+eg:
+UPDATE wp_posts SET post_content = replace(post_content, 'oldurl', 'newurl');
+```
+
+使用正则表达式替换MySQL字段内容
+```
+UPDATE 表名 SET 字段名 = REGEXP_REPLACE(字段名, '正则表达式模式', '替换后内容');
+```
