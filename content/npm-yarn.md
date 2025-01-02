@@ -183,3 +183,38 @@ hosts文件中添加
 8.8.8.8
 8.8.4.4
 ```
+
+### pnpm
+Installation: Firstly, you need to install pnpm. You can do so globally on your system using npm with the following command:
+```
+npm install -g pnpm
+```
+
+Install Packages
+```
+pnpm add react
+
+// Adding a dev dependency
+pnpm add -D <package-name>
+pnpm add --save-dev <package-name>  
+```
+
+Install All Dependencies: To install all dependencies for a project (as defined in your package.json), navigate to your project folder in the terminal and just type:
+```
+pnpm install
+pnpm i
+```
+
+Remove Packages
+```
+pnpm remove react
+```
+Update Packages: You can update all packages to their latest version with
+```
+pnpm update
+```
+
+Listing Packages: To see a list of your installed packages, you can use:
+```
+pnpm list
+```
