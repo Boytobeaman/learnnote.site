@@ -420,7 +420,7 @@ ps auxw|head -1;ps auxw|sort -rn -k4|head -10
 ps auxw|head -1;ps auxw|sort -rn -k5|head -10
 ```
 
-### 查看 nginx 的位置
+## 查看 nginx 的位置
 ```
 // 查看 nginx 的位置
 // 如果程序在运行中
