@@ -402,12 +402,13 @@ df -h
 
 ### 常用查看系统、资源、服务、用户等命令
 
-#### 进程
+### 进程
 ```
 ps -ef   # 查看所有进程 
 top    # 实时显示进程状态
 ```
 
+### 查看 cpu 占用，内存占用，虚拟内存 最多的几个进程
 ```
 1.CPU占用最多的前10个进程
 ps auxw|head -1;ps auxw|sort -rn -k3|head -10
@@ -419,7 +420,7 @@ ps auxw|head -1;ps auxw|sort -rn -k4|head -10
 ps auxw|head -1;ps auxw|sort -rn -k5|head -10
 ```
 
-#### 查看 nginx 的位置
+### 查看 nginx 的位置
 ```
 // 查看 nginx 的位置
 // 如果程序在运行中
@@ -429,7 +430,7 @@ ps -ef | grep nginx
 whereis nginx
 ```
 
-#### free命令是一个快速查看内存使用情况的方法
+### free命令是一个快速查看内存使用情况的方法
 ```
 free -h
 ```
