@@ -379,7 +379,7 @@ server {
 ### 为一个域名配置 nginx 服务器
 #### 创建配置文件
 配置文件通常在  
-/etc/nginx/sites-enabled  
+/etc/nginx/sites-enabled  (默认，certbot自动ssl配置一般在这里)
 /etc/nginx/sites-available  
 下，以 your_domain.conf 命名
 
