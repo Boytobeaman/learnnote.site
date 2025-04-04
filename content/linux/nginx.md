@@ -493,3 +493,31 @@ location =/index.html {
 }
 
 ```
+
+### 文件上传大小控制
+Default Value
+```
+client_max_body_size 1m;
+```
+
+#### 查看当前配置大小
+```
+grep -R client_max_body_size /etc/nginx/
+
+//查到的话会显示配置，如
+/etc/nginx/sites-enabled/nestxxx.top.conf:    client_max_body_size 50m;
+
+//没有查到就是默认配置 1m;
+
+```
+### 修改或者添加配置
+```
+client_max_body_size
+
+server {  
+  server_name nesxxx.top;  
+  root /data/xxx/nesxxx.top; 
+  client_max_body_size 50m;
+  ...
+}
+```

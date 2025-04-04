@@ -55,7 +55,14 @@ systemctl status ssh
 ### 查看ssh 登陆日志
 ```
 // 默认日志位置
+Debian/Ubuntu
 /var/log/auth.log
+
+centos
+/var/log/secure
+
+macos
+/var/log/system.log
 
 tail -f /var/log/auth.log
 ```
