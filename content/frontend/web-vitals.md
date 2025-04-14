@@ -166,3 +166,79 @@ Last-Modified 适合不重要的量大的资源 （比如一些图片等静态�
 
 
 ### 前端压力测试
+
+
+### use preconnect and dns-prefetch
+
+如果明确知道需要某个域名下的资源可以使用preconnect 和dns-prefetch 提前连接和解析dns
+```
+<!-- Preconnect to cdn.a.com -->
+<link rel="preconnect" href="https://cdn.a.com" crossorigin />
+<!-- Fallback dns-prefetch for older browsers -->
+<link rel="dns-prefetch" href="https://cdn.a.com" />
+```
+
+
+### preload
+```
+<link rel="preload" href="https://cdn.a.com/hero-image.jpg" as="image" crossorigin />
+<link rel="preload" href="https://cdn.a.com/main.css" as="style" crossorigin />
+
+
+
+// 根据屏幕尺寸预加载不同内容
+<link rel="preload" as="image" href="https://cdn.a.com/a-lg.jpg" media="(min-width: 641px)" crossorigin>
+<link rel="preload" as="image" href="https://cdn.a.com/a-sm.jpg" media="(max-width: 640px)" crossorigin>
+
+```
+
+### What types of content can be preloaded?
+Many content types can be preloaded. The possible as attribute values are:
+```
+fetch: Resource to be accessed by a fetch or XHR request, such as an ArrayBuffer, WebAssembly binary, or JSON file.
+font: Font file.
+image: Image file.
+script: JavaScript file.
+style: CSS stylesheet.
+track: WebVTT file.
+```
+
+### preload video
+对于link 标签， rel="preload"  as="video" 在很多浏览器已经不再支持了,
+可以使用video 的preload 属性
+```
+<video preload="auto|metadata|none">
+
+
+auto	The author thinks that the browser should load the entire video when the page loads
+metadata	The author thinks that the browser should load only metadata when the page loads
+none	The author thinks that the browser should NOT load the video when the page loads
+```
+
+#### 动态加载不同video 案例
+```
+
+<div id="responsive-video"></div>
+<script>
+  const video = document.createElement('video');
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.preload = 'auto';
+  video.style.width = '100%';
+
+  // Choose video source based on screen width
+  if (window.innerWidth < 640) {
+    // Mobile
+    video.src = 'https://cdn.a.com/videos-sm.mp4';
+    video.className = 'sm:hidden';
+  } else {
+    // Desktop
+    video.src = 'https://cdn.a.com/videos-lg.mp4';
+    video.className = 'hidden sm:block';
+  }
+
+  document.getElementById('responsive-video').appendChild(video);
+</script>
+```
