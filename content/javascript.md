@@ -46,6 +46,41 @@ javascript 笔记
 
 ```
 
+
+### 如何在传统的 commonjs 项目中使用 es module的 模块
+es module 如下
+In your ES module file (test.js), you can use import and export syntax.
+```
+/utils/test.js
+
+import axios from 'axios';
+export function test() {
+  console.log('test')
+}
+
+```
+#### step 1: Rename the File to .mjs
+```
+/utils/test.js  ---> /utils/test.mjs
+```
+#### step 2: Dynamically Import the ES Module in CommonJS
+
+```
+app.post('/create-product', async (req, res) => {
+  try {
+    const { test } = await import('./utils/test.mjs'); // Dynamically import the ES module
+    // you can use test() here
+    test();
+    res.status(200).json({product："aaa"});
+  } catch (error) {
+    console.error('Error creating product:', error);
+    res.status(500).send('Failed to create product');
+  }
+});
+
+```
+还有一种方法是 在 package.json 中加 "type": "module"， 但这样会将所以js 文件当作 es module来处理，如果你要准备把你的commonjs 代码 都转换为 es 模块，你可以这样做
+
 #### IIFE,Immediately Invoked Function Expression
 只是一种写法，可以隐藏一些局部变量，前端人要是不懂这个可能学的是假前端。可以用来代替 UMD 作为纯粹给前端使用的写法
 
