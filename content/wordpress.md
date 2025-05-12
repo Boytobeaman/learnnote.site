@@ -25,3 +25,51 @@ generate 重新生成css
 DELETE FROM `wp_comments`
 DELETE FROM `wp_commentmeta`;
 ```
+
+
+
+### woocommerce如何为产品分类product category 和产品标签product tag 页面额外加描述，放在产品列表后面
+#### 使用ACF创建一个WYSIWYG字段，用来记录 after_loop_description
+```
+// 需要安装ACF
+1. Create a Custom Field for Product Categories/Tags
+
+Go to ACF > Field Groups and click Add New.
+
+Title it something like: Product Category Extra Description.
+
+2. Add a Field
+Click Add Field.
+
+Label: After Loop Description
+
+Field Name: after_loop_description
+
+Field Type: WYSIWYG (or Textarea if you prefer simple text)
+
+3. Set Location Rules
+Set the location to:
+
+Taxonomy → is equal to → Product categories
+AND/OR
+
+Taxonomy → is equal to → Product tags
+```
+
+#### 使用hooks, 在特定地方展示 after_loop_description 字段
+```
+// woocommerce_after_shop_loop 就是 产品列表结束后
+function add_after_loop_description_inside_main() {
+    if (is_product_category() || is_product_tag()) {
+        $term = get_queried_object();
+        $after_description = get_field('after_loop_description', $term);
+
+        if ($after_description) {
+            echo '<div class="woocommerce-after-loop-description">';
+            echo wp_kses_post($after_description);
+            echo '</div>';
+        }
+    }
+}
+add_action('woocommerce_after_shop_loop', 'add_after_loop_description_inside_main', 20);
+```
