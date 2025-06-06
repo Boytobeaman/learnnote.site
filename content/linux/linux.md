@@ -1292,3 +1292,12 @@ John Doe: the user's full name or description
 /home/jdoe: the user's home directory
 /bin/bash: the user's default shell
 ```
+
+
+### ubuntu resume or fix interrupted package installations
+```
+sudo dpkg --configure -a
+
+
+//dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem
+```
