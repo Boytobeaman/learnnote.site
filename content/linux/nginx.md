@@ -521,3 +521,31 @@ server {
   ...
 }
 ```
+
+
+### gzip 的配置，参考oneinstack 默认生成的配置
+```
+// nginx.conf
+http{
+
+
+  #Gzip Compression
+  gzip on;
+  gzip_buffers 16 8k;
+  gzip_comp_level 6;
+  gzip_http_version 1.1;
+  gzip_min_length 256;
+  gzip_proxied any;
+  gzip_vary on;
+  gzip_types
+    text/xml application/xml application/atom+xml application/rss+xml application/xhtml+xml image/svg+xml
+    text/javascript application/javascript application/x-javascript
+    text/x-json application/json application/x-web-app-manifest+json
+    text/css text/plain text/x-component
+    font/opentype application/x-font-ttf application/vnd.ms-fontobject
+    image/x-icon;
+  gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+}
+
+
+```
