@@ -1,0 +1,27 @@
+---
+title: "cyberpanel"
+metaTitle: "cyberpanel 使用方法"
+metaDescription: "cyberpanel 使用方法，配置自己的企业邮箱"
+---
+
+
+
+### cyberpanel
+
+
+### cyberpanel 是一个开源的控制面板，类似于 cpanel，支持一键安装 WordPress、Joomla、Drupal 等等，支持一键安装 SSL 证书，支持一键备份和还原网站数据，支持一键创建和管理数据库，支持一键创建和管理 FTP 账号，支持一键创建和管理域名解析，支持一键创建和管理邮件账号，支持一键创建和管理 DNS 解析，支持一键创建和管理防火墙规则，支持一键创建和管理 SSH 密钥，支持一键创建和管理 SSH 用户，支持一键创建和管理 SSH 组，支持一键创建和管理 SSH 组策略，支持一键创建和管理 SSH 组成员，支持一键创建和管理 SSH 组成员策略。
+
+### 配置自己的企业邮箱需要配置的服务器端口
+
+ingress port:
+tcp:
+25, 110, 143, 465, 587, 993, 995
+
+
+egress port:
+465, 587
+
+
+
+### check log
+tail -f /var/log/mail.log
