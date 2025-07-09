@@ -73,3 +73,21 @@ function add_after_loop_description_inside_main() {
 }
 add_action('woocommerce_after_shop_loop', 'add_after_loop_description_inside_main', 20);
 ```
+
+
+### wordpress 安全
+
+#### 使用 nginx 关闭 xmlrpc
+```
+location = /xmlrpc.php {
+    return 404;
+}
+
+
+或者
+if you prefer to return 403 instead of 404
+
+location = /xmlrpc.php {
+    deny all;
+}
+```

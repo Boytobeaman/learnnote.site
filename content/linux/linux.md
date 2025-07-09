@@ -296,6 +296,12 @@ nc -zv ip port
 
 eg:
 nc -zv 3.xx.121.xx 22
+
+nc -vz smtp.gmail.com 587
+
+
+//install nc on centos
+sudo yum install -y nmap-ncat
 ```
 
 ### pkill命令
