@@ -91,3 +91,9 @@ location = /xmlrpc.php {
     deny all;
 }
 ```
+
+### wordpress 常用插件
+```
+Broken Link Checker
+// 查看 Broken Link
+```
