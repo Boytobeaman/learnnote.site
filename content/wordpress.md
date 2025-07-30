@@ -92,6 +92,25 @@ location = /xmlrpc.php {
 }
 ```
 
+### block ip
+```
+# Block specific IP
+if ($remote_addr = 128.199.105.213) {
+    return 403;
+}
+
+Block multiple IPs:
+
+server {
+
+    deny 123.45.67.89;
+    deny 98.76.54.32;
+    allow all;
+
+}
+
+```
+
 ### wordpress 常用插件
 ```
 Broken Link Checker
