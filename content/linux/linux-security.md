@@ -95,6 +95,7 @@ vim /etc/fail2ban/jail.local
 enabled  = true
 filter   = nginx-404
 logpath  = /data/wwwlogs/*_nginx.log
+backend  = polling
 port     = http,https
 maxretry = 10
 findtime = 120
@@ -124,6 +125,7 @@ vim /etc/fail2ban/jail.local
 enabled = true
 filter = wordpress-xmlrpc
 logpath = /data/wwwlogs/*_nginx.log
+backend  = polling
 maxretry = 3
 findtime = 300
 bantime = 3600
@@ -147,8 +149,19 @@ vim /etc/fail2ban/jail.local
 enabled = true
 filter = wordpress-login
 logpath = /data/wwwlogs/*_nginx.log
+backend  = polling
 maxretry = 5
 findtime = 600
 bantime = 3600
 action = iptables[name=wordpress-login, port=http, protocol=tcp]
+
+
+
+常见问题：
+
+如果设置了具体的 logpath
+需要设置
+backend  = polling
+使其生效
+backend = polling — this disables the systemd journal reading and enables direct file reading
 ```
