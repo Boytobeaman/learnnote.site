@@ -81,6 +81,14 @@ then:
 restart chatwoot
 ```
 
+### cdn env
+```
+vim /home/chatwoot/chatwoot/.env
+
+
+ASSET_CDN_HOST=<distribution>.cloudfront.net
+```
+
 ### Optional: Restrict by Email Domain
 .env
 ```
@@ -99,4 +107,11 @@ ALLOWED_ACCOUNT_EMAIL_DOMAINS=example.com,mycompany.com
 # RACK_ATTACK_LIMIT=300
 # Control whether you want to enable rack attack for widget APIs
 # ENABLE_RACK_ATTACK_WIDGET_API=true
+```
+
+
+
+### 版本升级
+```
+cwctl --upgrade
 ```
