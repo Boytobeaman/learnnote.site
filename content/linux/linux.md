@@ -1307,3 +1307,11 @@ sudo dpkg --configure -a
 
 //dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem
 ```
+
+### See What That Process Is Doing by pid
+```
+// Install strace if not already:
+sudo apt install strace
+
+sudo strace -p <PID>
+```
