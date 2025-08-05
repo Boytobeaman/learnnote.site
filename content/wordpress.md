@@ -111,6 +111,13 @@ server {
 
 ```
 
+### Wordpress数据库安全
+Suspiciously long or encoded options (common for injections)
+
+```
+SELECT option_name, LENGTH(option_value) AS len FROM wp_options WHERE LENGTH(option_value) > 10000 ORDER BY len DESC LIMIT 10;
+```
+
 ### wordpress 常用插件
 ```
 Broken Link Checker
