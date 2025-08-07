@@ -304,6 +304,15 @@ nc -vz smtp.gmail.com 587
 sudo yum install -y nmap-ncat
 ```
 
+### 查看本服务器是否开启了  某个端口的 outbound
+```
+// 一般服务器都默认开启了常见的 outbound 端口包括 587等，
+// 但是如邮件相关端口 如587 等的inbound会被限制，别人就没法通过这些端口和你连接，所以服务器本身默认不能作为 mail server来发邮件, 
+
+// 如查看服务器 是否可以访问 smtp.resend.com 的587端口
+telnet smtp.resend.com 587
+```
+
 ### pkill命令
 根据进程名kill进程
 ```
