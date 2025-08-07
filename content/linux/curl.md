@@ -9,9 +9,18 @@ metaDescription: "curl 命令"
 curl http://localhost:4700/
 ```
 
+### curl response time
+```
+curl -o /dev/null -s -w "Total Time: %{time_total}s\n" https://example.com
+
+-o /dev/null: Discards the response body (you only want timing).
+-s: Silent mode (no progress bar or errors).
+-w: Custom output. time_total is the total time in seconds.
+```
+
 ### curl 获取 HTTP 头信息
 ```
-curl -i https://www.example.com
+curl -I https://www.example.com
 ```
 
 ### CURL POST
