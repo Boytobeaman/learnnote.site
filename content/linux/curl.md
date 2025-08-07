@@ -16,6 +16,14 @@ curl -o /dev/null -s -w "Total Time: %{time_total}s\n" https://example.com
 -o /dev/null: Discards the response body (you only want timing).
 -s: Silent mode (no progress bar or errors).
 -w: Custom output. time_total is the total time in seconds.
+
+
+查看 TTFB 和 total time
+curl -o /dev/null -s -w 'TTFB: %{time_starttransfer}\nTotal: %{time_total}\n' https://www.rhimopower.com/
+
+
+查看 TTFB, total time 和 Size_bytes
+curl -o /dev/null -s -w 'TTFB: %{time_starttransfer}\nTotal: %{time_total}\nSize_bytes: %{size_download}\n' https://6x6y.com/test/
 ```
 
 ### curl 获取 HTTP 头信息
