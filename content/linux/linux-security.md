@@ -165,3 +165,36 @@ backend  = polling
 使其生效
 backend = polling — this disables the systemd journal reading and enables direct file reading
 ```
+
+### Apply CPU Quota to PHP-FPM
+1. Find your PHP-FPM service name
+```
+systemctl list-units | grep fpm
+
+// it will show services like:
+// php-fpm-83.service
+```
+
+2. Create a systemd override file
+```
+sudo systemctl edit php-fpm-83.service
+```
+
+3. This opens an empty override file in your editor. Add:
+```
+[Service]
+CPUAccounting=true
+CPUQuota=160%
+```
+CPUAccounting=true enables CPU tracking.  
+CPUQuota=160% caps PHP-FPM at 1.6 cores worth of CPU.
+
+4. Reload systemd and restart PHP-FPM
+```
+sudo systemctl daemon-reexec
+sudo systemctl restart php-fpm-83.service
+```
+5. Verify Quota is Active
+```
+systemd-cgtop
+```
