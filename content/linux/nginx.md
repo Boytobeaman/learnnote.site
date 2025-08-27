@@ -549,3 +549,30 @@ http{
 
 
 ```
+
+### nginx 配置 well-known 目录在 root 目录外
+```
+如 .well-known 在
+/www/wwwroot/a.com 下
+
+而 root folder 在
+/www/wwwroot/a.com/dist
+
+可以在验证 .well-known 时设置 alias 到正确的目录
+
+server {
+    server_name a.com www.a.com;
+
+    root /www/wwwroot/a.com/dist;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Optional: general .well-known fallback
+    location ^~ /.well-known/ {
+        alias /www/wwwroot/a.com/.well-known/;
+        allow all;
+    }
+}
+```
