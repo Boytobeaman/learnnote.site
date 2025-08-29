@@ -27,3 +27,8 @@ metaDescription: "bt panel 常用快捷键"
 eg:
 /etc/init.d/php-fpm-83 start
 ```
+
+#### 启动 mysql
+```
+/etc/init.d/mysqld restart
+```
