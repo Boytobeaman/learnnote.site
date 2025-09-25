@@ -109,6 +109,14 @@ server {
 
 }
 
+
+
+//针对特定路径访问 block, 如访问 ?add-to-cart
+location ~* \?add-to-cart= {
+    deny all;
+    return 403;
+}
+
 ```
 
 ### Wordpress数据库安全
