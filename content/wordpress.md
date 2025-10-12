@@ -117,6 +117,12 @@ location ~* \?add-to-cart= {
     return 403;
 }
 
+
+# Block requests with random-looking paths (7+ random alphanumeric chars)
+location ~* "^/[A-Za-z0-9]{6,}$" {
+    return 444; # Drop connection (no response)
+}
+
 ```
 
 ### Wordpress数据库安全
