@@ -32,6 +32,7 @@ HTTP状态码分类
 403 | forbidden （访问被禁止，比如某些接口没有对特定的用户开放）
 404 | not found （访问的资源不存在）
 409 | conflict （indicates a request conflict with the current state of the target resource,比如创建用户时，用户名已经存在）
+413 | Content Too Large, nginx server 下可以配置上传文件大小 client_max_body_size 900M;
 429 | too many requests （太多请求）
 500 | internal server error
 502 | Bad Gateway
