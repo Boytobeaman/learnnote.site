@@ -198,3 +198,87 @@ sudo systemctl restart php-fpm-83.service
 ```
 systemd-cgtop
 ```
+
+
+### restart services if load or memory usage is too high
+
+
+```
+
+
+vim /usr/local/bin/server-watchdog.sh
+
+#!/bin/bash
+# Simple watchdog for high load or memory usage
+# Logs to /var/log/watchdog.log
+
+LOG_FILE="/var/log/watchdog.log"
+MAX_LOAD=5      # if load avg > 10 , 1 core:2-3, 2 cores: 4-5, 4 cores: 8-10, 8 cores: 15-20
+MAX_MEM=85       # if memory usage > 85%, 1–2 GB: 80, 4 GB: 85, 8+ GB: 90
+
+SERVICES=("nginx" "mysql" "php-fpm-84" "php-fpm-83" "php-fpm-82")
+
+# Ensure log file exists and has correct permissions
+if [ ! -f "$LOG_FILE" ]; then
+    touch "$LOG_FILE"
+    chmod 644 "$LOG_FILE"
+fi
+
+while true; do
+    LOAD=$(awk '{print int($1)}' /proc/loadavg)
+    MEM=$(free | awk '/Mem:/ {printf("%.0f", $3/$2 * 100)}')
+
+    if [ "$LOAD" -gt "$MAX_LOAD" ] || [ "$MEM" -gt "$MAX_MEM" ]; then
+        echo "$(date '+%Y-%m-%d %H:%M:%S') - ⚠️ High load detected (Load=$LOAD, Mem=$MEM%)" >> "$LOG_FILE"
+
+        # Restart critical services
+        for svc in "${SERVICES[@]}"; do
+            if systemctl is-active --quiet "$svc"; then
+                systemctl restart "$svc"
+                echo "$(date '+%Y-%m-%d %H:%M:%S') - Restarted service: $svc" >> "$LOG_FILE"
+            fi
+        done
+
+        sleep 60
+
+        # Recheck load after restart
+        LOAD_NOW=$(awk '{print int($1)}' /proc/loadavg)
+        if [ "$LOAD_NOW" -gt "$MAX_LOAD" ]; then
+            echo "$(date '+%Y-%m-%d %H:%M:%S') - ❗ Load still high after restart, rebooting..." >> "$LOG_FILE"
+            /sbin/reboot
+        fi
+    fi
+
+    sleep 30
+done
+
+
+
+Make it executable:
+sudo chmod +x /usr/local/bin/server-watchdog.sh
+
+
+
+vim /etc/systemd/system/server-watchdog.service
+
+[Unit]
+Description=Simple watchdog for high load recovery
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/server-watchdog.sh
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+Then reload and start the service:
+```
+sudo systemctl daemon-reload
+sudo systemctl enable server-watchdog
+sudo systemctl start server-watchdog
+```
