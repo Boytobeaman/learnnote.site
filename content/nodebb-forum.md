@@ -18,6 +18,17 @@ The ./nodebb can be used to reset any users password. All you need to know is th
 ### 安装插件如email
 ```
 https://domain.com/admin/extend/plugins#download
+
+
+配置smtp:
+
+管理员登陆后
+settings--> email
+
+SMTP Transport
+勾选 Enable SMTP Transport
+
+然后填入SMTP 认证信息
 ```
 
 
