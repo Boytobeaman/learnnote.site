@@ -21,9 +21,9 @@ RAILS_ENV=production bundle exec rails db:seed
 ```
 
 ### Access superadmin console
-
+```
 Access <chatwoot-installation-url>/super_admin
-
+```
 超级用户可以添加用户，添加账户
 
 ### Viewing Logs
