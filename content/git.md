@@ -181,6 +181,16 @@ Since your pull was unsuccessful then HEAD (not HEAD^) is the last "valid" commi
 
 ```
 
+### cherry-pick
+git cherry-pick is a Git command that copies a specific commit from one branch and applies its changes as a new commit on a different branch
+```
+git cherry-pick <commit-hash>
+
+Handle conflicts: If conflicts occur, Git will pause. You will need to resolve them manually, then continue the process.
+# After resolving conflicts
+git cherry-pick --continue
+```
+
 ### git 删除文件
 #### remove local untracked files from the current Git branch
 ```

@@ -137,8 +137,7 @@ wordpress-login (Protect /wp-login.php)
 vim /etc/fail2ban/filter.d/wordpress-login.conf
 
 [Definition]
-failregex = <HOST> -.*"(GET|POST) /wp-login.php
-            <HOST> -.*"(GET|POST) /wp-login.php.*HTTP.*" 200
+failregex = <HOST> -.*"(GET|POST) \/*wp-login\.php
 ignoreregex =
 
 
@@ -281,4 +280,12 @@ Then reload and start the service:
 sudo systemctl daemon-reload
 sudo systemctl enable server-watchdog
 sudo systemctl start server-watchdog
+```
+
+
+### 查看pid程序是由哪个php文件开始执行的
+```
+sudo lsof -p pid | grep "\.php"
+
+sudo lsof -p 340314 | grep "\.php"
 ```
