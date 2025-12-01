@@ -116,7 +116,8 @@ Block XML-RPC brute force
 vim /etc/fail2ban/filter.d/wordpress-xmlrpc.conf
 
 [Definition]
-failregex = <HOST> -.*POST /xmlrpc.php
+failregex = ^<HOST> .*"POST\s+/{1,}xmlrpc\.php
+
 
 
 vim /etc/fail2ban/jail.local
