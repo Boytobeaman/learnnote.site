@@ -115,3 +115,14 @@ ALLOWED_ACCOUNT_EMAIL_DOMAINS=example.com,mycompany.com
 ```
 cwctl --upgrade
 ```
+
+
+### 有些新的conversation没有自动assign给某个agent，也没有email提醒
+```
+用某个管理员账户登录后台
+点击左下角账户--Profile Settings
+划动到下面 Notification preferences
+Notification type中勾选A new conversation is created 的email 提醒
+
+这样有新的chat消息时，就会有邮件发送到这个管理员对应的邮箱，就不会错过/漏掉这个chat了
+```
