@@ -1138,6 +1138,21 @@ eg:
 tail -f notes.log
 ```
 
+### grep
+Global Regular Expression Print. 
+a command-line tool used to search text for lines that match a pattern.  
+过滤日志里面包含某某关键词的记录
+
+```
+过滤出日志中时间为 02/Jan/2026:04 的日志
+grep '\[02/Jan/2026:04:' /www/wwwlogs/www.xxx.com.log
+
+
+过滤出日志中IP为 146.xx.xx.156 的日志
+grep '146.xx.xx.156' /www/wwwlogs/www.xxx.com.log
+
+```
+
 ### sed
 SED is a text stream editor used on Unix systems to edit files quickly and efficiently. The tool searches through, replaces, adds, and deletes lines in a text file without opening the file in a text editor.
 

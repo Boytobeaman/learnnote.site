@@ -32,3 +32,9 @@ eg:
 ```
 /etc/init.d/mysqld restart
 ```
+
+
+### nginx 配置文件位置
+```
+/www/server/panel/vhost/nginx
+```
