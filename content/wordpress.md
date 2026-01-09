@@ -137,3 +137,45 @@ SELECT option_name, LENGTH(option_value) AS len FROM wp_options WHERE LENGTH(opt
 Broken Link Checker
 // 查看 Broken Link
 ```
+
+
+### 性能优化
+#### WooCommerce 相关
+```
+Settings-Advanced-Features
+
+uncheck/取消勾选
+Analytics
+Order Attribution
+
+这样就可以避免加载
+/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=10.4.3
+/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=10.4.3
+
+
+取消加载add-to-cart
+
+// Disable add to cart JS
+add_action( 'wp_enqueue_scripts', function () {
+
+    wp_dequeue_script( 'wc-add-to-cart' );
+    wp_deregister_script( 'wc-add-to-cart' );
+
+    wp_dequeue_script( 'wc-add-to-cart-variation' );
+    wp_deregister_script( 'wc-add-to-cart-variation' );
+
+}, 20 );
+
+
+这样就可以避免加载
+/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js
+```
+
+
+### disable emoji
+```
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('admin_print_styles', 'print_emoji_styles');
+```
