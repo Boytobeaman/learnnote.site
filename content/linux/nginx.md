@@ -39,6 +39,31 @@ netstat -tlnup|grep nginx
 pkill -9 nginx 
 ```
 
+#### 日志
+```
+Default Nginx log locations (Ubuntu)
+
+Access log
+/var/log/nginx/access.log
+
+Error log
+/var/log/nginx/error.log
+```
+
+### Enable site-specific logs
+```
+server {
+    listen 80;
+    server_name a.com www.a.com;
+
+    root /var/www/a.com;
+
+    access_log /var/log/nginx/a.com.access.log;
+    error_log  /var/log/nginx/a.com.error.log;
+}
+```
+
+
 
 #### 配置文件
 ```

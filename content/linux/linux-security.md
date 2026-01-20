@@ -290,3 +290,79 @@ sudo lsof -p pid | grep "\.php"
 
 sudo lsof -p 340314 | grep "\.php"
 ```
+
+
+### 使用nginx 和 GeoIP2 阻止某地区ip访问
+
+#### Install GeoIP2 for Nginx
+```
+// 争对如下系统级安装的nginx，如果是使用nginx 安装的，需要另外编译geoip2模块
+sudo apt update
+sudo apt install nginx libnginx-mod-http-geoip2
+```
+
+#### Download MaxMind GeoLite2 database
+```
+如果没有 MaxMind GeoLite2 账号，创建license-key
+Create an account at MaxMind and get a license key.
+https://www.maxmind.com/en/accounts/current/license-key
+
+
+
+mkdir -p /usr/share/GeoIP
+cd /usr/share/GeoIP
+
+
+wget -O GeoLite2-Country.tar.gz \
+"https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=YOUR_KEY&suffix=tar.gz"
+
+
+tar -xzf GeoLite2-Country.tar.gz
+
+会得到文件夹如：
+GeoLite2-Country_20260102
+
+里面会有
+GeoLite2-Country.mmdb
+
+将其移到/usr/share/GeoIP下
+mv /usr/share/GeoIP/GeoLite2-Country_20260102/GeoLite2-Country.mmdb /usr/share/GeoIP
+```
+
+#### Configure GeoIP2 in Nginx
+```
+编辑总nginx 配置文件,具体位置视情况而定
+
+vim /usr/local/nginx/conf/nginx.conf
+
+
+Inside http {} add:
+
+
+geoip2 /usr/share/GeoIP/GeoLite2-Country.mmdb {
+    $geoip2_country_code country iso_code;
+}
+```
+
+#### Block China only for a.com
+```
+位置视情况而定
+vim /usr/local/nginx/conf/vhost/a.com
+
+
+做如下修改
+map $geoip2_country_code $block_china {
+    default 0;
+    CN 1;
+}
+
+server {
+    server_name a.com www.a.com;
+
+    if ($block_china) {
+        return 403;
+    }
+
+    ...
+}
+```
