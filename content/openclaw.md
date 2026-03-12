@@ -16,3 +16,7 @@ set "HTTPS_PROXY=http://127.0.0.1:7890"
 ```
 
 
+### openclaw 更新
+```
+openclaw update
+```

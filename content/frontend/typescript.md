@@ -107,6 +107,15 @@ tsconfig.json 文件
 }
 
 // 有些es6 的语法比如async await就会支持, 不会被编译成一堆内容了
+
+
+如果有些项目是typescript写的，要想兼容 js 文件，需要配置 allowJs: true
+
+{
+  "compilerOptions": {
+    "allowJs": true
+  }
+}
 ```
 
 ### 声明变量时指定类型

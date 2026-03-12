@@ -310,3 +310,22 @@ module.exports = createCoreController('api::ali-product.ali-product',({ strapi }
 );
 
 ```
+
+
+# strapi 5
+### 常见问题
+
+#### 连接aws postgresql 数据库时 no pg_hba.conf entry for host, no encryption
+需在环境变量里面加上
+```
+DATABASE_SSL_REJECT_UNAUTHORIZED=false
+```
+
+
+
+#### strapi 5 typescript 如果要写自定义的js 模块，需要配置tsconfig.json，否则找不到对应的js文件模块
+{
+  "compilerOptions": {
+    "allowJs": true
+  }
+}
