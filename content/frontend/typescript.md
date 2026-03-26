@@ -116,6 +116,8 @@ tsconfig.json 文件
     "allowJs": true
   }
 }
+
+allowJs means TypeScript will allow .js files to be included and compiled as part of the project.
 ```
 
 ### 声明变量时指定类型

@@ -20,3 +20,35 @@ set "HTTPS_PROXY=http://127.0.0.1:7890"
 ```
 openclaw update
 ```
+
+
+
+
+### 配置 web 端域名访问, controlUi 的配置
+```
+"gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://yourdomain.com"
+      ]
+    },
+}
+
+// 注意要加 https，服务端配置要好ssl证书, 不然不可以访问
+```
+
+### pairing required
+```
+List requests：
+
+openclaw devices list
+
+
+Approve the pending request:
+openclaw devices approve --latest
+# OR
+openclaw devices approve <requestId>
+```
