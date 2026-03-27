@@ -52,3 +52,51 @@ openclaw devices approve --latest
 # OR
 openclaw devices approve <requestId>
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Check installed skills
+```
+openclaw skills list
+```
+
+
+### Uninstall the skill
+```
+openclaw skills uninstall <skill-name>
+```
+
+### 安装skills
+
+```
+clawhub install <slug>
+or
+openclaw skills install <slug>
+
+eg:
+clawhub install word-docx
+openclaw skills install image-resizer
+
+默认会安装在下面文件夹
+/root/.openclaw/workspace/skills
+```
