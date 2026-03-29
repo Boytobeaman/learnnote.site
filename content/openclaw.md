@@ -55,23 +55,10 @@ openclaw devices approve <requestId>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 查看openclaw token 和url
+```
+openclaw dashboard --no-open
+```
 
 
 
@@ -99,4 +86,30 @@ openclaw skills install image-resizer
 
 默认会安装在下面文件夹
 /root/.openclaw/workspace/skills
+```
+
+### config web_search
+```
+openclaw config  --section web
+```
+
+### config
+```
+openclaw config set agents.defaults.thinkingDefault "minimal"
+```
+
+### restart openclaw
+```
+systemctl restart openclaw-gateway
+```
+
+### 查看日志
+```
+journalctl -u openclaw-gateway -f -n 30
+
+```
+
+### apikey 存储位置 openai, claude, gemini
+```
+~/.openclaw/agents/main/agent/auth-profiles.json
 ```
