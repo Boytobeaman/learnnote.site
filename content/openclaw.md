@@ -98,6 +98,11 @@ openclaw config  --section web
 openclaw config set agents.defaults.thinkingDefault "minimal"
 ```
 
+### status
+```
+systemctl status openclaw-gateway
+```
+
 ### restart openclaw
 ```
 systemctl restart openclaw-gateway
