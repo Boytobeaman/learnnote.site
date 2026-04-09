@@ -604,6 +604,11 @@ git push -f origin main
 ```
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
+
+
+如果要设置某一个项目的 name 和email 去掉global
+git config user.name "Your Name"
+git config user.email "your@email.com"
 ```
 ##### 创建版本库：
 ```

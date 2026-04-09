@@ -747,6 +747,222 @@ const CssEffect = ({loadingInfo, ...otherProps}) => {
           />
         </div>
       </section>
+      <section>
+        <h3>Table with fixed header using sticky positioning tailwindcss</h3>
+        <div className="h-[500px] overflow-auto border">
+          <table className="min-w-full border border-gray-300 text-sm text-left text-gray-700">
+
+          <thead className="bg-gray-200 text-xs uppercase font-semibold">
+          <tr>
+          <th className="sticky top-0 bg-gray-200 border px-3 py-2">Model</th>
+          <th className="sticky top-0 bg-gray-200 border px-3 py-2">3350-300ML 42U</th>
+          <th className="sticky top-0 bg-gray-200 border px-3 py-2">3350-300M 42U</th>
+          <th className="sticky top-0 bg-gray-200 border px-3 py-2">3350-350M 42U</th>
+          <th className="sticky top-0 bg-gray-200 border px-3 py-2">3350-400M 42U</th>
+          <th className="sticky top-0 bg-gray-200 border px-3 py-2">3350-500M 42U</th>
+          <th className="sticky top-0 bg-gray-200 border px-3 py-2">3350-600M 42U</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr className="bg-gray-100 font-semibold">
+          <td colspan="7" className="border px-3 py-2">General</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Phase</td>
+          <td colspan="6" className="border px-3 py-2">3 Phase In 3 Phase Out</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Cabinet capacity</td>
+          <td className="border px-3 py-2">300KW</td>
+          <td className="border px-3 py-2">300KW</td>
+          <td className="border px-3 py-2">350KW</td>
+          <td className="border px-3 py-2">400KW</td>
+          <td className="border px-3 py-2">500KW</td>
+          <td className="border px-3 py-2">600KW</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Battery type</td>
+          <td colspan="6" className="border px-3 py-2">External battery</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Power module capacity</td>
+          <td colspan="6" className="border px-3 py-2">50KVA / 50KW</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Max. power modules</td>
+          <td className="border px-3 py-2">6</td>
+          <td className="border px-3 py-2">6</td>
+          <td className="border px-3 py-2">7</td>
+          <td className="border px-3 py-2">8</td>
+          <td className="border px-3 py-2">10</td>
+          <td className="border px-3 py-2">12</td>
+          </tr>
+
+          <tr className="bg-gray-100 font-semibold">
+          <td colspan="7" className="border px-3 py-2">Input</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Rated voltage</td>
+          <td colspan="6" className="border px-3 py-2">3 x 380/400/415 VAC (3Ph+N)</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Voltage range</td>
+          <td colspan="6" className="border px-3 py-2">-20% ~ +15%</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Rated frequency</td>
+          <td colspan="6" className="border px-3 py-2">50/60 Hz (auto select)</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Frequency range</td>
+          <td colspan="6" className="border px-3 py-2">40Hz ~ 70Hz</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Power factor</td>
+          <td colspan="6" className="border px-3 py-2">100% load ≥0.99, 50% load ≥0.98</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">THDi</td>
+          <td colspan="6" className="border px-3 py-2">&lt;4% @ 100% load</td>
+          </tr>
+
+          <tr className="bg-gray-100 font-semibold">
+          <td colspan="7" className="border px-3 py-2">Output</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Rated voltage</td>
+          <td colspan="6" className="border px-3 py-2">3 x 380/400/415 VAC (3Ph+N)</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Voltage regulation</td>
+          <td colspan="6" className="border px-3 py-2">≤ ±1% (balanced), ≤ ±2% (unbalanced)</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Rated frequency</td>
+          <td colspan="6" className="border px-3 py-2">50/60Hz</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Frequency range</td>
+          <td colspan="6" className="border px-3 py-2">46–54Hz / 56–64Hz</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Overload capacity</td>
+          <td colspan="6" className="border px-3 py-2">110% 1h, 125% 10min, 150% 1min, &gt;150% 200ms</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">THDv</td>
+          <td colspan="6" className="border px-3 py-2">≤2% (linear), ≤4% (non-linear)</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Efficiency</td>
+          <td colspan="6" className="border px-3 py-2">95.5%</td>
+          </tr>
+
+          <tr className="bg-gray-100 font-semibold">
+          <td colspan="7" className="border px-3 py-2">Battery / Charging</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Rated voltage</td>
+          <td colspan="6" className="border px-3 py-2">±192V ~ ±240V (optional)</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Float voltage</td>
+          <td colspan="6" className="border px-3 py-2">2.28V / cell</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Equalize voltage</td>
+          <td colspan="6" className="border px-3 py-2">2.35V / cell</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Charging current</td>
+          <td colspan="6" className="border px-3 py-2">12A (adjustable)</td>
+          </tr>
+
+          <tr className="bg-gray-100 font-semibold">
+          <td colspan="7" className="border px-3 py-2">Physical</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Dimensions (mm)</td>
+          <td className="border px-3 py-2">850×600×2010</td>
+          <td className="border px-3 py-2">1065×600×2010</td>
+          <td className="border px-3 py-2">1065×600×2010</td>
+          <td className="border px-3 py-2">1065×600×2010</td>
+          <td className="border px-3 py-2">1065×1000×2010</td>
+          <td className="border px-3 py-2">1065×1000×2010</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Weight (kg)</td>
+          <td className="border px-3 py-2">490</td>
+          <td className="border px-3 py-2">545</td>
+          <td className="border px-3 py-2">654</td>
+          <td className="border px-3 py-2">932</td>
+          <td className="border px-3 py-2">1020</td>
+          <td className="border px-3 py-2">1130</td>
+          </tr>
+
+          <tr className="bg-gray-100 font-semibold">
+          <td colspan="7" className="border px-3 py-2">Environment</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Temperature</td>
+          <td colspan="6" className="border px-3 py-2">0–40°C</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Humidity</td>
+          <td colspan="6" className="border px-3 py-2">0–95% RH (non-condensing)</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">IP Rating</td>
+          <td colspan="6" className="border px-3 py-2">IP20</td>
+          </tr>
+
+          <tr className="bg-gray-100 font-semibold">
+          <td colspan="7" className="border px-3 py-2">Standards</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">Safety</td>
+          <td colspan="6" className="border px-3 py-2">IEC/EN 62040-1</td>
+          </tr>
+
+          <tr>
+          <td className="border px-3 py-2">EMC</td>
+          <td colspan="6" className="border px-3 py-2">IEC/EN 62040-2 C3</td>
+          </tr>
+
+          </tbody>
+          </table>
+          </div>
+      </section>
     </div>
   );
 };
