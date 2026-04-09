@@ -749,7 +749,7 @@ const CssEffect = ({loadingInfo, ...otherProps}) => {
       </section>
       <section>
         <h3>Table with fixed header using sticky positioning tailwindcss</h3>
-        <div className="h-[500px] overflow-auto border">
+        <div className="h-96 overflow-auto border">
           <table className="min-w-full border border-gray-300 text-sm text-left text-gray-700">
 
           <thead className="bg-gray-200 text-xs uppercase font-semibold">
