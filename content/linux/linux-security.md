@@ -166,6 +166,41 @@ backend  = polling
 backend = polling — this disables the systemd journal reading and enables direct file reading
 ```
 
+### 针对频繁请求的filter
+```
+Create the filter
+
+vim /etc/fail2ban/filter.d/nginx-req-limit.conf
+
+[Definition]
+# Match any GET/POST request from an IP
+failregex = ^<HOST> -.*"(GET|POST|HEAD) .* HTTP/1\.[01]" \d+ .*$
+
+ignoreregex =
+
+
+
+
+# Add the jail in 
+vim /etc/fail2ban/jail.local
+
+
+[nginx-req-limit]
+enabled   = true
+port      = http,https
+filter    = nginx-req-limit
+logpath   = /data/wwwlogs/*_nginx.log
+maxretry  = 100
+findtime  = 60
+bantime   = 3600
+
+# Escalation: each repeat offense multiplies ban time
+bantime.increment  = true
+bantime.multiplier = 2
+bantime.maxtime    = 604800
+
+```
+
 ### Apply CPU Quota to PHP-FPM
 1. Find your PHP-FPM service name
 ```
