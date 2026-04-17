@@ -964,25 +964,25 @@ const CssEffect = ({loadingInfo, ...otherProps}) => {
           </div>
       </section>
 
-      <section class="my-16" id="faq">
-        <div class="inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-red-700 mb-3 before:inline-block before:w-5 before:h-0.5 before:bg-red-700">FAQ</div>
-        <h2 class="font-serif text-2xl md:text-3xl font-semibold leading-tight text-neutral-950 mb-5 tracking-tight" style="font-family: 'Playfair Display', serif;">Frequently asked questions</h2>
-        <div class="border border-stone-200 rounded-xl overflow-hidden my-8 flex flex-col shadow-sm">
-          <details class="group border-b border-stone-200 last:border-b-0 bg-white" open="">
-            <summary class="flex justify-between items-center p-5 md:px-6 text-base font-medium text-neutral-950 cursor-pointer hover:bg-stone-50 transition-colors list-none [&amp;::-webkit-details-marker]:hidden">
+      <section className="my-16" id="faq">
+        <div className="inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-red-700 mb-3 before:inline-block before:w-5 before:h-0.5 before:bg-red-700">FAQ</div>
+        <h2 className="font-serif text-2xl md:text-3xl font-semibold leading-tight text-neutral-950 mb-5 tracking-tight" style="font-family: 'Playfair Display', serif;">Frequently asked questions</h2>
+        <div className="border border-stone-200 rounded-xl overflow-hidden my-8 flex flex-col shadow-sm">
+          <details className="group border-b border-stone-200 last:border-b-0 bg-white" open="">
+            <summary className="flex justify-between items-center p-5 md:px-6 text-base font-medium text-neutral-950 cursor-pointer hover:bg-stone-50 transition-colors list-none [&amp;::-webkit-details-marker]:hidden">
                 Do I need a device?
-                <span class="shrink-0 w-6 h-6 rounded-full border border-stone-300 flex items-center justify-center text-sm text-neutral-500 transition-all duration-200 group-open:rotate-45 group-open:bg-neutral-950 group-open:border-neutral-950 group-open:text-white">+</span>
+                <span className="shrink-0 w-6 h-6 rounded-full border border-stone-300 flex items-center justify-center text-sm text-neutral-500 transition-all duration-200 group-open:rotate-45 group-open:bg-neutral-950 group-open:border-neutral-950 group-open:text-white">+</span>
             </summary>
-            <div class="p-5 md:px-6 pt-0 text-sm font-light text-neutral-700 leading-relaxed">
+            <div className="p-5 md:px-6 pt-0 text-sm font-light text-neutral-700 leading-relaxed">
                 No. A single appropriately-sized UPS can protect your entire theater rack.
             </div>
           </details>
-          <details class="group border-b border-stone-200 last:border-b-0 bg-white">
-            <summary class="flex justify-between items-center p-5 md:px-6 text-base font-medium text-neutral-950 cursor-pointer hover:bg-stone-50 transition-colors list-none [&amp;::-webkit-details-marker]:hidden">
+          <details className="group border-b border-stone-200 last:border-b-0 bg-white">
+            <summary className="flex justify-between items-center p-5 md:px-6 text-base font-medium text-neutral-950 cursor-pointer hover:bg-stone-50 transition-colors list-none [&amp;::-webkit-details-marker]:hidden">
                 Will a sound quality?
-                <span class="shrink-0 w-6 h-6 rounded-full border border-stone-300 flex items-center justify-center text-sm text-neutral-500 transition-all duration-200 group-open:rotate-45 group-open:bg-neutral-950 group-open:border-neutral-950 group-open:text-white">+</span>
+                <span className="shrink-0 w-6 h-6 rounded-full border border-stone-300 flex items-center justify-center text-sm text-neutral-500 transition-all duration-200 group-open:rotate-45 group-open:bg-neutral-950 group-open:border-neutral-950 group-open:text-white">+</span>
             </summary>
-            <div class="p-5 md:px-6 pt-0 text-sm font-light text-neutral-700 leading-relaxed">
+            <div className="p-5 md:px-6 pt-0 text-sm font-light text-neutral-700 leading-relaxed">
                 Yes — significantly, in most cases.from unprotected mains.
             </div>
           </details>
