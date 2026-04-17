@@ -283,7 +283,8 @@ ws.onclose = function(evt) {
   console.log("Connection closed.");
 };    
 ```
-
+websocket 聊天案例  
+[temporary Secure Chat](https://www.gpww.com/online-chat)
 #### 客户端的 API
 ```
 // WebSocket 构造函数
