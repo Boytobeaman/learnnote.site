@@ -130,7 +130,7 @@ backend  = polling
 maxretry = 3
 findtime = 300
 bantime = 3600
-action = iptables[name=wordpress-xmlrpc, port=http, protocol=tcp]
+action = iptables-multiport[name=wordpress-xmlrpc, port="80,443", protocol=tcp]
 ```
 
 wordpress-login (Protect /wp-login.php)
@@ -200,6 +200,29 @@ bantime.multiplier = 2
 bantime.maxtime    = 604800
 
 ```
+
+### 针对网站敏感文件扫描secret-scan
+Block XML-RPC brute force
+```
+vim /etc/fail2ban/filter.d/nginx-secret-scan.conf
+
+[Definition]
+failregex = ^<HOST> .* "(GET|POST).*(\.env|\.git|credentials|service-account|firebase).*
+
+
+# Add the jail in 
+vim /etc/fail2ban/jail.local
+
+[nginx-secret-scan]
+enabled = true
+port = http,https
+filter = nginx-secret-scan
+logpath = /data/wwwlogs/*_nginx.log
+maxretry = 3
+findtime = 600
+bantime = 86400
+```
+
 
 ### Apply CPU Quota to PHP-FPM
 1. Find your PHP-FPM service name

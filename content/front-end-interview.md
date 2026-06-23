@@ -327,3 +327,42 @@ let c= createLinkList([100, 200, 300]);
 
 console.log(c)
 ```
+
+
+### ai 对话前端页面常用到的技术
+
+#### ResizeObserver
+watch container size changes, useful for re-flowing chat bubbles or canvas elements
+```
+  document.addEventListener('DOMContentLoaded', function() {
+    var box = document.getElementById('box');
+    var size = document.getElementById('size');
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        size.textContent = `Width: ${width}px, Height: ${height}px`;
+      }
+    });
+    observer.observe(box);
+  });
+
+
+html:
+<div id="box">
+	Resize the window to change my width
+</div>
+
+<p id="size"></p>
+```
+
+
+#### MutationObserver
+detect when streamed text is added to the DOM, trigger auto-scroll or syntax highlighting
+
+
+#### IntersectionObserver
+lazy-load message history when user scrolls up, or detect when bottom of chat is visible for the "scroll to bottom" button
+
+
+#### requestAnimationFrame
+throttle markdown/code rendering during fast token streaming to avoid layout thrashing
