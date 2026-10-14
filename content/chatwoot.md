@@ -126,3 +126,16 @@ Notification type中勾选A new conversation is created 的email 提醒
 
 这样有新的chat消息时，就会有邮件发送到这个管理员对应的邮箱，就不会错过/漏掉这个chat了
 ```
+
+
+
+### waha.devlike.pro 与chatwoot 连接 会遇到问题
+
+Nginx can discard the api_access_token header because its name contains underscores.
+chatwoot 服务可能会丢弃 api_access_token 造成 401 错误，
+需要在 chatwoot 服务的nginx 配置里面加上 underscores_in_headers on;
+```
+Inside its server { ... } block, add:
+
+underscores_in_headers on;
+```
