@@ -601,3 +601,73 @@ server {
     }
 }
 ```
+
+### 域名托管在cloudflare，使用proxy模式, 服务器访问日志里面的IP为cloudflare 的ip，如何显示真实的客户IP
+
+#### 1.Create a new file:
+```
+vim /usr/local/nginx/conf/cloudflare-real-ip.conf
+
+
+# Cloudflare IPv4
+set_real_ip_from 173.245.48.0/20;
+set_real_ip_from 103.21.244.0/22;
+set_real_ip_from 103.22.200.0/22;
+set_real_ip_from 103.31.4.0/22;
+set_real_ip_from 141.101.64.0/18;
+set_real_ip_from 108.162.192.0/18;
+set_real_ip_from 190.93.240.0/20;
+set_real_ip_from 188.114.96.0/20;
+set_real_ip_from 197.234.240.0/22;
+set_real_ip_from 198.41.128.0/17;
+set_real_ip_from 162.158.0.0/15;
+set_real_ip_from 104.16.0.0/13;
+set_real_ip_from 104.24.0.0/14;
+set_real_ip_from 172.64.0.0/13;
+set_real_ip_from 131.0.72.0/22;
+
+# Cloudflare IPv6
+set_real_ip_from 2400:cb00::/32;
+set_real_ip_from 2606:4700::/32;
+set_real_ip_from 2803:f800::/32;
+set_real_ip_from 2405:b500::/32;
+set_real_ip_from 2405:8100::/32;
+set_real_ip_from 2a06:98c0::/29;
+set_real_ip_from 2c0f:f248::/32;
+
+# Get original visitor IP
+real_ip_header CF-Connecting-IP;
+```
+
+#### 2.Include it in nginx.conf
+```
+vim /usr/local/nginx/conf/nginx.conf
+
+
+Add this line directly inside http {}
+
+
+include /usr/local/nginx/conf/cloudflare-real-ip.conf;
+
+
+
+for example:
+http {
+    include mime.types;
+
+    # Cloudflare real visitor IP
+    include /usr/local/nginx/conf/cloudflare-real-ip.conf;
+
+    # Other configurations
+    include /usr/local/nginx/conf/vhost/*.conf;
+}
+
+```
+
+#### 3.Test and reload Nginx
+```
+sudo /usr/local/nginx/sbin/nginx -t
+
+
+systemctl reload nginx
+```
