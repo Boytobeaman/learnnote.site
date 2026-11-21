@@ -179,3 +179,38 @@ remove_action('admin_print_scripts', 'print_emoji_detection_script');
 remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action('admin_print_styles', 'print_emoji_styles');
 ```
+
+
+
+### translatepress 会自动翻译 contact form 7 种用户提交的信息
+
+应该保持用户原本的信息，不应该自动翻译它
+
+可以在contact form 7的配置选项 mail 下的 Message body 外加
+```
+<div data-no-translation>
+</div>
+
+
+
+如：
+<div data-no-translation>
+From: [your-name] <[your-email]>
+
+Subject: Inquiry
+
+Model: [ProductModel]
+
+Quantity: [Quantity]
+
+Message Body:
+[your-message]
+
+--
+This e-mail was sent from a contact form on ([_url])
+ip:[_remote_ip]
+</div>
+```
+
+然后勾选下面的选项  
+Use HTML content type
