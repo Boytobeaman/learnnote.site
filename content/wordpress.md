@@ -214,3 +214,19 @@ ip:[_remote_ip]
 
 然后勾选下面的选项  
 Use HTML content type
+
+
+
+### 网站占用硬盘空间大，可能的原因
+
+#### php 日志
+```
+ls -alh /usr/local/php/var/log/php-fpm.log
+
+查看日志最后
+sudo tail -100 /usr/local/php/var/log/php-fpm.log
+
+
+清空日志
+sudo truncate -s 0 /usr/local/php/var/log/php-fpm.log
+```
